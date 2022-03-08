@@ -3217,5 +3217,9 @@ input, select, textarea {
 				margin-left: 0;
 				padding-left: 0;
 			}
-
 	}
+
+	/* Dimensions */
+.__dimensions_badge_embed__ {
+	display: inline-block!important;
+}
