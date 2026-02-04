@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - Enrique Acebo</title>
+    <meta name="description" content="Academic research by Enrique Acebo: articles, books, and book chapters in eco-innovation, innovation policy, and sustainable business.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <!-- Altmetric -->
+    <script type="text/javascript" src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+    <!-- Dimensions -->
+    <script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+    <style>
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e5e5e5;
+        }
+        .tab-btn {
+            padding: 0.75rem 1.25rem;
+            background: none;
+            border: none;
+            font-size: 0.95rem;
+            font-family: inherit;
+            font-weight: 600;
+            color: #666666;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+        .tab-btn:hover {
+            color: #b12b32;
+        }
+        .tab-btn.active {
+            color: #b12b32;
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #b12b32;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .dark-mode .tabs {
+            border-bottom-color: var(--border-color);
+        }
+        .dark-mode .tab-btn {
+            color: var(--text-secondary);
+        }
+        .dark-mode .tab-btn:hover,
+        .dark-mode .tab-btn.active {
+            color: var(--accent);
+        }
+        .dark-mode .tab-btn.active::after {
+            background-color: var(--accent);
+        }
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #666666;
+        }
+        .empty-state i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+        .dark-mode .empty-state {
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="site-title">Enrique Acebo</a>
+            <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html" data-en="Home" data-es="Inicio">Home</a></li>
+                    <li><a href="publications.html" class="active" data-en="Research" data-es="Investigación">Research</a></li>
+                    <li><a href="projects.html" data-en="Projects" data-es="Proyectos">Projects</a></li>
+                    <li><a href="teaching.html" data-en="Teaching" data-es="Docencia">Teaching</a></li>
+                    <li><a href="media.html" data-en="Media" data-es="Medios">Media</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="contact.html" data-en="Contact" data-es="Contacto">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="lang-switch">
+                <button id="lang-en" class="active">EN</button>
+                <span class="separator">|</span>
+                <button id="lang-es">ES</button>
+            </div>
+            <button class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <section>
+                <h1 class="section-title" data-en="Research" data-es="Investigación">Research</h1>
+
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="articles" data-en="Articles" data-es="Artículos">Articles</button>
+                    <button class="tab-btn" data-tab="books" data-en="Books" data-es="Libros">Books</button>
+                    <button class="tab-btn" data-tab="chapters" data-en="Book Chapters" data-es="Capítulos de Libro">Book Chapters</button>
+                </div>
+
+                <!-- Search and Filter Controls -->
+                <div class="publications-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Search publications..." data-placeholder-en="Search publications..." data-placeholder-es="Buscar publicaciones...">
+                    </div>
+                    <div class="tags-filter">
+                        <button class="tag-btn active" data-tag="all" data-en="All" data-es="Todas">All</button>
+                        <button class="tag-btn" data-tag="policy-evaluation" data-en="Policy Evaluation" data-es="Evaluación de Políticas">Policy Evaluation</button>
+                        <button class="tag-btn" data-tag="innovation" data-en="Innovation" data-es="Innovación">Innovation</button>
+                        <button class="tag-btn" data-tag="entrepreneurship" data-en="Entrepreneurship" data-es="Emprendimiento">Entrepreneurship</button>
+                        <button class="tag-btn" data-tag="strategy" data-en="Strategy" data-es="Estrategia">Strategy</button>
+                    </div>
+                </div>
+
+                <!-- No Results Message -->
+                <p class="no-results" id="no-results" data-en="No publications found matching your search." data-es="No se encontraron publicaciones que coincidan con tu búsqueda.">No publications found matching your search.</p>
+
+                <!-- Articles Tab -->
+                <div class="tab-content active" id="articles">
+                    <!-- 2024 -->
+                    <div class="year-group" data-year="2024">
+                        <h2 class="year-title">2024</h2>
+
+                        <div class="publication" data-tags="policy-evaluation innovation">
+                            <p class="publication-title">
+                                <a href="https://academic.oup.com/spp/article/51/2/218/7329737" target="_blank" rel="noopener">
+                                    Multilevel Innovation Policy Mix: Impact of Regional, National and European R&D grants
+                                </a>
+                            </p>
+                            <p class="publication-authors">
+                                with <a href="https://scholar.google.es/citations?user=ZnG6z6sAAAAJ" target="_blank" rel="noopener">J.-A. Miguel-Davila</a>
+                            </p>
+                            <p class="publication-venue">Science and Public Policy, 51(2), 218-235</p>
+                            <div class="publication-meta-row">
+                                <div class="publication-links">
+                                    <a href="documents/publications/10.1093-scipol-scad057.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    <a href="https://doi.org/10.1093/scipol/scad057" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI</a>
+                                </div>
+                                <div class="publication-badges">
+                                    <span class="__dimensions_badge_embed__" data-doi="10.1093/scipol/scad057" data-style="small_rectangle"></span>
+                                    <div class="altmetric-embed" data-badge-type="2" data-doi="10.1093/scipol/scad057" data-hide-no-mentions="true"></div>
+                                </div>
+                            </div>
+                            <div class="publication-tags">
+                                <span class="publication-tag">Policy Evaluation</span>
+                                <span class="publication-tag">Innovation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2022 -->
+                    <div class="year-group" data-year="2022">
+                        <h2 class="year-title">2022</h2>
+
+                        <div class="publication" data-tags="policy-evaluation innovation">
+                            <p class="publication-title">
+                                <a href="https://doi.org/10.1108/EJIM-07-2020-0286" target="_blank" rel="noopener">
+                                    Do financial constraints moderate the relationship between innovation subsidies and firms' R&D investment?
+                                </a>
+                            </p>
+                            <p class="publication-authors">
+                                with <a href="https://scholar.google.es/citations?user=ZnG6z6sAAAAJ" target="_blank" rel="noopener">J.-A. Miguel-Davila</a>
+                                & <a href="https://scholar.google.es/citations?user=C5tJHHkAAAAJ" target="_blank" rel="noopener">M. Nieto</a>
+                            </p>
+                            <p class="publication-venue">European Journal of Innovation Management, 25(2), 347-364</p>
+                            <div class="publication-meta-row">
+                                <div class="publication-links">
+                                    <a href="documents/publications/10.1108-EJIM-07-2020-0286.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    <a href="https://doi.org/10.1108/EJIM-07-2020-0286" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI</a>
+                                </div>
+                                <div class="publication-badges">
+                                    <span class="__dimensions_badge_embed__" data-doi="10.1108/EJIM-07-2020-0286" data-style="small_rectangle"></span>
+                                    <div class="altmetric-embed" data-badge-type="2" data-doi="10.1108/EJIM-07-2020-0286" data-hide-no-mentions="true"></div>
+                                </div>
+                            </div>
+                            <div class="publication-tags">
+                                <span class="publication-tag">Policy Evaluation</span>
+                                <span class="publication-tag">Innovation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2021 -->
+                    <div class="year-group" data-year="2021">
+                        <h2 class="year-title">2021</h2>
+
+                        <div class="publication" data-tags="innovation strategy">
+                            <p class="publication-title">
+                                <a href="https://doi.org/10.1002/bse.2770" target="_blank" rel="noopener">
+                                    External stakeholder engagement: Complementary and substitutive effects on firms' eco-innovation
+                                </a>
+                            </p>
+                            <p class="publication-authors">
+                                with <a href="https://scholar.google.es/citations?user=ZnG6z6sAAAAJ" target="_blank" rel="noopener">J.-A. Miguel-Davila</a>
+                                & <a href="https://scholar.google.es/citations?user=C5tJHHkAAAAJ" target="_blank" rel="noopener">M. Nieto</a>
+                            </p>
+                            <p class="publication-venue">Business Strategy and the Environment, 30(5), 2671-2687</p>
+                            <div class="publication-meta-row">
+                                <div class="publication-links">
+                                    <a href="documents/publications/10.1002-bse.2770.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    <a href="https://doi.org/10.1002/bse.2770" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI</a>
+                                </div>
+                                <div class="publication-badges">
+                                    <span class="__dimensions_badge_embed__" data-doi="10.1002/bse.2770" data-style="small_rectangle"></span>
+                                    <div class="altmetric-embed" data-badge-type="2" data-doi="10.1002/bse.2770" data-hide-no-mentions="true"></div>
+                                </div>
+                            </div>
+                            <div class="publication-tags">
+                                <span class="publication-tag">Innovation</span>
+                                <span class="publication-tag">Strategy</span>
+                            </div>
+                        </div>
+
+                        <div class="publication" data-tags="innovation strategy">
+                            <p class="publication-title">
+                                <a href="https://academic.oup.com/spp/article/48/2/276/6215148" target="_blank" rel="noopener">
+                                    The Impact of University-Industry Relationships on Firms' Performance: A Meta-Regression Analysis
+                                </a>
+                            </p>
+                            <p class="publication-authors">
+                                with <a href="https://scholar.google.es/citations?user=ZnG6z6sAAAAJ" target="_blank" rel="noopener">J.-A. Miguel-Davila</a>
+                                & <a href="https://scholar.google.es/citations?user=C5tJHHkAAAAJ" target="_blank" rel="noopener">M. Nieto</a>
+                            </p>
+                            <p class="publication-venue">Science and Public Policy, 48(2), 276-293</p>
+                            <div class="publication-meta-row">
+                                <div class="publication-links">
+                                    <a href="documents/publications/10.1093-scipol-scab025.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
+                                    <a href="https://doi.org/10.1093/scipol/scab025" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI</a>
+                                </div>
+                                <div class="publication-badges">
+                                    <span class="__dimensions_badge_embed__" data-doi="10.1093/scipol/scab025" data-style="small_rectangle"></span>
+                                    <div class="altmetric-embed" data-badge-type="2" data-doi="10.1093/scipol/scab025" data-hide-no-mentions="true"></div>
+                                </div>
+                            </div>
+                            <div class="publication-tags">
+                                <span class="publication-tag">Innovation</span>
+                                <span class="publication-tag">Strategy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Books Tab -->
+                <div class="tab-content" id="books">
+                    <div class="empty-state">
+                        <i class="fas fa-book"></i>
+                        <p data-en="Coming soon" data-es="Próximamente">Coming soon</p>
+                    </div>
+                </div>
+
+                <!-- Book Chapters Tab -->
+                <div class="tab-content" id="chapters">
+                    <div class="empty-state">
+                        <i class="fas fa-bookmark"></i>
+                        <p data-en="Coming soon" data-es="Próximamente">Coming soon</p>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="mailto:e.acebo@unileon.es" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://scholar.google.com/citations?user=7_JEALYAAAAJ&hl=en" target="_blank" rel="noopener" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://orcid.org/0000-0002-7482-8302" target="_blank" rel="noopener" title="ORCID"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:16px;height:16px;vertical-align:middle"><path fill="currentColor" d="M256 8C119.252 8 8 119.252 8 256s111.252 248 248 248 248-111.252 248-248S392.748 8 256 8zm-70.883 357.573h-28.044V168.104h28.044v197.469zm-14.022-224.107c-10.088 0-18.27-8.182-18.27-18.27s8.182-18.27 18.27-18.27 18.27 8.182 18.27 18.27-8.182 18.27-18.27 18.27zm180.903 224.107h-28.044v-109.39c0-33.072-35.914-36.213-35.914 0v109.39h-28.044v-109.39c0-59.375 87.945-64.478 87.945 0v109.39h4.057z"/></svg></a>
+                <a href="https://www.linkedin.com/in/eacebo" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com/EnriqueAcebo_" target="_blank" rel="noopener" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 Enrique Acebo</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="assets/js/lang.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Dark Mode Toggle (auto-detect system preference)
+        const themeToggle = document.querySelector('.theme-toggle');
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (savedTheme === null && systemPrefersDark)) {
+            document.documentElement.classList.add('dark-mode');
+        }
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (localStorage.getItem('theme') === null) {
+                document.documentElement.classList.toggle('dark-mode', e.matches);
+            }
+        });
+
+        themeToggle.addEventListener('click', function() {
+            document.documentElement.classList.toggle('dark-mode');
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // Back to Top Button
+        const backToTop = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Tabs
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabId = this.dataset.tab;
+
+                // Update buttons
+                tabButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                // Update content
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === tabId) {
+                        content.classList.add('active');
+                    }
+                });
+
+                // Reset search and filters when switching tabs
+                searchInput.value = '';
+                tagButtons.forEach(b => b.classList.remove('active'));
+                document.querySelector('.tag-btn[data-tag="all"]').classList.add('active');
+                filterPublications();
+            });
+        });
+
+        // Publications Search
+        const searchInput = document.getElementById('search-input');
+        const noResults = document.getElementById('no-results');
+
+        function filterPublications() {
+            const activeTab = document.querySelector('.tab-content.active');
+            const publications = activeTab.querySelectorAll('.publication');
+            const yearGroups = activeTab.querySelectorAll('.year-group');
+            const searchTerm = searchInput.value.toLowerCase();
+            const activeTag = document.querySelector('.tag-btn.active').dataset.tag;
+            let visibleCount = 0;
+
+            publications.forEach(pub => {
+                const text = pub.textContent.toLowerCase();
+                const tags = pub.dataset.tags || '';
+
+                const matchesSearch = text.includes(searchTerm);
+                const matchesTag = activeTag === 'all' || tags.includes(activeTag);
+
+                if (matchesSearch && matchesTag) {
+                    pub.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    pub.classList.add('hidden');
+                }
+            });
+
+            // Hide empty year groups
+            yearGroups.forEach(group => {
+                const visiblePubs = group.querySelectorAll('.publication:not(.hidden)');
+                if (visiblePubs.length === 0) {
+                    group.classList.add('hidden');
+                } else {
+                    group.classList.remove('hidden');
+                }
+            });
+
+            // Show/hide no results message
+            if (visibleCount === 0 && publications.length > 0) {
+                noResults.classList.add('visible');
+            } else {
+                noResults.classList.remove('visible');
+            }
+        }
+
+        searchInput.addEventListener('input', filterPublications);
+
+        // Tag Filter
+        const tagButtons = document.querySelectorAll('.tag-btn');
+
+        tagButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                tagButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                filterPublications();
+            });
+        });
+    </script>
+</body>
+</html>

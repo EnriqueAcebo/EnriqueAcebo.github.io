@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Enrique Acebo</title>
+    <meta name="description" content="Research projects by Enrique Acebo on innovation, sustainability, and the aerospace sector.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <style>
+        .project-card {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .project-card:last-child {
+            border-bottom: none;
+        }
+        .project-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 6px;
+            background-color: #f0f0f0;
+        }
+        .project-image-placeholder {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, #b12b32 0%, #2c3e50 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 2rem;
+        }
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+        }
+        .project-info h3 a {
+            color: #333333;
+        }
+        .project-info h3 a:hover {
+            color: #b12b32;
+        }
+        .project-meta {
+            font-size: 0.95rem;
+            color: #666666;
+            margin-bottom: 0.75rem;
+        }
+        .project-status {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.8rem;
+            background-color: #b12b32;
+            color: #ffffff;
+            border-radius: 3px;
+            margin-left: 0.5rem;
+        }
+        .project-status.completed {
+            background-color: #28a745;
+        }
+        .project-description {
+            color: #666666;
+            margin-bottom: 0.75rem;
+        }
+        .project-link {
+            font-size: 0.9rem;
+        }
+        .dark-mode .project-card {
+            border-bottom-color: var(--border-color);
+        }
+        .dark-mode .project-info h3 a {
+            color: var(--text-primary);
+        }
+        .dark-mode .project-info h3 a:hover {
+            color: var(--accent);
+        }
+        .dark-mode .project-meta,
+        .dark-mode .project-description {
+            color: var(--text-secondary);
+        }
+        .dark-mode .project-image-placeholder {
+            background: linear-gradient(135deg, var(--accent) 0%, #1a252f 100%);
+        }
+        @media (max-width: 600px) {
+            .project-card {
+                grid-template-columns: 1fr;
+            }
+            .project-image,
+            .project-image-placeholder {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="site-title">Enrique Acebo</a>
+            <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html" data-en="Home" data-es="Inicio">Home</a></li>
+                    <li><a href="publications.html" data-en="Research" data-es="Investigación">Research</a></li>
+                    <li><a href="projects.html" class="active" data-en="Projects" data-es="Proyectos">Projects</a></li>
+                    <li><a href="teaching.html" data-en="Teaching" data-es="Docencia">Teaching</a></li>
+                    <li><a href="media.html" data-en="Media" data-es="Medios">Media</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="contact.html" data-en="Contact" data-es="Contacto">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="lang-switch">
+                <button id="lang-en" class="active">EN</button>
+                <span class="separator">|</span>
+                <button id="lang-es">ES</button>
+            </div>
+            <button class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <section>
+                <h1 class="section-title" data-en="Research Projects" data-es="Proyectos de Investigación">Research Projects</h1>
+
+                <div class="project-card">
+                    <div class="project-image-placeholder">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>
+                            <a href="projects/startups-government-support.html" data-en="The Heterogenous Impact of Government Support on Innovative Start-Ups" data-es="El Impacto Heterogéneo del Apoyo Gubernamental en Start-Ups Innovadoras">The Heterogenous Impact of Government Support on Innovative Start-Ups</a>
+                            <span class="project-status" data-en="Under Review" data-es="En Revisión">Under Review</span>
+                        </h3>
+                        <p class="project-meta" data-en="with Luis Baratas Gonzalez & Jose Angel Miguel-Davila" data-es="con Luis Baratas Gonzalez y Jose Angel Miguel-Davila">with Luis Baratas Gonzalez & Jose Angel Miguel-Davila</p>
+                        <p class="project-description" data-en="Investigating how different types of government support affect innovative start-ups, comparing the effects on supply chain integration versus local economic development." data-es="Investigando cómo los diferentes tipos de apoyo gubernamental afectan a las start-ups innovadoras, comparando los efectos en la integración de la cadena de suministro frente al desarrollo económico local.">
+                            Investigating how different types of government support affect innovative start-ups,
+                            comparing the effects on supply chain integration versus local economic development.
+                        </p>
+                        <a href="projects/startups-government-support.html" class="project-link">
+                            <i class="fas fa-arrow-right"></i> <span data-en="Read more" data-es="Leer más">Read more</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image-placeholder">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>
+                            <a href="projects/sustainable-innovation.html" data-en="Business Ecosystems and Sustainable Innovation" data-es="Ecosistemas Empresariales e Innovación Sostenible">Business Ecosystems and Sustainable Innovation</a>
+                            <span class="project-status" data-en="Ongoing" data-es="En Curso">Ongoing</span>
+                        </h3>
+                        <p class="project-meta" data-en="Funded by the Spanish Ministry of Science and Innovation" data-es="Financiado por el Ministerio de Ciencia e Innovación de España">Funded by the Spanish Ministry of Science and Innovation</p>
+                        <p class="project-description" data-en="Exploring how business ecosystems drive sustainable innovation practices, examining the interplay between different stakeholders and their collective impact on environmental outcomes." data-es="Explorando cómo los ecosistemas empresariales impulsan prácticas de innovación sostenible, examinando la interacción entre diferentes stakeholders y su impacto colectivo en los resultados medioambientales.">
+                            Exploring how business ecosystems drive sustainable innovation practices,
+                            examining the interplay between different stakeholders and their collective impact on
+                            environmental outcomes.
+                        </p>
+                        <a href="projects/sustainable-innovation.html" class="project-link">
+                            <i class="fas fa-arrow-right"></i> <span data-en="Read more" data-es="Leer más">Read more</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image-placeholder">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>
+                            <a href="projects/irpas.html">IRPAS - Inflatable Remotely Piloted Airship</a>
+                            <span class="project-status" data-en="Ongoing" data-es="En Curso">Ongoing</span>
+                        </h3>
+                        <p class="project-meta" data-en="Industry Collaboration Project" data-es="Proyecto de Colaboración con la Industria">Industry Collaboration Project</p>
+                        <p class="project-description" data-en="An industry-focused initiative addressing innovation challenges in the aerospace sector, exploring cutting-edge technological applications in remotely piloted airship systems." data-es="Una iniciativa orientada a la industria que aborda los desafíos de innovación en el sector aeroespacial, explorando aplicaciones tecnológicas de vanguardia en sistemas de dirigibles pilotados remotamente.">
+                            An industry-focused initiative addressing innovation challenges in the aerospace sector,
+                            exploring cutting-edge technological applications in remotely piloted airship systems.
+                        </p>
+                        <a href="projects/irpas.html" class="project-link">
+                            <i class="fas fa-arrow-right"></i> <span data-en="Read more" data-es="Leer más">Read more</span>
+                        </a>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="mailto:e.acebo@unileon.es" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://scholar.google.com/citations?user=7_JEALYAAAAJ&hl=en" target="_blank" rel="noopener" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://orcid.org/0000-0002-7482-8302" target="_blank" rel="noopener" title="ORCID"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:16px;height:16px;vertical-align:middle"><path fill="currentColor" d="M256 8C119.252 8 8 119.252 8 256s111.252 248 248 248 248-111.252 248-248S392.748 8 256 8zm-70.883 357.573h-28.044V168.104h28.044v197.469zm-14.022-224.107c-10.088 0-18.27-8.182-18.27-18.27s8.182-18.27 18.27-18.27 18.27 8.182 18.27 18.27-8.182 18.27-18.27 18.27zm180.903 224.107h-28.044v-109.39c0-33.072-35.914-36.213-35.914 0v109.39h-28.044v-109.39c0-59.375 87.945-64.478 87.945 0v109.39h4.057z"/></svg></a>
+                <a href="https://www.linkedin.com/in/eacebo" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com/EnriqueAcebo_" target="_blank" rel="noopener" title="X (Twitter)"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 Enrique Acebo</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="assets/js/lang.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Dark Mode Toggle (auto-detect system preference)
+        const themeToggle = document.querySelector('.theme-toggle');
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (savedTheme === null && systemPrefersDark)) {
+            document.documentElement.classList.add('dark-mode');
+        }
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (localStorage.getItem('theme') === null) {
+                document.documentElement.classList.toggle('dark-mode', e.matches);
+            }
+        });
+
+        themeToggle.addEventListener('click', function() {
+            document.documentElement.classList.toggle('dark-mode');
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        // Back to Top Button
+        const backToTop = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
