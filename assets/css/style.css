@@ -563,19 +563,6 @@ footer {
     position: relative;
 }
 
-.footer-lang {
-    position: absolute;
-    left: 2rem;
-    top: 0;
-    height: 2rem;
-    display: flex;
-    align-items: center;
-}
-
-.footer-lang .lang-switch {
-    margin-right: 0;
-}
-
 .footer-links {
     display: flex;
     justify-content: center;
@@ -704,11 +691,6 @@ footer {
         padding: 0 1.25rem;
     }
 
-    .footer-lang {
-        position: static;
-        transform: none;
-        margin-bottom: 0.75rem;
-    }
 }
 
 @media (max-width: 480px) {
