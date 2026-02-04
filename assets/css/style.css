@@ -855,15 +855,15 @@ footer {
 }
 
 .dark-mode .lang-switch button {
-    color: #666666;
+    color: #9a9a9a;
 }
 
 .dark-mode .lang-switch button:hover {
-    color: #999999;
+    color: #bcbcbc;
 }
 
 .dark-mode .lang-switch button.active {
-    color: #666666;
+    color: #e0e0e0;
 }
 
 .dark-mode .lang-switch .separator {
