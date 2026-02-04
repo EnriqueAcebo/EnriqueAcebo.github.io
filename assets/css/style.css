@@ -625,6 +625,10 @@ footer {
         display: none;
         width: 100%;
         padding-top: 1rem;
+        background-color: #f8f8f8;
+        border-top: 1px solid #e5e5e5;
+        margin-top: 0.75rem;
+        padding-bottom: 0.75rem;
     }
 
     nav.active {
@@ -651,6 +655,15 @@ footer {
 
     section {
         padding: 2rem 0;
+    }
+
+    .dark-mode nav {
+        background-color: var(--bg-secondary);
+        border-top-color: var(--border-color);
+    }
+
+    .dark-mode nav a {
+        color: #ffffff;
     }
 }
 
