@@ -291,8 +291,33 @@
                         </p>
                         <div class="course-materials">
                             <a href="#"><i class="fas fa-file-pdf"></i> <span data-en="Slides" data-es="Diapositivas">Slides</span></a>
-                            <a href="#"><i class="fas fa-code"></i> <span data-en="Code Examples" data-es="Ejemplos de Código">Code Examples</span></a>
-                            <a href="#"><i class="fas fa-book"></i> <span data-en="Reading List" data-es="Lecturas">Reading List</span></a>
+                            <button class="lecture-toggle" type="button" aria-expanded="false" aria-controls="code-causal-dags">
+                                <i class="fas fa-code"></i>
+                                <span data-en="Code Examples" data-es="Ejemplos de Código">Code Examples</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <button class="lecture-toggle" type="button" aria-expanded="false" aria-controls="reading-causal-dags">
+                                <i class="fas fa-book"></i>
+                                <span data-en="Reading List" data-es="Lecturas">Reading List</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <button class="lecture-toggle" type="button" aria-expanded="false" aria-controls="problemsets-causal-dags">
+                                <i class="fas fa-tasks"></i>
+                                <span data-en="Problem Sets" data-es="Ejercicios">Problem Sets</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="lecture-list" id="code-causal-dags" hidden>
+                            <div class="lecture-item"><a href="#"><i class="fas fa-code"></i> DAG Construction in R (Example 1)</a></div>
+                            <div class="lecture-item"><a href="#"><i class="fas fa-code"></i> Backdoor Criterion Check (Example 2)</a></div>
+                        </div>
+                        <div class="lecture-list" id="reading-causal-dags" hidden>
+                            <div class="lecture-item"><a href="#"><i class="fas fa-book"></i> Pearl (2009) - Causality (selected chapters)</a></div>
+                            <div class="lecture-item"><a href="#"><i class="fas fa-book"></i> Hernan & Robins - What If (DAG chapters)</a></div>
+                        </div>
+                        <div class="lecture-list" id="problemsets-causal-dags" hidden>
+                            <div class="lecture-item"><a href="#"><i class="fas fa-tasks"></i> Problem Set 1 - Draw and Interpret DAGs</a></div>
+                            <div class="lecture-item"><a href="#"><i class="fas fa-tasks"></i> Problem Set 2 - Identify Adjustment Sets</a></div>
                         </div>
                     </div>
                 </div>

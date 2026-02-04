@@ -863,7 +863,7 @@ footer {
 }
 
 .dark-mode .lang-switch button.active {
-    color: #e0e0e0;
+    color: #666666;
 }
 
 .dark-mode .lang-switch .separator {
