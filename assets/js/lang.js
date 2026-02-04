@@ -10,10 +10,18 @@
         // Set up button listeners
         const btnEn = document.getElementById('lang-en');
         const btnEs = document.getElementById('lang-es');
+        const toggleBtn = document.getElementById('lang-toggle');
 
         if (btnEn && btnEs) {
             btnEn.addEventListener('click', () => setLanguage('en'));
             btnEs.addEventListener('click', () => setLanguage('es'));
+        }
+
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                const currentLang = localStorage.getItem('lang') || 'en';
+                setLanguage(currentLang === 'en' ? 'es' : 'en');
+            });
         }
     });
 
@@ -28,6 +36,16 @@
         if (btnEn && btnEs) {
             btnEn.classList.toggle('active', lang === 'en');
             btnEs.classList.toggle('active', lang === 'es');
+        }
+
+        const toggleBtn = document.getElementById('lang-toggle');
+        if (toggleBtn) {
+            const nextLang = lang === 'en' ? 'es' : 'en';
+            const flag = nextLang === 'es' ? '🇪🇸' : '🇬🇧';
+            const label = nextLang === 'es' ? 'Cambiar a español' : 'Switch to English';
+            toggleBtn.textContent = flag;
+            toggleBtn.setAttribute('aria-label', label);
+            toggleBtn.setAttribute('title', label);
         }
 
         // Update all translatable elements
