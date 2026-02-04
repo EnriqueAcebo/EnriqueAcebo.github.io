@@ -835,8 +835,8 @@ footer {
     cursor: pointer;
     font-family: inherit;
     font-size: 0.8rem;
-    font-weight: 600;
-    color: #999999;
+    font-weight: 500;
+    color: #8f8f8f;
     transition: color 0.2s ease;
     border-radius: 3px;
 }
@@ -846,7 +846,7 @@ footer {
 }
 
 .lang-switch button.active {
-    color: #333333;
+    color: #555555;
 }
 
 .lang-switch .separator {
@@ -855,7 +855,7 @@ footer {
 }
 
 .dark-mode .lang-switch button {
-    color: #9a9a9a;
+    color: #a3a3a3;
 }
 
 .dark-mode .lang-switch button:hover {
@@ -863,7 +863,7 @@ footer {
 }
 
 .dark-mode .lang-switch button.active {
-    color: #e0e0e0;
+    color: #c9c9c9;
 }
 
 .dark-mode .lang-switch .separator {
