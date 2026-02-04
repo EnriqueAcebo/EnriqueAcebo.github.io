@@ -619,11 +619,18 @@ footer {
 
     .menu-toggle {
         display: block;
+        order: -1;
+        margin-right: 0.4rem;
+    }
+
+    .site-title {
+        margin-right: auto;
     }
 
     nav {
         display: none;
         width: 100%;
+        order: 10;
         padding-top: 1rem;
         background-color: #f8f8f8;
         border-top: 1px solid #e5e5e5;
