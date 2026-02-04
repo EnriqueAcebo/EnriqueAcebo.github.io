@@ -90,8 +90,12 @@ header {
 }
 
 .site-title {
+    display: flex;
+    align-items: center;
+    height: 2rem;
     font-size: 1.1rem;
     font-weight: 700;
+    line-height: 1;
     color: #333333;
     text-decoration: none;
 }
@@ -127,9 +131,15 @@ nav a.active {
     display: none;
     background: none;
     border: none;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
     font-size: 1.5rem;
+    line-height: 1;
     cursor: pointer;
     color: rgb(160, 160, 160);
+    align-items: center;
+    justify-content: center;
 }
 
 /* Main content */
@@ -618,7 +628,7 @@ footer {
     }
 
     .menu-toggle {
-        display: block;
+        display: flex;
         order: -1;
         margin-right: 0.4rem;
     }
@@ -836,12 +846,23 @@ footer {
 .lang-switch button {
     background: none;
     border: none;
+    width: 2rem;
+    height: 2rem;
     padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     font-family: inherit;
     font-size: 1.2rem;
     line-height: 1;
     transition: transform 0.2s ease;
+}
+
+.lang-switch button svg {
+    width: 1.4rem;
+    height: auto;
+    display: block;
 }
 
 .lang-switch button:hover {
@@ -869,12 +890,21 @@ footer {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
     font-size: 1.1rem;
+    line-height: 1;
     color: #666666;
     transition: color 0.2s ease;
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle i {
+    display: block;
+    line-height: 1;
 }
 
 .theme-toggle:hover {
