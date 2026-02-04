@@ -631,6 +631,7 @@ footer {
         display: flex;
         order: -1;
         margin-right: 0.4rem;
+        transform: translateY(-1px);
     }
 
     .site-title {
