@@ -8,6 +8,55 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
     <style>
+        .media-search {
+            margin-bottom: 1.5rem;
+        }
+        .media-search input {
+            width: 100%;
+            padding: 0.7rem 1rem 0.7rem 2.5rem;
+            font-size: 0.95rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: #fff;
+            color: #333;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .media-search input:focus {
+            border-color: #b12b32;
+        }
+        .media-search-wrapper {
+            position: relative;
+        }
+        .media-search-wrapper i {
+            position: absolute;
+            left: 0.85rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .dark-mode .media-search input {
+            background-color: var(--bg-secondary, #1a1a1a);
+            border-color: var(--border-color, #333);
+            color: var(--text-primary, #e0e0e0);
+        }
+        .dark-mode .media-search input:focus {
+            border-color: var(--accent, #e04850);
+        }
+        .dark-mode .media-search-wrapper i {
+            color: var(--text-secondary, #aaa);
+        }
+        .media-no-results {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            font-size: 0.95rem;
+            display: none;
+        }
+        .dark-mode .media-no-results {
+            color: var(--text-secondary, #aaa);
+        }
         .media-card {
             display: grid;
             grid-template-columns: 250px 1fr;
@@ -102,6 +151,58 @@
         .dark-mode .media-image-placeholder {
             background: linear-gradient(135deg, #404040 0%, #1a1a1a 100%);
         }
+        /* Pagination */
+        .media-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e5e5;
+        }
+        .dark-mode .media-pagination {
+            border-top-color: var(--border-color, #333);
+        }
+        .media-pagination button {
+            min-width: 36px;
+            height: 36px;
+            padding: 0 0.5rem;
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #333;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .media-pagination button:hover:not(:disabled) {
+            border-color: #b12b32;
+            color: #b12b32;
+        }
+        .media-pagination button.active {
+            background-color: #b12b32;
+            border-color: #b12b32;
+            color: #fff;
+        }
+        .media-pagination button:disabled {
+            opacity: 0.4;
+            cursor: default;
+        }
+        .dark-mode .media-pagination button {
+            background: var(--bg-secondary, #1a1a1a);
+            border-color: var(--border-color, #333);
+            color: var(--text-primary, #e0e0e0);
+        }
+        .dark-mode .media-pagination button:hover:not(:disabled) {
+            border-color: var(--accent, #e04850);
+            color: var(--accent, #e04850);
+        }
+        .dark-mode .media-pagination button.active {
+            background-color: var(--accent, #e04850);
+            border-color: var(--accent, #e04850);
+            color: #fff;
+        }
         @media (max-width: 600px) {
             .media-card {
                 grid-template-columns: 1fr;
@@ -146,26 +247,209 @@
             <section>
                 <h1 class="section-title" data-en="Media" data-es="Medios">Media</h1>
 
-                <div class="media-card">
-                    <img src="https://cadenaser.com/resizer/v2/IXTDMQMHVFCLJIYO65XZIVCFKY.jpg?auth=6332a5d6811def5879d1d054da741798cde2e8cd53ca3522f5d3977e0ca3a296&quality=70&width=736&height=414&smart=true" alt="Entrevista Cadena SER" class="media-image">
-                    <div class="media-info">
-                        <h3>
-                            <a href="https://cadenaser.com/castillayleon/2025/05/06/enrique-acebo-doctor-en-economia-con-premio-extraordinario-los-ecosistemas-de-innovacion-podrian-potenciar-el-bierzo-y-leon-radio-bierzo/" target="_blank" rel="noopener" data-en="Innovation ecosystems could boost El Bierzo and León" data-es="Los ecosistemas de innovación podrían potenciar El Bierzo y León">Los ecosistemas de innovación podrían potenciar El Bierzo y León</a>
-                            <span class="media-type interview" data-en="Interview" data-es="Entrevista">Interview</span>
-                        </h3>
-                        <p class="media-meta">
-                            <i class="fas fa-calendar-alt"></i> <span data-en="May 2025" data-es="Mayo 2025">May 2025</span> &nbsp;|&nbsp;
-                            <i class="fas fa-broadcast-tower"></i> Cadena SER - Radio Bierzo
-                        </p>
-                        <p class="media-description" data-en="Interview on Radio Bierzo about the potential of innovation ecosystems to boost economic development in El Bierzo and León." data-es="Entrevista en Radio Bierzo sobre el potencial de los ecosistemas de innovación para impulsar el desarrollo económico en El Bierzo y León.">
-                            Entrevista en Radio Bierzo sobre el potencial de los ecosistemas de innovación
-                            para impulsar el desarrollo económico en El Bierzo y León.
-                        </p>
-                        <a href="https://cadenaser.com/castillayleon/2025/05/06/enrique-acebo-doctor-en-economia-con-premio-extraordinario-los-ecosistemas-de-innovacion-podrian-potenciar-el-bierzo-y-leon-radio-bierzo/" class="media-link" target="_blank" rel="noopener">
-                            <i class="fas fa-external-link-alt"></i> <span data-en="Listen" data-es="Escuchar">Listen</span>
-                        </a>
+                <!-- Search -->
+                <div class="media-search">
+                    <div class="media-search-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="media-search-input" data-en-placeholder="Search media..." data-es-placeholder="Buscar en medios..." placeholder="Search media...">
                     </div>
                 </div>
+
+                <!-- Media cards container -->
+                <div id="media-list">
+
+                    <!-- Conocimiento Turístico - Febrero 2026 -->
+
+                    <div class="media-card">
+                        <img src="https://www.unileon.es/files/styles/width_940/public/media/2026/02/autores_de_la_obra_conocimiento_turistico_en_el_acto_de_presentacion.jpg?itok=Q1ZHwJWg" alt="Presentación Conocimiento Turístico - ULE" class="media-image">
+                        <div class="media-info">
+                            <h3>
+                                <a href="https://www.unileon.es/noticias/profesores-de-la-ule-han-participado-en-la-primera-gran-guia-del-saber-turistico-del-mundo" target="_blank" rel="noopener" data-en="ULE professors participate in the first major guide to tourism knowledge worldwide" data-es="Profesores de la ULE participan en la primera gran guía del saber turístico del mundo">Profesores de la ULE participan en la primera gran guía del saber turístico del mundo</a>
+                                <span class="media-type press" data-en="Press" data-es="Prensa">Press</span>
+                            </h3>
+                            <p class="media-meta">
+                                <i class="fas fa-calendar-alt"></i> <span data-en="February 2026" data-es="Febrero 2026">February 2026</span> &nbsp;|&nbsp;
+                                <i class="fas fa-university"></i> Universidad de León (web institucional)
+                            </p>
+                            <p class="media-description" data-en="University of León institutional news about the participation of ULE professors in 'Conocimiento Turístico', a 640-page collective work with 42 chapters, considered the first major guide to tourism knowledge worldwide." data-es="Noticia institucional de la Universidad de León sobre la participación de profesores de la ULE en 'Conocimiento Turístico', una obra colectiva de 640 páginas con 42 capítulos, considerada la primera gran guía del saber turístico a nivel mundial.">
+                                Noticia institucional de la Universidad de León sobre la participación de profesores de la ULE en 'Conocimiento Turístico', una obra colectiva de 640 páginas con 42 capítulos, considerada la primera gran guía del saber turístico a nivel mundial.
+                            </p>
+                            <a href="https://www.unileon.es/noticias/profesores-de-la-ule-han-participado-en-la-primera-gran-guia-del-saber-turistico-del-mundo" class="media-link" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i> <span data-en="Read" data-es="Leer">Read</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <img src="https://imagenes.diariodeleon.es/files/og_thumbnail/uploads/2026/02/04/6983186024eb4.jpeg" alt="Conocimiento Turístico - Diario de León" class="media-image">
+                        <div class="media-info">
+                            <h3>
+                                <a href="https://www.diariodeleon.es/leon/260204/2074499/profesores-ule-han-participado-primera-gran-guia-turistico-mundo.html" target="_blank" rel="noopener" data-en="ULE professors participate in the first major guide to tourism knowledge worldwide" data-es="Profesores de la ULE participan en la primera gran guía del saber turístico del mundo">Profesores de la ULE participan en la primera gran guía del saber turístico del mundo</a>
+                                <span class="media-type press" data-en="Press" data-es="Prensa">Press</span>
+                            </h3>
+                            <p class="media-meta">
+                                <i class="fas fa-calendar-alt"></i> <span data-en="February 2026" data-es="Febrero 2026">February 2026</span> &nbsp;|&nbsp;
+                                <i class="fas fa-newspaper"></i> Diario de León
+                            </p>
+                            <p class="media-description" data-en="Coverage in the digital edition of Diario de León about the participation of ULE professors in the collective work 'Conocimiento Turístico', the first major guide to tourism knowledge worldwide." data-es="Cobertura en la edición digital de Diario de León sobre la participación de profesores de la ULE en la obra colectiva 'Conocimiento Turístico', la primera gran guía del saber turístico a nivel mundial.">
+                                Cobertura en la edición digital de Diario de León sobre la participación de profesores de la ULE en la obra colectiva 'Conocimiento Turístico', la primera gran guía del saber turístico a nivel mundial.
+                            </p>
+                            <a href="https://www.diariodeleon.es/leon/260204/2074499/profesores-ule-han-participado-primera-gran-guia-turistico-mundo.html" class="media-link" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i> <span data-en="Read" data-es="Leer">Read</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <img src="https://www.heraldodeleon.es/media/heraldodeleon/images/2026/02/04/2026020411013218085.jpg" alt="Conocimiento Turístico - El Heraldo de León" class="media-image">
+                        <div class="media-info">
+                            <h3>
+                                <a href="https://www.heraldodeleon.es/articulo/universidad/docentes-ule-contribuyen-primera-gran-guia-saber-turistico-nivel-mundial/20260204110524071538.html" target="_blank" rel="noopener" data-en="ULE professors contribute to the first major guide to tourism knowledge worldwide" data-es="Docentes de la ULE contribuyen a la primera gran guía del saber turístico a nivel mundial">Docentes de la ULE contribuyen a la primera gran guía del saber turístico a nivel mundial</a>
+                                <span class="media-type press" data-en="Press" data-es="Prensa">Press</span>
+                            </h3>
+                            <p class="media-meta">
+                                <i class="fas fa-calendar-alt"></i> <span data-en="February 2026" data-es="Febrero 2026">February 2026</span> &nbsp;|&nbsp;
+                                <i class="fas fa-newspaper"></i> El Heraldo de León
+                            </p>
+                            <p class="media-description" data-en="Coverage in El Heraldo de León about ULE professors' contribution to 'Conocimiento Turístico', the first major guide to tourism knowledge worldwide." data-es="Cobertura en El Heraldo de León sobre la contribución de profesores de la ULE a 'Conocimiento Turístico', la primera gran guía del saber turístico a nivel mundial.">
+                                Cobertura en El Heraldo de León sobre la contribución de profesores de la ULE a 'Conocimiento Turístico', la primera gran guía del saber turístico a nivel mundial.
+                            </p>
+                            <a href="https://www.heraldodeleon.es/articulo/universidad/docentes-ule-contribuyen-primera-gran-guia-saber-turistico-nivel-mundial/20260204110524071538.html" class="media-link" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i> <span data-en="Read" data-es="Leer">Read</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <img src="https://leon24horas.net/wp-content/uploads/2026/02/Autores-de-la-obra-Conocimiento-turistico-en-el-acto-de-presentacion.jpg" alt="Conocimiento Turístico - León 24 Horas" class="media-image">
+                        <div class="media-info">
+                            <h3>
+                                <a href="https://leon24horas.net/actualidad/profesores-de-la-ule-participan-en-la-primera-gran-guia-del-saber-turistico-del-mundo/" target="_blank" rel="noopener" data-en="ULE professors participate in the first major guide to tourism knowledge worldwide" data-es="Profesores de la ULE participan en la primera gran guía del saber turístico del mundo">Profesores de la ULE participan en la primera gran guía del saber turístico del mundo</a>
+                                <span class="media-type press" data-en="Press" data-es="Prensa">Press</span>
+                            </h3>
+                            <p class="media-meta">
+                                <i class="fas fa-calendar-alt"></i> <span data-en="February 2026" data-es="Febrero 2026">February 2026</span> &nbsp;|&nbsp;
+                                <i class="fas fa-newspaper"></i> León 24 Horas
+                            </p>
+                            <p class="media-description" data-en="Coverage in León 24 Horas about ULE professors' participation in the collective work 'Conocimiento Turístico', the first major guide to tourism knowledge worldwide." data-es="Cobertura en León 24 Horas sobre la participación de profesores de la ULE en la obra colectiva 'Conocimiento Turístico', la primera gran guía del saber turístico a nivel mundial.">
+                                Cobertura en León 24 Horas sobre la participación de profesores de la ULE en la obra colectiva 'Conocimiento Turístico', la primera gran guía del saber turístico a nivel mundial.
+                            </p>
+                            <a href="https://leon24horas.net/actualidad/profesores-de-la-ule-participan-en-la-primera-gran-guia-del-saber-turistico-del-mundo/" class="media-link" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i> <span data-en="Read" data-es="Leer">Read</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <img src="https://www.unileon.es/files/styles/width_940/public/media/2026/02/autores_de_la_obra_conocimiento_turistico_en_el_acto_de_presentacion.jpg?itok=Q1ZHwJWg" alt="Conocimiento Turístico - Europa Press" class="media-image">
+                        <div class="media-info">
+                            <h3>
+                                <a href="https://www.europapress.es/castilla-y-leon/noticia-profesores-ule-participan-obra-colectiva-conocimiento-turistico-20260204163034.html" target="_blank" rel="noopener" data-en="ULE professors participate in the collective work on tourism knowledge" data-es="Profesores de la ULE participan en la obra colectiva 'Conocimiento Turístico'">Profesores de la ULE participan en la obra colectiva 'Conocimiento Turístico'</a>
+                                <span class="media-type press" data-en="Press" data-es="Prensa">Press</span>
+                            </h3>
+                            <p class="media-meta">
+                                <i class="fas fa-calendar-alt"></i> <span data-en="February 2026" data-es="Febrero 2026">February 2026</span> &nbsp;|&nbsp;
+                                <i class="fas fa-newspaper"></i> Europa Press
+                            </p>
+                            <p class="media-description" data-en="Europa Press agency coverage about ULE professors' participation in the collective work 'Conocimiento Turístico', the first major guide to tourism knowledge worldwide." data-es="Cobertura de la agencia Europa Press sobre la participación de profesores de la ULE en la obra colectiva 'Conocimiento Turístico', la primera gran guía del saber turístico a nivel mundial.">
+                                Cobertura de la agencia Europa Press sobre la participación de profesores de la ULE en la obra colectiva 'Conocimiento Turístico', la primera gran guía del saber turístico a nivel mundial.
+                            </p>
+                            <a href="https://www.europapress.es/castilla-y-leon/noticia-profesores-ule-participan-obra-colectiva-conocimiento-turistico-20260204163034.html" class="media-link" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i> <span data-en="Read" data-es="Leer">Read</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <img src="https://www.unileon.es/files/styles/width_940/public/media/2026/02/autores_de_la_obra_conocimiento_turistico_en_el_acto_de_presentacion.jpg?itok=Q1ZHwJWg" alt="Conocimiento Turístico - Gente Digital" class="media-image">
+                        <div class="media-info">
+                            <h3>
+                                <a href="http://www.gentedigital.es/leon/noticia/4250738/profesores-de-la-ule-participan-en-la-obra-colectiva-conocimiento-turistico/" target="_blank" rel="noopener" data-en="ULE professors participate in the collective work on tourism knowledge" data-es="Profesores de la ULE participan en la obra colectiva 'Conocimiento Turístico'">Profesores de la ULE participan en la obra colectiva 'Conocimiento Turístico'</a>
+                                <span class="media-type press" data-en="Press" data-es="Prensa">Press</span>
+                            </h3>
+                            <p class="media-meta">
+                                <i class="fas fa-calendar-alt"></i> <span data-en="February 2026" data-es="Febrero 2026">February 2026</span> &nbsp;|&nbsp;
+                                <i class="fas fa-newspaper"></i> Gente Digital
+                            </p>
+                            <p class="media-description" data-en="Coverage in Gente Digital about ULE professors' participation in the collective work 'Conocimiento Turístico', the first major guide to tourism knowledge worldwide." data-es="Cobertura en Gente Digital sobre la participación de profesores de la ULE en la obra colectiva 'Conocimiento Turístico', la primera gran guía del saber turístico a nivel mundial.">
+                                Cobertura en Gente Digital sobre la participación de profesores de la ULE en la obra colectiva 'Conocimiento Turístico', la primera gran guía del saber turístico a nivel mundial.
+                            </p>
+                            <a href="http://www.gentedigital.es/leon/noticia/4250738/profesores-de-la-ule-participan-en-la-obra-colectiva-conocimiento-turistico/" class="media-link" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i> <span data-en="Read" data-es="Leer">Read</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <img src="assets/img/media/bierzo24-conocimiento-turistico.png" alt="Conocimiento Turístico - Bierzo 24" class="media-image">
+                        <div class="media-info">
+                            <h3>
+                                <a href="https://bierzo24.com/universidad/2026/02/04/profesores-de-la-universidad-de-leon-participan-en-la-primera-gran-guia-del-saber-turistico-a-nivel-mundial/" target="_blank" rel="noopener" data-en="University of León professors participate in the first major guide to tourism knowledge worldwide" data-es="Profesores de la Universidad de León participan en la primera gran guía del saber turístico a nivel mundial">Profesores de la Universidad de León participan en la primera gran guía del saber turístico a nivel mundial</a>
+                                <span class="media-type press" data-en="Press" data-es="Prensa">Press</span>
+                            </h3>
+                            <p class="media-meta">
+                                <i class="fas fa-calendar-alt"></i> <span data-en="February 2026" data-es="Febrero 2026">February 2026</span> &nbsp;|&nbsp;
+                                <i class="fas fa-newspaper"></i> Bierzo 24
+                            </p>
+                            <p class="media-description" data-en="Coverage in Bierzo 24 about ULE professors' participation in the collective work 'Conocimiento Turístico', the first major guide to tourism knowledge worldwide." data-es="Cobertura en Bierzo 24 sobre la participación de profesores de la ULE en la obra colectiva 'Conocimiento Turístico', la primera gran guía del saber turístico a nivel mundial.">
+                                Cobertura en Bierzo 24 sobre la participación de profesores de la ULE en la obra colectiva 'Conocimiento Turístico', la primera gran guía del saber turístico a nivel mundial.
+                            </p>
+                            <a href="https://bierzo24.com/universidad/2026/02/04/profesores-de-la-universidad-de-leon-participan-en-la-primera-gran-guia-del-saber-turistico-a-nivel-mundial/" class="media-link" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i> <span data-en="Read" data-es="Leer">Read</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <img src="https://social24horas.com/contenidos/uploads/2026/02/autores_de_la_obra_conocimiento_turistico_en_el_acto_de_presentacion.avif" alt="Conocimiento Turístico - Social 24 Horas" class="media-image">
+                        <div class="media-info">
+                            <h3>
+                                <a href="https://social24horas.com/profesores-de-la-ule-han-participado-en-la-primera-gran-guia-del-saber-turistico-del-mundo/" target="_blank" rel="noopener" data-en="ULE professors participate in the first major guide to tourism knowledge worldwide" data-es="Profesores de la ULE participan en la primera gran guía del saber turístico del mundo">Profesores de la ULE participan en la primera gran guía del saber turístico del mundo</a>
+                                <span class="media-type press" data-en="Press" data-es="Prensa">Press</span>
+                            </h3>
+                            <p class="media-meta">
+                                <i class="fas fa-calendar-alt"></i> <span data-en="February 2026" data-es="Febrero 2026">February 2026</span> &nbsp;|&nbsp;
+                                <i class="fas fa-newspaper"></i> Social 24 Horas
+                            </p>
+                            <p class="media-description" data-en="Coverage in Social 24 Horas about ULE professors' participation in the collective work 'Conocimiento Turístico', the first major guide to tourism knowledge worldwide." data-es="Cobertura en Social 24 Horas sobre la participación de profesores de la ULE en la obra colectiva 'Conocimiento Turístico', la primera gran guía del saber turístico a nivel mundial.">
+                                Cobertura en Social 24 Horas sobre la participación de profesores de la ULE en la obra colectiva 'Conocimiento Turístico', la primera gran guía del saber turístico a nivel mundial.
+                            </p>
+                            <a href="https://social24horas.com/profesores-de-la-ule-han-participado-en-la-primera-gran-guia-del-saber-turistico-del-mundo/" class="media-link" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i> <span data-en="Read" data-es="Leer">Read</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Cadena SER - Mayo 2025 -->
+
+                    <div class="media-card">
+                        <img src="https://cadenaser.com/resizer/v2/IXTDMQMHVFCLJIYO65XZIVCFKY.jpg?auth=6332a5d6811def5879d1d054da741798cde2e8cd53ca3522f5d3977e0ca3a296&quality=70&width=736&height=414&smart=true" alt="Entrevista Cadena SER" class="media-image">
+                        <div class="media-info">
+                            <h3>
+                                <a href="https://cadenaser.com/castillayleon/2025/05/06/enrique-acebo-doctor-en-economia-con-premio-extraordinario-los-ecosistemas-de-innovacion-podrian-potenciar-el-bierzo-y-leon-radio-bierzo/" target="_blank" rel="noopener" data-en="Innovation ecosystems could boost El Bierzo and León" data-es="Los ecosistemas de innovación podrían potenciar El Bierzo y León">Los ecosistemas de innovación podrían potenciar El Bierzo y León</a>
+                                <span class="media-type interview" data-en="Interview" data-es="Entrevista">Interview</span>
+                            </h3>
+                            <p class="media-meta">
+                                <i class="fas fa-calendar-alt"></i> <span data-en="May 2025" data-es="Mayo 2025">May 2025</span> &nbsp;|&nbsp;
+                                <i class="fas fa-broadcast-tower"></i> Cadena SER - Radio Bierzo
+                            </p>
+                            <p class="media-description" data-en="Interview on Radio Bierzo about the potential of innovation ecosystems to boost economic development in El Bierzo and León." data-es="Entrevista en Radio Bierzo sobre el potencial de los ecosistemas de innovación para impulsar el desarrollo económico en El Bierzo y León.">
+                                Entrevista en Radio Bierzo sobre el potencial de los ecosistemas de innovación
+                                para impulsar el desarrollo económico en El Bierzo y León.
+                            </p>
+                            <a href="https://cadenaser.com/castillayleon/2025/05/06/enrique-acebo-doctor-en-economia-con-premio-extraordinario-los-ecosistemas-de-innovacion-podrian-potenciar-el-bierzo-y-leon-radio-bierzo/" class="media-link" target="_blank" rel="noopener">
+                                <i class="fas fa-external-link-alt"></i> <span data-en="Listen" data-es="Escuchar">Listen</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- No results message -->
+                <p class="media-no-results" id="media-no-results" data-en="No results found." data-es="No se encontraron resultados.">No results found.</p>
+
+                <!-- Pagination -->
+                <div class="media-pagination" id="media-pagination"></div>
 
             </section>
         </div>
@@ -206,7 +490,6 @@
             document.documentElement.classList.add('dark-mode');
         }
 
-        // Listen for system theme changes
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
             if (localStorage.getItem('theme') === null) {
                 document.documentElement.classList.toggle('dark-mode', e.matches);
@@ -233,6 +516,120 @@
         backToTop.addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
+
+        // Search & Pagination
+        (function() {
+            var ITEMS_PER_PAGE = 4;
+            var currentPage = 1;
+            var allCards = Array.from(document.querySelectorAll('#media-list .media-card'));
+            var filteredCards = allCards.slice();
+            var searchInput = document.getElementById('media-search-input');
+            var noResults = document.getElementById('media-no-results');
+            var paginationContainer = document.getElementById('media-pagination');
+
+            function getTextContent(card) {
+                return card.textContent.toLowerCase();
+            }
+
+            function filterCards() {
+                var query = searchInput.value.trim().toLowerCase();
+                if (!query) {
+                    filteredCards = allCards.slice();
+                } else {
+                    filteredCards = allCards.filter(function(card) {
+                        var text = getTextContent(card);
+                        var lang = localStorage.getItem('lang') || 'en';
+                        // Also search in data-en and data-es attributes
+                        var dataTexts = '';
+                        card.querySelectorAll('[data-en], [data-es]').forEach(function(el) {
+                            dataTexts += ' ' + (el.getAttribute('data-en') || '') + ' ' + (el.getAttribute('data-es') || '');
+                        });
+                        var fullText = text + ' ' + dataTexts.toLowerCase();
+                        return fullText.indexOf(query) !== -1;
+                    });
+                }
+                currentPage = 1;
+                render();
+            }
+
+            function render() {
+                var totalPages = Math.ceil(filteredCards.length / ITEMS_PER_PAGE) || 1;
+                if (currentPage > totalPages) currentPage = totalPages;
+
+                var start = (currentPage - 1) * ITEMS_PER_PAGE;
+                var end = start + ITEMS_PER_PAGE;
+
+                // Hide all, show only current page
+                allCards.forEach(function(card) { card.style.display = 'none'; });
+                filteredCards.slice(start, end).forEach(function(card) { card.style.display = ''; });
+
+                // No results
+                noResults.style.display = filteredCards.length === 0 ? 'block' : 'none';
+
+                // Pagination
+                renderPagination(totalPages);
+            }
+
+            function renderPagination(totalPages) {
+                paginationContainer.innerHTML = '';
+                if (totalPages <= 1) return;
+
+                // Previous button
+                var prev = document.createElement('button');
+                prev.innerHTML = '<i class="fas fa-chevron-left"></i>';
+                prev.disabled = currentPage === 1;
+                prev.addEventListener('click', function() {
+                    if (currentPage > 1) { currentPage--; render(); scrollToMedia(); }
+                });
+                paginationContainer.appendChild(prev);
+
+                // Page numbers
+                for (var i = 1; i <= totalPages; i++) {
+                    var btn = document.createElement('button');
+                    btn.textContent = i;
+                    btn.className = i === currentPage ? 'active' : '';
+                    btn.addEventListener('click', (function(page) {
+                        return function() { currentPage = page; render(); scrollToMedia(); };
+                    })(i));
+                    paginationContainer.appendChild(btn);
+                }
+
+                // Next button
+                var next = document.createElement('button');
+                next.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                next.disabled = currentPage === totalPages;
+                next.addEventListener('click', function() {
+                    if (currentPage < totalPages) { currentPage++; render(); scrollToMedia(); }
+                });
+                paginationContainer.appendChild(next);
+            }
+
+            function scrollToMedia() {
+                var target = document.querySelector('.media-search');
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            // Update search placeholder on language change
+            function updateSearchPlaceholder() {
+                var lang = localStorage.getItem('lang') || 'en';
+                var input = document.getElementById('media-search-input');
+                input.placeholder = lang === 'es' ? input.getAttribute('data-es-placeholder') : input.getAttribute('data-en-placeholder');
+            }
+
+            // Listen for language changes
+            var origLangToggle = document.getElementById('lang-toggle');
+            if (origLangToggle) {
+                origLangToggle.addEventListener('click', function() {
+                    setTimeout(updateSearchPlaceholder, 50);
+                });
+            }
+
+            searchInput.addEventListener('input', filterCards);
+
+            // Init
+            updateSearchPlaceholder();
+            render();
+        })();
     </script>
 </body>
 </html>
