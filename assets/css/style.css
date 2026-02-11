@@ -1203,3 +1203,440 @@ footer {
 .dark-mode .no-results {
     color: var(--text-secondary);
 }
+
+/* ========================================
+   Wharton-Style Profile Layout
+   ======================================== */
+
+.wharton-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+}
+
+/* Profile Column (Left) */
+.profile-column {
+    padding-right: 3rem;
+}
+
+.profile-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #333333;
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 1.75rem;
+}
+
+.profile-photo {
+    width: 160px;
+    min-width: 160px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-top: 0.25rem;
+}
+
+.profile-title {
+    font-size: 0.95rem;
+    color: #666666;
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+/* Contact Box (details/summary) */
+.contact-box {
+    background-color: #f0f0f0;
+    padding: 1.75rem 2rem;
+    margin-bottom: 1.75rem;
+}
+
+.contact-box-title {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #999999;
+    margin-bottom: 1.25rem;
+    text-transform: none;
+    letter-spacing: normal;
+    list-style: none;
+    cursor: default;
+}
+
+.contact-box-title::-webkit-details-marker {
+    display: none;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.contact-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.contact-label {
+    font-weight: 700;
+    color: #333333;
+}
+
+.contact-col a {
+    color: #b12b32;
+}
+
+.contact-col span:not(.contact-label) {
+    color: #555555;
+}
+
+/* Research Interests */
+.research-interests {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.research-interests strong {
+    margin-right: 0.5rem;
+    color: #333333;
+}
+
+.research-interests span {
+    color: #666666;
+}
+
+.research-interests span:not(:last-child)::after {
+    content: " · ";
+    color: #999999;
+}
+
+/* Profile Links */
+.profile-links {
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.profile-links strong {
+    margin-right: 0.5rem;
+    color: #333333;
+}
+
+.profile-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: #b12b32;
+    font-size: 0.9rem;
+}
+
+.profile-links a:not(:last-child)::after {
+    content: " · ";
+    color: #999999;
+    margin: 0 0.25rem;
+    text-decoration: none;
+}
+
+.profile-links a i {
+    font-size: 0.85rem;
+}
+
+/* About Section */
+.about-section h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.75rem;
+    color: #333333;
+}
+
+.about-section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* Activity Sidebar (Right) */
+.activity-sidebar {
+    background-color: #f5f5f5;
+    border-left: 3px solid #b12b32;
+    padding: 2rem 1.5rem;
+}
+
+.activity-header {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1.75rem;
+    color: #333333;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.activity-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.activity-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.activity-section h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #333333;
+}
+
+.activity-item-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+    color: #333333;
+    line-height: 1.4;
+}
+
+.activity-item-meta {
+    font-size: 0.85rem;
+    color: #666666;
+    margin-bottom: 0.25rem;
+}
+
+.activity-item-venue {
+    font-size: 0.85rem;
+    color: #666666;
+    margin-bottom: 0.75rem;
+}
+
+.activity-link {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #b12b32;
+    margin-top: 0.5rem;
+}
+
+.activity-link:hover {
+    color: #8a2128;
+    text-decoration: underline;
+}
+
+/* ========================================
+   Wharton Layout — Dark Mode
+   ======================================== */
+
+.dark-mode .profile-name {
+    color: var(--text-primary);
+}
+
+.dark-mode .profile-title {
+    color: var(--text-secondary);
+}
+
+.dark-mode .profile-photo {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .contact-box {
+    background-color: var(--bg-secondary);
+}
+
+.dark-mode .contact-box-title {
+    color: #666666;
+}
+
+.dark-mode .contact-label {
+    color: var(--text-primary);
+}
+
+.dark-mode .contact-col a {
+    color: var(--accent);
+}
+
+.dark-mode .contact-col span:not(.contact-label) {
+    color: var(--text-secondary);
+}
+
+.dark-mode .research-interests strong,
+.dark-mode .profile-links strong {
+    color: var(--text-primary);
+}
+
+.dark-mode .research-interests span {
+    color: var(--text-secondary);
+}
+
+.dark-mode .research-interests span:not(:last-child)::after {
+    color: var(--text-secondary);
+}
+
+.dark-mode .profile-links a {
+    color: var(--accent);
+}
+
+.dark-mode .profile-links a:not(:last-child)::after {
+    color: var(--text-secondary);
+}
+
+.dark-mode .about-section h2 {
+    color: var(--text-primary);
+}
+
+.dark-mode .activity-sidebar {
+    background-color: var(--bg-secondary);
+    border-left-color: var(--accent);
+}
+
+.dark-mode .activity-header {
+    color: var(--text-primary);
+}
+
+.dark-mode .activity-section {
+    border-bottom-color: var(--border-color);
+}
+
+.dark-mode .activity-section h3 {
+    color: var(--text-primary);
+}
+
+.dark-mode .activity-item-title {
+    color: var(--text-primary);
+}
+
+.dark-mode .activity-item-meta,
+.dark-mode .activity-item-venue {
+    color: var(--text-secondary);
+}
+
+.dark-mode .activity-link {
+    color: var(--accent);
+}
+
+.dark-mode .activity-link:hover {
+    color: #c43d45;
+}
+
+/* ========================================
+   Wharton Layout — Responsive
+   ======================================== */
+
+@media (max-width: 900px) {
+    .wharton-layout {
+        grid-template-columns: 1fr;
+        max-width: 650px;
+        padding: 1.5rem;
+    }
+
+    .profile-column {
+        padding-right: 0;
+    }
+
+    .activity-sidebar {
+        border-left: none;
+        border-top: 3px solid #b12b32;
+        margin-top: 2rem;
+    }
+
+    .dark-mode .activity-sidebar {
+        border-top-color: var(--accent);
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-name {
+        font-size: 1.6rem;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-photo {
+        width: 140px;
+        min-width: 140px;
+    }
+
+    .profile-titles {
+        align-items: center;
+    }
+
+    .contact-box {
+        padding: 0;
+        background: none;
+    }
+
+    .contact-box-title {
+        background-color: #f0f0f0;
+        padding: 1rem 1.25rem;
+        margin-bottom: 0;
+        font-size: 1.1rem;
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .contact-box-title::after {
+        content: "\f078";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 0.75rem;
+        color: #999999;
+        transition: transform 0.2s ease;
+    }
+
+    .contact-box[open] > .contact-box-title::after {
+        transform: rotate(180deg);
+    }
+
+    .contact-box .contact-grid {
+        grid-template-columns: 1fr;
+        background-color: #f0f0f0;
+        padding: 0 1.25rem 1.25rem;
+    }
+
+    .dark-mode .contact-box-title {
+        background-color: var(--bg-secondary);
+    }
+
+    .dark-mode .contact-box .contact-grid {
+        background-color: var(--bg-secondary);
+    }
+
+    .research-interests,
+    .profile-links {
+        text-align: center;
+    }
+
+    .about-section h2 {
+        text-align: center;
+    }
+}
