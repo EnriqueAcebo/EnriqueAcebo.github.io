@@ -1267,11 +1267,6 @@ footer {
     margin-bottom: 1.75rem;
 }
 
-/* Desktop: always show content regardless of open attribute */
-.contact-box .contact-grid {
-    display: grid;
-}
-
 .contact-box-title {
     font-size: 1.6rem;
     font-weight: 400;
@@ -1280,12 +1275,27 @@ footer {
     text-transform: none;
     letter-spacing: normal;
     list-style: none;
-    cursor: default;
-    pointer-events: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .contact-box-title::-webkit-details-marker {
     display: none;
+}
+
+.contact-box-title::after {
+    content: "\f078";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 0.7rem;
+    color: #999999;
+    transition: transform 0.2s ease;
+}
+
+.contact-box[open] > .contact-box-title::after {
+    transform: rotate(180deg);
 }
 
 .contact-grid {
@@ -1603,25 +1613,6 @@ footer {
         padding: 1rem 1.25rem;
         margin-bottom: 0;
         font-size: 1.1rem;
-        cursor: pointer;
-        pointer-events: auto;
-        list-style: none;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .contact-box-title::after {
-        content: "\f078";
-        font-family: "Font Awesome 5 Free";
-        font-weight: 900;
-        font-size: 0.75rem;
-        color: #999999;
-        transition: transform 0.2s ease;
-    }
-
-    .contact-box[open] > .contact-box-title::after {
-        transform: rotate(180deg);
     }
 
     .contact-box .contact-grid {
