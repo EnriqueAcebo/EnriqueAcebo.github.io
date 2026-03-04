@@ -37,6 +37,13 @@
             color: #ffffff;
             font-size: 2rem;
         }
+        .mission-patch {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            align-self: center;
+            justify-self: center;
+        }
         .project-info h3 {
             margin-bottom: 0.5rem;
         }
@@ -69,6 +76,30 @@
         }
         .project-link {
             font-size: 0.9rem;
+        }
+        .project-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            border: 1px solid #b12b32;
+            color: #b12b32;
+            transition: background 0.2s, color 0.2s;
+            margin-top: 0.5rem;
+        }
+        .project-btn:hover {
+            background: #b12b32;
+            color: #fff;
+        }
+        .dark-mode .project-btn {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .dark-mode .project-btn:hover {
+            background: var(--accent);
+            color: #fff;
         }
         .dark-mode .project-card {
             border-bottom-color: var(--border-color);
@@ -131,6 +162,24 @@
                 <h1 class="section-title" data-en="Research Projects" data-es="Proyectos de Investigación">Research Projects</h1>
 
                 <div class="project-card">
+                    <img src="assets/img/proj/esabic.png" alt="ESA BIC Impact Evaluation mission patch" class="mission-patch">
+                    <div class="project-info">
+                        <h3>
+                            <a href="https://esabic-impact-evaluation.unileon.es/" target="_blank" data-en="ESA BIC Impact Evaluation" data-es="Evaluación de Impacto ESA BIC">ESA BIC Impact Evaluation</a>
+                            <span class="project-status" data-en="Ongoing" data-es="En Curso">Ongoing</span>
+                        </h3>
+                        <p class="project-meta" data-en="Funded by the Spanish Foundation for Science and Technology (FECYT) - FCT-24-19933" data-es="Financiado por la Fundación Española para la Ciencia y la Tecnología (FECYT) - FCT-24-19933">Funded by the Spanish Foundation for Science and Technology (FECYT) - FCT-24-19933</p>
+                        <p class="project-description" data-en="Evaluating the socioeconomic impact of the European Space Agency's Business Incubation Centres (ESA BICs) on start-up performance, regional innovation ecosystems, and technology transfer from space to non-space sectors." data-es="Evaluando el impacto socioeconómico de los Centros de Incubación Empresarial de la Agencia Espacial Europea (ESA BICs) en el rendimiento de start-ups, ecosistemas regionales de innovación y transferencia tecnológica del espacio a sectores no espaciales.">
+                            Evaluating the socioeconomic impact of the European Space Agency's Business Incubation Centres (ESA BICs) on start-up performance, regional innovation ecosystems, and technology transfer from space to non-space sectors.
+                        </p>
+                        <a href="https://esabic-impact-evaluation.unileon.es/" target="_blank" class="project-btn">
+                            <i class="fas fa-external-link-alt"></i> <span data-en="Visit site" data-es="Visitar sitio">Visit site</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- HIDDEN: Startups Government Support project
+                <div class="project-card">
                     <div class="project-image-placeholder">
                         <i class="fas fa-chart-line"></i>
                     </div>
@@ -149,7 +198,9 @@
                         </a>
                     </div>
                 </div>
+                -->
 
+                <!-- HIDDEN: Sustainable Innovation project
                 <div class="project-card">
                     <div class="project-image-placeholder">
                         <i class="fas fa-leaf"></i>
@@ -170,23 +221,39 @@
                         </a>
                     </div>
                 </div>
+                -->
 
                 <div class="project-card">
-                    <div class="project-image-placeholder">
-                        <i class="fas fa-plane"></i>
-                    </div>
+                    <img src="assets/img/proj/irpas.png" alt="IRPAS mission patch" class="mission-patch">
                     <div class="project-info">
                         <h3>
-                            <a href="projects/irpas.html">IRPAS - Inflatable Remotely Piloted Airship</a>
+                            <a href="https://portalcientifico.unileon.es/proyectos/789133/detalle" target="_blank">IRPAS - Inflatable Remotely Piloted Airship</a>
                             <span class="project-status" data-en="Ongoing" data-es="En Curso">Ongoing</span>
                         </h3>
-                        <p class="project-meta" data-en="Industry Collaboration Project" data-es="Proyecto de Colaboración con la Industria">Industry Collaboration Project</p>
+                        <p class="project-meta" data-en="Funded by JG Entrepreneurial Enterprises, LLC" data-es="Financiado por JG Entrepreneurial Enterprises, LLC">Funded by JG Entrepreneurial Enterprises, LLC</p>
                         <p class="project-description" data-en="An industry-focused initiative addressing innovation challenges in the aerospace sector, exploring cutting-edge technological applications in remotely piloted airship systems." data-es="Una iniciativa orientada a la industria que aborda los desafíos de innovación en el sector aeroespacial, explorando aplicaciones tecnológicas de vanguardia en sistemas de dirigibles pilotados remotamente.">
                             An industry-focused initiative addressing innovation challenges in the aerospace sector,
                             exploring cutting-edge technological applications in remotely piloted airship systems.
                         </p>
-                        <a href="projects/irpas.html" class="project-link">
-                            <i class="fas fa-arrow-right"></i> <span data-en="Read more" data-es="Leer más">Read more</span>
+                        <a href="https://portalcientifico.unileon.es/proyectos/789133/detalle" target="_blank" class="project-btn">
+                            <i class="fas fa-external-link-alt"></i> <span data-en="Visit site" data-es="Visitar sitio">Visit site</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="assets/img/proj/ecosistemas-ods.png" alt="Business Ecosystems and SDGs" class="mission-patch">
+                    <div class="project-info">
+                        <h3>
+                            <a href="https://portalcientifico.unileon.es/proyectos/791704/detalle" target="_blank" data-en="Business Ecosystems as Drivers of the Sustainable Development Goals" data-es="Ecosistemas Empresariales como Impulsores de los Objetivos de Desarrollo Sostenible">Business Ecosystems as Drivers of the Sustainable Development Goals</a>
+                            <span class="project-status" data-en="Ongoing" data-es="En Curso">Ongoing</span>
+                        </h3>
+                        <p class="project-meta" data-en="Funded by the Spanish Ministry of Science and Innovation - PID2022-137379NB-I00" data-es="Financiado por el Ministerio de Ciencia e Innovación - PID2022-137379NB-I00">Funded by the Spanish Ministry of Science and Innovation - PID2022-137379NB-I00</p>
+                        <p class="project-description" data-en="Analysing how business ecosystems can drive the achievement of the United Nations Sustainable Development Goals, examining the interplay between firms, institutions, and territorial dynamics." data-es="Analizando cómo los ecosistemas empresariales pueden impulsar el logro de los Objetivos de Desarrollo Sostenible de las Naciones Unidas, examinando la interacción entre empresas, instituciones y dinámicas territoriales.">
+                            Analysing how business ecosystems can drive the achievement of the United Nations Sustainable Development Goals, examining the interplay between firms, institutions, and territorial dynamics.
+                        </p>
+                        <a href="https://portalcientifico.unileon.es/proyectos/791704/detalle" target="_blank" class="project-btn">
+                            <i class="fas fa-external-link-alt"></i> <span data-en="Visit site" data-es="Visitar sitio">Visit site</span>
                         </a>
                     </div>
                 </div>

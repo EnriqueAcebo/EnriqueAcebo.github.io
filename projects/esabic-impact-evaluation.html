@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESA BIC Impact Evaluation - Enrique Acebo</title>
+    <meta name="description" content="Evaluating the impact of European Space Agency Business Incubation Centres on firm performance and regional development.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome-all.min.css">
+    <style>
+        .project-header {
+            margin-bottom: 2rem;
+        }
+        .project-header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .project-status {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            font-size: 0.8rem;
+            background-color: #b12b32;
+            color: #ffffff;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        .project-meta {
+            color: #666666;
+            margin-bottom: 1.5rem;
+        }
+        .project-hero {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .project-hero img {
+            width: 180px;
+            height: auto;
+        }
+        .project-hero-text {
+            flex: 1;
+        }
+        .project-content h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            color: #666666;
+        }
+        .back-link:hover {
+            color: #b12b32;
+        }
+        .visit-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            background: #b12b32;
+            color: #fff;
+            margin-top: 1rem;
+            transition: background 0.2s;
+        }
+        .visit-btn:hover {
+            background: #8e2228;
+            color: #fff;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .team-member {
+            padding: 1rem;
+            background: #f8f8f8;
+            border-radius: 6px;
+        }
+        .team-member strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .team-member span {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .phase-list {
+            counter-reset: phase;
+            list-style: none;
+            padding: 0;
+        }
+        .phase-list li {
+            counter-increment: phase;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f8f8f8;
+            border-radius: 6px;
+            border-left: 3px solid #b12b32;
+        }
+        .phase-list li::before {
+            content: "Phase " counter(phase);
+            display: block;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #b12b32;
+            margin-bottom: 0.25rem;
+        }
+        .dark-mode .project-meta { color: var(--text-secondary); }
+        .dark-mode .back-link { color: var(--text-secondary); }
+        .dark-mode .back-link:hover { color: var(--accent); }
+        .dark-mode .team-member { background: var(--bg-secondary); }
+        .dark-mode .team-member span { color: var(--text-secondary); }
+        .dark-mode .phase-list li { background: var(--bg-secondary); border-left-color: var(--accent); }
+        .dark-mode .phase-list li::before { color: var(--accent); }
+        .dark-mode .visit-btn { background: var(--accent); }
+        @media (max-width: 600px) {
+            .project-hero { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="../index.html" class="site-title">Enrique Acebo</a>
+            <button class="menu-toggle" aria-label="Toggle menu">&#9776;</button>
+            <nav>
+                <ul>
+                    <li><a href="../index.html" data-en="Home" data-es="Inicio">Home</a></li>
+                    <li><a href="../about.html" data-en="About" data-es="Sobre mí">About</a></li>
+                    <li><a href="../publications.html" data-en="Research" data-es="Investigación">Research</a></li>
+                    <li><a href="../projects.html" class="active" data-en="Projects" data-es="Proyectos">Projects</a></li>
+                    <li><a href="../teaching.html" data-en="Teaching" data-es="Docencia">Teaching</a></li>
+                    <li><a href="../media.html" data-en="Media" data-es="Medios">Media</a></li>
+                    <li><a href="../cv.html">CV</a></li>
+                </ul>
+            </nav>
+            <div class="lang-switch">
+                <button id="lang-toggle" aria-label="Cambiar a español" title="Cambiar a español"><svg viewBox="0 0 24 16" aria-hidden="true" focusable="false"><rect width="24" height="16" fill="#c60b1e"/><rect y="4" width="24" height="8" fill="#ffc400"/></svg></button>
+            </div>
+            <button class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <a href="../projects.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> <span data-en="Back to Projects" data-es="Volver a Proyectos">Back to Projects</span>
+            </a>
+
+            <article class="project-header">
+                <div class="project-hero">
+                    <img src="../assets/img/proj/esabic.png" alt="ESA BIC Impact Evaluation">
+                    <div class="project-hero-text">
+                        <h1 data-en="ESA BIC Impact Evaluation" data-es="Evaluación de Impacto ESA BIC">ESA BIC Impact Evaluation</h1>
+                        <span class="project-status" data-en="Ongoing" data-es="En Curso">Ongoing</span>
+                        <p class="project-meta">
+                            <strong data-en="Reference:" data-es="Referencia:">Reference:</strong> FCT-24-19933<br>
+                            <strong data-en="Funding:" data-es="Financiación:">Funding:</strong> <span data-en="Spanish Foundation for Science and Technology (FECYT)" data-es="Fundación Española para la Ciencia y la Tecnología (FECYT)">Spanish Foundation for Science and Technology (FECYT)</span><br>
+                            <strong data-en="Institution:" data-es="Institución:">Institution:</strong> Universidad de León
+                        </p>
+                        <a href="https://esabic-impact-evaluation.unileon.es/" target="_blank" class="visit-btn">
+                            <i class="fas fa-external-link-alt"></i> <span data-en="Visit project site" data-es="Visitar sitio del proyecto">Visit project site</span>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <div class="project-content">
+                <h2 data-en="Overview" data-es="Resumen">Overview</h2>
+                <p data-en="This applied research project measures the effect of the ESA Business Incubation Centre (ESA-BIC) programme on firm performance and regional development. Through a mixed-methods approach combining econometric analysis with qualitative fieldwork, the project evaluates how the ESA-BIC network contributes to business expansion, technological innovation, skilled employment generation, and regional advancement." data-es="Este proyecto de investigación aplicada mide el efecto del programa de Centros de Incubación Empresarial de la ESA (ESA-BIC) sobre el rendimiento empresarial y el desarrollo regional. Mediante un enfoque de métodos mixtos que combina análisis econométrico con trabajo de campo cualitativo, el proyecto evalúa cómo la red ESA-BIC contribuye a la expansión empresarial, la innovación tecnológica, la generación de empleo cualificado y el avance regional.">
+                    This applied research project measures the effect of the ESA Business Incubation Centre (ESA-BIC) programme on firm performance and regional development. Through a mixed-methods approach combining econometric analysis with qualitative fieldwork, the project evaluates how the ESA-BIC network contributes to business expansion, technological innovation, skilled employment generation, and regional advancement.
+                </p>
+
+                <h2 data-en="Objectives" data-es="Objetivos">Objectives</h2>
+                <ul>
+                    <li data-en="Build an open European dataset integrating economic, financial, technological, and territorial information on incubated and comparison firms" data-es="Construir una base de datos europea abierta que integre información económica, financiera, tecnológica y territorial sobre empresas incubadas y de comparación">Build an open European dataset integrating economic, financial, technological, and territorial information on incubated and comparison firms</li>
+                    <li data-en="Analyse the correlation between ESA-BIC incubation and improved outcomes in business growth, technology innovation, access to financing, and employment" data-es="Analizar la correlación entre la incubación ESA-BIC y mejores resultados en crecimiento empresarial, innovación tecnológica, acceso a financiación y empleo">Analyse the correlation between ESA-BIC incubation and improved outcomes in business growth, technology innovation, access to financing, and employment</li>
+                    <li data-en="Design surveys examining start-up motivations for choosing ESA-BIC, programme evaluations, and territorial attachment factors" data-es="Diseñar encuestas que examinen las motivaciones de las start-ups para elegir ESA-BIC, evaluaciones del programa y factores de vinculación territorial">Design surveys examining start-up motivations for choosing ESA-BIC, programme evaluations, and territorial attachment factors</li>
+                    <li data-en="Assess the programme's contributions to regional innovation ecosystems, technological specialisation, and evidence-based policy" data-es="Evaluar las contribuciones del programa a los ecosistemas regionales de innovación, la especialización tecnológica y las políticas basadas en evidencia">Assess the programme's contributions to regional innovation ecosystems, technological specialisation, and evidence-based policy</li>
+                </ul>
+
+                <h2 data-en="Methodology" data-es="Metodología">Methodology</h2>
+                <ol class="phase-list">
+                    <li data-en="Analytical Foundation — Identifying incubated enterprises, establishing comparison groups, integrating variables, and designing validation protocols." data-es="Fundamento Analítico — Identificación de empresas incubadas, establecimiento de grupos de comparación, integración de variables y diseño de protocolos de validación.">Analytical Foundation — Identifying incubated enterprises, establishing comparison groups, integrating variables, and designing validation protocols.</li>
+                    <li data-en="Impact Estimation — Applying quantitative modelling to measure programme effects on growth, innovation, employment, and financing." data-es="Estimación de Impacto — Aplicación de modelización cuantitativa para medir los efectos del programa en crecimiento, innovación, empleo y financiación.">Impact Estimation — Applying quantitative modelling to measure programme effects on growth, innovation, employment, and financing.</li>
+                    <li data-en="Qualitative Validation — Deploying structured questionnaires with start-ups and managers to interpret mechanisms and territorial factors." data-es="Validación Cualitativa — Despliegue de cuestionarios estructurados con start-ups y gestores para interpretar mecanismos y factores territoriales.">Qualitative Validation — Deploying structured questionnaires with start-ups and managers to interpret mechanisms and territorial factors.</li>
+                    <li data-en="Results & Knowledge Transfer — Producing scientific outputs, publishing open data, issuing final reports, and formulating recommendations." data-es="Resultados y Transferencia — Producción de resultados científicos, publicación de datos abiertos, elaboración de informes finales y formulación de recomendaciones.">Results & Knowledge Transfer — Producing scientific outputs, publishing open data, issuing final reports, and formulating recommendations.</li>
+                </ol>
+
+                <h2 data-en="Research Team" data-es="Equipo de Investigación">Research Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <strong>Enrique Acebo (PI)</strong>
+                        <span data-en="Permanent Labour Professor, Universidad de León" data-es="Profesor Laboral Permanente, Universidad de León">Permanent Labour Professor, Universidad de León</span>
+                    </div>
+                    <div class="team-member">
+                        <strong>Diego Domínguez Fernández</strong>
+                        <span data-en="Associate Professor, Universidad de León" data-es="Profesor Asociado, Universidad de León">Associate Professor, Universidad de León</span>
+                    </div>
+                    <div class="team-member">
+                        <strong>José Ángel Miguel Dávila</strong>
+                        <span data-en="Full Professor, Universidad de León" data-es="Catedrático, Universidad de León">Full Professor, Universidad de León</span>
+                    </div>
+                    <div class="team-member">
+                        <strong>Jesús Gonzalo de Grado</strong>
+                        <span data-en="Full Professor, Universidad de León" data-es="Catedrático, Universidad de León">Full Professor, Universidad de León</span>
+                    </div>
+                    <div class="team-member">
+                        <strong>David Hernando Tomé</strong>
+                        <span data-en="Predoctoral Researcher, Universidad de León" data-es="Investigador Predoctoral, Universidad de León">Predoctoral Researcher, Universidad de León</span>
+                    </div>
+                    <div class="team-member">
+                        <strong>Lizbeth Gutiérrez Rodríguez</strong>
+                        <span data-en="Predoctoral Researcher, Universidad de Salamanca" data-es="Investigadora Predoctoral, Universidad de Salamanca">Predoctoral Researcher, Universidad de Salamanca</span>
+                    </div>
+                </div>
+
+                <h2 data-en="Supporting Organisations" data-es="Entidades Colaboradoras">Supporting Organisations</h2>
+                <ul>
+                    <li data-en="Ministerio de Ciencia, Innovación y Universidades" data-es="Ministerio de Ciencia, Innovación y Universidades">Ministerio de Ciencia, Innovación y Universidades</li>
+                    <li data-en="FECYT — Spanish Foundation for Science and Technology" data-es="FECYT — Fundación Española para la Ciencia y la Tecnología">FECYT — Spanish Foundation for Science and Technology</li>
+                    <li data-en="Instituto para la Competitividad Empresarial de Castilla y León" data-es="Instituto para la Competitividad Empresarial de Castilla y León">Instituto para la Competitividad Empresarial de Castilla y León</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p class="copyright">&copy; 2025 Enrique Acebo</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="../assets/js/lang.js"></script>
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        const themeToggle = document.querySelector('.theme-toggle');
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (savedTheme === null && systemPrefersDark)) {
+            document.documentElement.classList.add('dark-mode');
+        }
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (localStorage.getItem('theme') === null) {
+                document.documentElement.classList.toggle('dark-mode', e.matches);
+            }
+        });
+
+        themeToggle.addEventListener('click', function() {
+            document.documentElement.classList.toggle('dark-mode');
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
