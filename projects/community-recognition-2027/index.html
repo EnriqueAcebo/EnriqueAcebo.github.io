@@ -734,6 +734,51 @@ html{scroll-padding-top:106px}
   .topbar .brand-ordinal sup{top:-.45em;font-size:.52em}
 }
 
+/* v34 — keep the mobile programme CTA beside the complete brand lockup */
+@media(max-width:600px){
+  .topbar .frame.nav-inner{
+    display:flex;
+    min-height:0;
+    padding:10px 12px;
+    flex-direction:row;
+    flex-wrap:nowrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+  }
+  .topbar .brand.conference-brand{
+    width:auto;
+    max-width:none;
+    min-width:0;
+    flex:1 1 auto;
+    flex-direction:row;
+    align-items:center;
+    gap:clamp(5px,1.8vw,8px);
+  }
+  .topbar .brand-conference-logo{
+    width:clamp(112px,34vw,145px);
+    height:auto;
+    min-width:0;
+    flex:0 1 auto;
+  }
+  .topbar .brand-lockup-rule{height:44px;flex:0 0 1px}
+  .topbar .brand-recognition{
+    width:clamp(92px,27vw,116px);
+    flex:0 0 auto;
+    font-size:clamp(10px,3.2vw,13px);
+  }
+  .topbar .nav-cta{
+    position:static;
+    margin:0 0 0 auto;
+    padding:8px 10px;
+    flex:0 0 auto;
+    align-self:center;
+    white-space:nowrap;
+    font-size:10px;
+  }
+  html{scroll-padding-top:82px}
+}
+
 /* v34 — compact three-column directories when either people carousel is expanded */
 #voices.community-v15 .is-expanded .voice-set{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 #voices.community-v15 .is-expanded .community-card.testimony.voice-tag{grid-template-columns:64px minmax(0,1fr);gap:14px;min-height:140px;padding:16px 18px}
