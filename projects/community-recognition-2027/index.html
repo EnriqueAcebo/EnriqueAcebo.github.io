@@ -910,6 +910,9 @@ html{scroll-padding-top:106px}
 /* V34 — monochrome white canvas with stronger Oxford Blue rules. */
 :root{--wash:#fff;--line:rgba(0,33,71,.52);--sky:rgba(0,33,71,.38)}
 
+/* Keep the opening recognition label typographic, without a leading rule. */
+.hero-copy>.eyebrow:before{display:none}
+
 /* V34 — overview keeps the detailed atlas footprint; the map is cropped, not enlarged. */
 @media(min-width:821px){
   #journey.show-overview .journey-atlas{height:540px}
