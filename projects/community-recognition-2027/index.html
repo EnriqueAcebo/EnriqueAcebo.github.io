@@ -734,6 +734,15 @@ html{scroll-padding-top:106px}
   .topbar .brand-ordinal sup{top:-.45em;font-size:.52em}
 }
 
+/* v34 — compact three-column directories when either people carousel is expanded */
+#voices.community-v15 .is-expanded .voice-set{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+#voices.community-v15 .is-expanded .community-card.testimony.voice-tag{grid-template-columns:64px minmax(0,1fr);gap:14px;min-height:140px;padding:16px 18px}
+#voices.community-v15 .is-expanded .community-photo,#voices.community-v15 .is-expanded .community-placeholder{width:64px;height:86px}
+#voices.community-v15 .is-expanded .community-copy h4{font-size:19px;line-height:1.12;margin-bottom:7px}
+#voices.community-v15 .is-expanded .community-copy p{font-size:11px;line-height:1.4}
+@media(max-width:980px){#voices.community-v15 .is-expanded .voice-set{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){#voices.community-v15 .is-expanded .voice-set{grid-template-columns:1fr}#voices.community-v15 .is-expanded .community-card.testimony.voice-tag{grid-template-columns:64px minmax(0,1fr);gap:14px;padding:16px;min-height:136px}}
+
 /* v34 — balanced and centred current-affiliation logos */
 #about.appointments-v5 .role-logo{justify-content:center}
 #about.appointments-v5 .role-logo>img{
