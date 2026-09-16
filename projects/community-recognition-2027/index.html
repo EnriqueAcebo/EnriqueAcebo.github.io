@@ -7,7 +7,7 @@
 <meta property="og:url" content="https://enriqueacebo.github.io/projects/community-recognition-2027/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600;700&display=swap" rel="stylesheet"><style>@font-face {
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Noto+Serif:wght@400;500;600;700&display=swap" rel="stylesheet"><style>@font-face {
   font-family: 'Geist';
   font-style: normal;
   font-weight: 400;
@@ -699,9 +699,9 @@ html{scroll-padding-top:90px}
 /* v34 — AOM-inspired conference/recognition lockup */
 .topbar .nav-inner{min-height:106px;padding-top:12px;padding-bottom:12px}
 .topbar .brand.conference-brand{width:auto;max-width:calc(100% - 260px);flex-direction:row;align-items:center;justify-content:flex-start;gap:21px;white-space:normal;text-align:left}
-.topbar .brand-conference-logo{width:208px;height:70px;flex:0 0 208px;object-fit:contain;object-position:left center}
+.topbar .brand-conference-logo{display:block;width:208px;height:auto;flex:0 0 208px;object-fit:contain;object-position:left center;filter:none}
 .topbar .brand-lockup-rule{display:block;width:1px;height:66px;flex:0 0 1px;background:rgba(255,255,255,.7)}
-.topbar .brand-recognition{width:192px;padding:0;border:0;display:flex;flex-direction:column;align-items:flex-start;color:#fff;font-family:Geist,Arial,sans-serif;font-size:20px;font-weight:500;line-height:.94;letter-spacing:-.02em;text-align:left;text-transform:uppercase}
+.topbar .brand-recognition{width:192px;padding:0;border:0;display:flex;flex-direction:column;align-items:flex-start;color:#fff;font-family:'Barlow Condensed',Arial,sans-serif;font-size:20px;font-weight:500;line-height:.94;letter-spacing:-.02em;text-align:left;text-transform:uppercase}
 .topbar .brand-recognition-kicker,.topbar .brand-recognition-main{display:block}
 .topbar .brand-recognition-kicker{margin-bottom:4px;font-size:12px;font-weight:500;line-height:1;letter-spacing:.17em}
 .topbar .brand-recognition-strong{font-weight:700}
@@ -709,7 +709,7 @@ html{scroll-padding-top:106px}
 @media(max-width:600px){
   .topbar .nav-inner{min-height:133px;padding-top:12px;padding-bottom:12px;gap:11px}
   .topbar .brand.conference-brand{width:100%;max-width:100%;gap:12px;align-items:center}
-  .topbar .brand-conference-logo{width:143px;height:48px;flex-basis:143px;object-fit:contain}
+  .topbar .brand-conference-logo{width:143px;height:auto;flex-basis:143px;object-fit:contain}
   .topbar .brand-lockup-rule{height:47px}
   .topbar .brand-recognition{width:150px;font-size:14px;line-height:.94;text-align:left;align-items:flex-start}
   .topbar .brand-recognition-kicker{margin-bottom:3px;font-size:8px;letter-spacing:.15em}
@@ -721,6 +721,9 @@ html{scroll-padding-top:106px}
 .topbar .brand-recognition-kicker{font-size:15px;letter-spacing:.08em}
 .topbar .brand-recognition-kicker sup{position:relative;top:-.35em;margin-left:.08em;font-size:.52em;line-height:0;letter-spacing:.04em;vertical-align:baseline}
 @media(max-width:600px){.topbar .brand-recognition-kicker{font-size:10px}.topbar .brand-recognition-kicker sup{font-size:.55em}}
+
+/* v34 — Barlow Condensed for the recognition header and CTA */
+.topbar .nav-cta{font-family:'Barlow Condensed',Arial,sans-serif}
 
 /* v34 — preferred two-line recognition lockup */
 .topbar .brand-recognition{width:218px;line-height:.96}
@@ -878,7 +881,7 @@ html{scroll-padding-top:106px}
 </style>
 </head><body><svg class="brand-color-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;overflow:hidden"><defs><filter id="conference-ink-v33" color-interpolation-filters="sRGB" x="0" y="0" width="100%" height="100%"><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0.1294117647  0 0 0 0 0.2784313725  -2 0 0 0 1.88"/><feComposite in2="SourceGraphic" operator="in"/></filter><filter id="conference-white-v34" color-interpolation-filters="sRGB" x="0" y="0" width="100%" height="100%"><feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -2 0 0 0 1.88"/><feComposite in2="SourceGraphic" operator="in"/></filter></defs></svg>
 <a class="skip" href="#main">Skip to content</a>
-<header class="topbar"><div class="frame nav-inner"><a class="brand conference-brand" href="https://www.spaceeconomycommunity.org/" target="_blank" rel="noopener noreferrer" aria-label="Space Economy Conference 2027 — visit the conference website"><img class="brand-conference-logo" src="assets/media/image-5cec2f363f39618b2940.png" width="2164" height="727" alt="Inaugural Space Economy Conference 2027"><span class="brand-lockup-rule" aria-hidden="true"></span><span class="brand-recognition"><span class="brand-recognition-main brand-recognition-line-one"><span class="brand-ordinal" aria-label="First">1<sup aria-hidden="true">st</sup></span> Community</span><span class="brand-recognition-main brand-recognition-strong">Recognition</span></span></a><a class="nav-cta" href="#programme">Recognition program ↗</a></div></header>
+<header class="topbar"><div class="frame nav-inner"><a class="brand conference-brand" href="https://www.spaceeconomycommunity.org/" target="_blank" rel="noopener noreferrer" aria-label="Space Economy Conference 2027 — visit the conference website"><img class="brand-conference-logo" src="assets/media/image-fef9448649409c1ff80f.png" width="2274" height="582" alt="The Inaugural Space Economy Conference"><span class="brand-lockup-rule" aria-hidden="true"></span><span class="brand-recognition"><span class="brand-recognition-main brand-recognition-line-one"><span class="brand-ordinal" aria-label="First">1<sup aria-hidden="true">st</sup></span> Community</span><span class="brand-recognition-main brand-recognition-strong">Recognition</span></span></a><a class="nav-cta" href="#programme">Recognition program ↗</a></div></header>
 <main id="main" class="frame">
 <div class="hatch" aria-hidden="true"></div>
 <section class="hero" aria-labelledby="page-title"><div class="hero-copy"><p class="eyebrow">Space Economy Conference: 1st Community Recognition</p><h1 id="page-title"><span class="hero-celebrating">Celebrating</span><span class="honoree">Prof. Christopher L. Tucci</span></h1><p class="hero-intro">A celebration of research,<br>mentorship and community.</p><p class="muted">A new conference tradition recognising the people who helped build our Space Economy community. In 2027, we celebrate Prof. Christopher L. Tucci and his contributions to research, mentorship and collaboration.</p><span class="mono hero-note">Space Conference Day 1 · Afternoon sessions &amp; conference dinner</span></div><div class="hero-art"><figure class="portrait-frame"><img src="assets/media/image-4427a3d9a2fc68a9e68a.jpg" alt="Prof. Christopher L. Tucci smiling, photographed at Imperial College London" width="2560" height="1440" fetchpriority="high"><figcaption class="mono portrait-caption"><span>Researcher. Educator. Collaborator.</span><span>Photo: Imperial</span></figcaption></figure></div></section><section class="section appointments-v5" id="about" aria-labelledby="about-title"><div class="section-heading affiliations-heading"><div><h2 id="about-title">Academic leadership.</h2></div><p>From Oxford and Imperial to the Academy of Management. Follow the roles through which Christopher Tucci connects innovation, education and institutional service.</p></div><div class="current-roles" aria-label="Current appointments and service"><article class="appointment"><div class="role-logo"><img class="institution-logo oxford" src="assets/media/image-f2b551a7d9359795ba06.png" alt="University of Oxford — Saïd Business School" loading="lazy"></div><div><h3>Professor of Major Programmes &amp; Innovation</h3><p>Saïd Business School · since 2026</p></div></article><article class="appointment"><div class="role-logo"><img class="institution-logo imperial" src="assets/media/image-4b7cce8a3a752c3eec3d.png" alt="Imperial Business School" loading="lazy"></div><div><h3>Professor of Digital Strategy &amp; Innovation</h3><p>On leave for 2026–2027</p></div></article><article class="appointment"><div class="role-logo"><span class="aom-logo-crop"><img class="institution-logo aom" src="assets/media/image-f851745c5a2d3d0b46d3.png" alt="Academy of Management" loading="lazy"></span></div><div><h3>President, Academy of Management</h3><p>2026–2027</p></div></article></div></section>
