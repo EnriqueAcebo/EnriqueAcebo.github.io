@@ -697,9 +697,9 @@ html{scroll-padding-top:90px}
 @media(max-width:600px){.topbar .nav-inner{align-items:flex-start}.topbar .brand.conference-brand{justify-content:flex-start}.topbar .nav-cta{align-self:flex-start}}
 
 /* v34 — AOM-inspired conference/recognition lockup */
-.topbar .nav-inner{min-height:106px;padding-top:12px;padding-bottom:12px}
+.topbar .frame.nav-inner{max-width:none;min-height:0;padding:16px clamp(20px,4vw,56px);border-left:0;border-right:0}
 .topbar .brand.conference-brand{width:auto;max-width:calc(100% - 260px);flex-direction:row;align-items:center;justify-content:flex-start;gap:21px;white-space:normal;text-align:left}
-.topbar .brand-conference-logo{display:block;width:208px;height:auto;flex:0 0 208px;object-fit:contain;object-position:left center;filter:none}
+.topbar .brand-conference-logo{display:block;width:clamp(190px,22vw,280px);height:auto;flex:0 0 auto;object-fit:contain;object-position:left center;filter:none}
 .topbar .brand-lockup-rule{display:block;width:1px;height:66px;flex:0 0 1px;background:rgba(255,255,255,.7)}
 .topbar .brand-recognition{width:192px;padding:0;border:0;display:flex;flex-direction:column;align-items:flex-start;color:#fff;font-family:'Barlow Condensed',Arial,sans-serif;font-size:20px;font-weight:500;line-height:.94;letter-spacing:-.02em;text-align:left;text-transform:uppercase}
 .topbar .brand-recognition-kicker,.topbar .brand-recognition-main{display:block}
@@ -707,11 +707,11 @@ html{scroll-padding-top:90px}
 .topbar .brand-recognition-strong{font-weight:700}
 html{scroll-padding-top:106px}
 @media(max-width:600px){
-  .topbar .nav-inner{min-height:133px;padding-top:12px;padding-bottom:12px;gap:11px}
-  .topbar .brand.conference-brand{width:100%;max-width:100%;gap:12px;align-items:center}
-  .topbar .brand-conference-logo{width:143px;height:auto;flex-basis:143px;object-fit:contain}
-  .topbar .brand-lockup-rule{height:47px}
-  .topbar .brand-recognition{width:150px;font-size:14px;line-height:.94;text-align:left;align-items:flex-start}
+  .topbar .nav-inner{min-height:0;padding:12px 20px;gap:11px}
+  .topbar .brand.conference-brand{width:100%;max-width:100%;gap:8px;align-items:center}
+  .topbar .brand-conference-logo{width:190px;height:auto;flex:0 0 190px;object-fit:contain}
+  .topbar .brand-lockup-rule{height:49px}
+  .topbar .brand-recognition{width:132px;font-size:12px;line-height:.94;text-align:left;align-items:flex-start}
   .topbar .brand-recognition-kicker{margin-bottom:3px;font-size:8px;letter-spacing:.15em}
   .topbar .nav-cta{margin-top:0}
   html{scroll-padding-top:145px}
@@ -723,14 +723,14 @@ html{scroll-padding-top:106px}
 @media(max-width:600px){.topbar .brand-recognition-kicker{font-size:10px}.topbar .brand-recognition-kicker sup{font-size:.55em}}
 
 /* v34 — Barlow Condensed for the recognition header and CTA */
-.topbar .nav-cta{font-family:'Barlow Condensed',Arial,sans-serif}
+.topbar .nav-cta{right:clamp(20px,4vw,56px);font-family:'Barlow Condensed',Arial,sans-serif}
 
 /* v34 — preferred two-line recognition lockup */
 .topbar .brand-recognition{width:218px;line-height:.96}
 .topbar .brand-recognition-line-one{white-space:nowrap;font-weight:500}
 .topbar .brand-ordinal sup{position:relative;top:-.48em;margin-left:.06em;margin-right:.04em;font-size:.5em;line-height:0;letter-spacing:.02em;vertical-align:baseline}
 @media(max-width:600px){
-  .topbar .brand-recognition{width:160px;font-size:14px}
+  .topbar .brand-recognition{width:132px;font-size:12px}
   .topbar .brand-ordinal sup{top:-.45em;font-size:.52em}
 }
 
