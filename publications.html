@@ -610,5 +610,23 @@
     </script>
     <!-- PlumX -->
     <script type="text/javascript" src="//cdn.plu.mx/widget-popup.js"></script>
+    <!-- Altmetric retired details.php (returns 404); rewrite badge links to the current /details/ID format -->
+    <script>
+    (function () {
+        function fix(a) {
+            var m = /[?&]citation_id=(\d+)/.exec(a.getAttribute('href') || '');
+            if (m) {
+                a.setAttribute('href', 'https://www.altmetric.com/details/' + m[1]);
+                a.setAttribute('target', '_blank');
+                a.setAttribute('rel', 'noopener');
+            }
+        }
+        function scan() {
+            document.querySelectorAll('.altmetric-embed a[href*="details.php"]').forEach(fix);
+        }
+        new MutationObserver(scan).observe(document.body, { childList: true, subtree: true });
+        scan();
+    })();
+    </script>
 </body>
 </html>
