@@ -2440,3 +2440,53 @@ a.rs-cites:hover {
 .px-badge:hover .gs-badge-label {
     border-color: #6e1a62;
 }
+
+/* Footer language switch as text: English · Español, active one highlighted */
+.footer-content .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.footer-content .lang-switch button {
+    width: auto;
+    height: auto;
+    padding: 0;
+    font-family: inherit;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #666666;
+    transform: none;
+}
+
+.footer-content .lang-switch button:hover {
+    color: #b12b32;
+    transform: none;
+}
+
+.footer-content .lang-switch button.active {
+    color: #b12b32;
+    font-weight: 600;
+}
+
+.footer-content .lang-sep {
+    color: #999999;
+    font-size: 0.85rem;
+}
+
+.dark-mode .footer-content .lang-switch button {
+    color: var(--text-secondary);
+}
+
+.dark-mode .footer-content .lang-switch button:hover,
+.dark-mode .footer-content .lang-switch button.active {
+    color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .footer-content .lang-switch {
+        position: static;
+        transform: none;
+        margin-top: 0.4rem;
+    }
+}
