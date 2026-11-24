@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research - Enrique Acebo</title>
-    <meta name="description" content="Academic research by Enrique Acebo: articles, books, and book chapters in eco-innovation, innovation policy, and sustainable business.">
+    <title data-en="Research - Enrique Acebo" data-es="Investigación - Enrique Acebo">Research - Enrique Acebo</title>
+    <meta name="description" content="Research by Enrique Acebo: journal articles, books, working papers and open data on eco-innovation, the twin transition, innovation policy evaluation and the new space economy.">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
     <!-- Altmetric -->
@@ -15,8 +15,9 @@
         /* Tabs */
         .tabs {
             display: flex;
+            flex-wrap: wrap;
             gap: 0;
-            margin-bottom: 2rem;
+            margin-bottom: 1.25rem;
             border-bottom: 2px solid #e5e5e5;
         }
         .tab-btn {
@@ -46,12 +47,6 @@
             height: 2px;
             background-color: #b12b32;
         }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
         .dark-mode .tabs {
             border-bottom-color: var(--border-color);
         }
@@ -64,20 +59,6 @@
         }
         .dark-mode .tab-btn.active::after {
             background-color: var(--accent);
-        }
-        /* Empty state */
-        .empty-state {
-            text-align: center;
-            padding: 3rem;
-            color: #666666;
-        }
-        .empty-state i {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
-        .dark-mode .empty-state {
-            color: var(--text-secondary);
         }
     </style>
 </head>
@@ -98,9 +79,6 @@
                     <li><a href="cv.html">CV</a></li>
                 </ul>
             </nav>
-            <div class="lang-switch">
-                <button id="lang-toggle" aria-label="Cambiar a español" title="Cambiar a español"><svg viewBox="0 0 24 16" aria-hidden="true" focusable="false"><rect width="24" height="16" fill="#c60b1e"/><rect y="4" width="24" height="8" fill="#ffc400"/></svg></button>
-            </div>
             <button class="theme-toggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
                 <i class="fas fa-sun"></i>
@@ -111,384 +89,303 @@
     <!-- Main Content -->
     <main>
         <div class="container">
-            <section>
+            <section class="research-page">
                 <h1 class="section-title" data-en="Research" data-es="Investigación">Research</h1>
 
-                <!-- Tabs -->
-                <div class="tabs">
-                    <button class="tab-btn active" data-tab="articles" data-en="Articles" data-es="Artículos">Articles</button>
-                    <button class="tab-btn" data-tab="books" data-en="Books" data-es="Libros">Books</button>
-                    <button class="tab-btn" data-tab="data" data-en="Data" data-es="Datos">Data</button>
+                <!-- Intro -->
+                <div class="rs-intro">
+                    <p class="rs-lede" data-en="My research examines innovation, strategy and entrepreneurship." data-es="Mi investigación analiza la innovación, la estrategia y el emprendimiento.">My research examines innovation, strategy and entrepreneurship.</p>
                 </div>
 
-                <!-- Search and Filter Controls -->
-                <div class="publications-controls">
+                <!-- Metrics -->
+                <div class="rs-dashboard" aria-label="Research metrics">
+                    <div class="rs-stats">
+                        <div class="rs-stat"><span class="rs-stat-value" id="stat-cites">223</span><span class="rs-stat-label" data-en="Citations" data-es="Citas">Citations</span></div>
+                        <div class="rs-stat"><span class="rs-stat-value" id="stat-h">5</span><span class="rs-stat-label">h-index</span></div>
+                        <div class="rs-stat"><span class="rs-stat-value" id="stat-i10">4</span><span class="rs-stat-label">i10-index</span></div>
+                        <div class="rs-stat"><span class="rs-stat-value" id="stat-pubs">12</span><span class="rs-stat-label" data-en="Publications" data-es="Publicaciones">Publications</span></div>
+                    </div>
+                    <div class="rs-charts">
+                        <figure class="rs-chart" id="chart-cites" data-series='{"2021":4,"2022":31,"2023":34,"2024":28,"2025":51,"2026":73}'>
+                            <figcaption data-en="Citations per year" data-es="Citas por año">Citations per year</figcaption>
+                            <div class="rs-plot"></div>
+                        </figure>
+                        <figure class="rs-chart" id="chart-pubs">
+                            <figcaption data-en="Publications per year" data-es="Publicaciones por año">Publications per year</figcaption>
+                            <div class="rs-plot"></div>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Type tabs -->
+                <div class="tabs rs-tabs" role="tablist">
+                    <button class="tab-btn active" data-type="all" role="tab" aria-selected="true"><span data-en="All" data-es="Todo">All</span><span class="rs-count"></span></button>
+                    <button class="tab-btn" data-type="article book chapter" role="tab" aria-selected="false"><span data-en="Published" data-es="Publicados">Published</span><span class="rs-count"></span></button>
+                    <button class="tab-btn" data-type="working" role="tab" aria-selected="false"><span data-en="Unpublished" data-es="No publicados">Unpublished</span><span class="rs-count"></span></button>
+                </div>
+
+                <!-- Search, year, sort -->
+                <div class="rs-filters">
                     <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="search-input" placeholder="Search publications..." data-placeholder-en="Search publications..." data-placeholder-es="Buscar publicaciones...">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        <input type="search" id="search-input" aria-label="Search publications" placeholder="Search title, coauthor, journal, abstract..." data-placeholder-en="Search title, coauthor, journal, abstract..." data-placeholder-es="Buscar por título, coautor, revista...">
                     </div>
-                    <div class="tags-filter">
-                        <button class="tag-btn active" data-tag="all" data-en="All" data-es="Todas">All</button>
-                        <button class="tag-btn" data-tag="policy-evaluation" data-en="Policy Evaluation" data-es="Evaluación de Políticas">Policy Evaluation</button>
-                        <button class="tag-btn" data-tag="innovation" data-en="Innovation" data-es="Innovación">Innovation</button>
-                        <button class="tag-btn" data-tag="entrepreneurship" data-en="Entrepreneurship" data-es="Emprendimiento">Entrepreneurship</button>
-                        <button class="tag-btn" data-tag="strategy" data-en="Strategy" data-es="Estrategia">Strategy</button>
-                        <button class="tag-btn" data-tag="data" data-en="Open Data" data-es="Datos Abiertos">Open Data</button>
+                    <div class="rs-select-wrap">
+                        <select id="rs-year" class="rs-select" aria-label="Year">
+                            <option value="all" data-en="All years" data-es="Todos los años">All years</option>
+                        </select>
                     </div>
+                    <div class="rs-select-wrap">
+                        <select id="rs-sort" class="rs-select" aria-label="Sort">
+                            <option value="date-desc" data-en="Newest first" data-es="Más recientes">Newest first</option>
+                            <option value="date-asc" data-en="Oldest first" data-es="Más antiguos">Oldest first</option>
+                            <option value="cites-desc" data-en="Most cited" data-es="Más citados">Most cited</option>
+                        </select>
+                    </div>
+                    <button type="button" class="rs-clear" id="rs-clear" data-en="Clear" data-es="Limpiar">Clear</button>
                 </div>
 
-                <!-- No Results Message -->
-                <p class="no-results" id="no-results" data-en="No publications found matching your search." data-es="No se encontraron publicaciones que coincidan con tu búsqueda.">No publications found matching your search.</p>
-
-                <!-- Articles Tab -->
-                <div class="tab-content active" id="articles">
-                    <!-- 2026 -->
-                    <div class="year-group" data-year="2026">
-                        <h2 class="year-title">2026</h2>
-
-                        <div class="publication" data-tags="innovation strategy">
-                            <p class="publication-title">
-                                <a href="https://doi.org/10.1002/bse.71801" target="_blank" rel="noopener">
-                                    A Meta-Analysis of the Twin Transition: The Impact of Digitalization on Firms' Eco-Innovation
-                                </a>
-                            </p>
-                            <p class="publication-authors">
-                                with R. A. Iturralde Solorzano
-                                & J.-A. Miguel-Davila
-                            </p>
-                            <p class="publication-venue">Business Strategy and the Environment (in press)</p>
-                            <div class="publication-meta-row">
-                                <div class="publication-links">
-                                    <a href="documents/publications/10.1002-bse.71801.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                                    <a href="https://doi.org/10.1002/bse.71801" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI</a>
-                                    <a href="documents/citations/10.1002-bse.71801.ris" target="_blank" download><i class="fas fa-file-alt"></i> RIS</a>
-                                </div>
-                                <div class="publication-badges">
-                                    <span class="__dimensions_badge_embed__" data-doi="10.1002/bse.71801" data-style="small_rectangle"></span>
-                                    <div class="altmetric-embed" data-badge-type="2" data-doi="10.1002/bse.71801" data-hide-no-mentions="true"></div>
-                                </div>
-                            </div>
-                            <div class="publication-tags">
-                                <span class="publication-tag">Innovation</span>
-                                <span class="publication-tag">Strategy</span>
-                            </div>
-                        </div>
-
-                        <div class="publication" data-tags="innovation strategy">
-                            <p class="publication-title">
-                                <a href="https://doi.org/10.1080/13662716.2026.2714309" target="_blank" rel="noopener">
-                                    Extreme weather events and firms' eco-innovation: the role of psychological distance
-                                </a>
-                            </p>
-                            <p class="publication-authors">
-                                with J.-A. Miguel-Davila
-                                & L. Gutiérrez-Rodríguez
-                            </p>
-                            <p class="publication-venue">Industry and Innovation (in press)</p>
-                            <div class="publication-meta-row">
-                                <div class="publication-links">
-                                    <a href="documents/publications/10.1080-13662716.2026.2714309.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                                    <a href="https://doi.org/10.1080/13662716.2026.2714309" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI</a>
-                                    <a href="documents/citations/10.1080-13662716.2026.2714309.ris" target="_blank" download><i class="fas fa-file-alt"></i> RIS</a>
-                                </div>
-                                <div class="publication-badges">
-                                    <span class="__dimensions_badge_embed__" data-doi="10.1080/13662716.2026.2714309" data-style="small_rectangle"></span>
-                                    <div class="altmetric-embed" data-badge-type="2" data-doi="10.1080/13662716.2026.2714309" data-hide-no-mentions="true"></div>
-                                </div>
-                            </div>
-                            <div class="publication-tags">
-                                <span class="publication-tag">Innovation</span>
-                                <span class="publication-tag">Strategy</span>
-                            </div>
-                        </div>
-
-                        <div class="publication" data-tags="policy-evaluation entrepreneurship strategy">
-                            <p class="publication-title">
-                                <a href="https://doi.org/10.1016/j.jengtecman.2026.101990" target="_blank" rel="noopener">
-                                    Entrepreneurial support organizations in the new space economy: Location, peers, and experience effects on startup performance
-                                </a>
-                            </p>
-                            <p class="publication-authors">
-                                with D. Hernando-Tomé, J. Abad-Gonzalez
-                                & J.-A. Miguel-Davila
-                            </p>
-                            <p class="publication-venue">Journal of Engineering and Technology Management, 81, 101990</p>
-                            <div class="publication-meta-row">
-                                <div class="publication-links">
-                                    <a href="documents/publications/10.1016-j.jengtecman.2026.101990.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                                    <a href="https://doi.org/10.1016/j.jengtecman.2026.101990" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI</a>
-                                    <a href="documents/citations/10.1016-j.jengtecman.2026.101990.ris" target="_blank" download><i class="fas fa-file-alt"></i> RIS</a>
-                                </div>
-                                <div class="publication-badges">
-                                    <span class="__dimensions_badge_embed__" data-doi="10.1016/j.jengtecman.2026.101990" data-style="small_rectangle"></span>
-                                    <div class="altmetric-embed" data-badge-type="2" data-doi="10.1016/j.jengtecman.2026.101990" data-hide-no-mentions="true"></div>
-                                </div>
-                            </div>
-                            <div class="publication-tags">
-                                <span class="publication-tag">Policy Evaluation</span>
-                                <span class="publication-tag">Entrepreneurship</span>
-                                <span class="publication-tag">Strategy</span>
-                            </div>
-                        </div>
-
-                        <div class="publication" data-tags="policy-evaluation entrepreneurship data">
-                            <p class="publication-title">
-                                <a href="https://doi.org/10.1108/MRJIAM-10-2025-1832" target="_blank" rel="noopener">
-                                    Effectiveness of government entrepreneurial support on start-ups: a supply chain economy perspective
-                                </a>
-                            </p>
-                            <p class="publication-authors">
-                                with J.-A. Miguel-Davila, L. Gutiérrez-Rodríguez
-                                & L. Baratas González
-                            </p>
-                            <p class="publication-venue">Management Research: Journal of the Iberoamerican Academy of Management (in press)</p>
-                            <div class="publication-meta-row">
-                                <div class="publication-links">
-                                    <a href="documents/publications/10.1108-MRJIAM-10-2025-1832.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                                    <a href="https://doi.org/10.1108/MRJIAM-10-2025-1832" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI</a>
-                                    <a href="documents/citations/10.1108-MRJIAM-10-2025-1832.ris" target="_blank" download><i class="fas fa-file-alt"></i> RIS</a>
-                                    <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/YZMLCO" target="_blank" rel="noopener"><i class="fas fa-database"></i> Data</a>
-                                </div>
-                                <div class="publication-badges">
-                                    <span class="__dimensions_badge_embed__" data-doi="10.1108/MRJIAM-10-2025-1832" data-style="small_rectangle"></span>
-                                    <div class="altmetric-embed" data-badge-type="2" data-doi="10.1108/MRJIAM-10-2025-1832" data-hide-no-mentions="true"></div>
-                                </div>
-                            </div>
-                            <div class="publication-tags">
-                                <span class="publication-tag">Policy Evaluation</span>
-                                <span class="publication-tag">Entrepreneurship</span>
-                                <span class="publication-tag">Open Data</span>
-                            </div>
-                        </div>
-
-                        <div class="publication" data-tags="policy-evaluation strategy data">
-                            <p class="publication-title">
-                                <a href="https://doi.org/10.1016/j.econmod.2025.107366" target="_blank" rel="noopener">
-                                    Lazarus, come forth! Public loan guarantees and the recovery of zombie firms
-                                </a>
-                            </p>
-                            <p class="publication-authors">
-                                with C. Gutierrez-Lopez, J. Abad-Gonzalez
-                                & J.-A. Miguel-Davila
-                            </p>
-                            <p class="publication-venue">Economic Modelling, 154, 107366</p>
-                            <div class="publication-meta-row">
-                                <div class="publication-links">
-                                    <a href="documents/publications/10.1016-j.econmod.2025.107366.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                                    <a href="https://doi.org/10.1016/j.econmod.2025.107366" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI</a>
-                                    <a href="documents/citations/10.1016-j.econmod.2025.107366.ris" target="_blank" download><i class="fas fa-file-alt"></i> RIS</a>
-                                    <a href="https://data.mendeley.com/datasets/kv78gfs9ny/2" target="_blank" rel="noopener"><i class="fas fa-database"></i> Data</a>
-                                </div>
-                                <div class="publication-badges">
-                                    <span class="__dimensions_badge_embed__" data-doi="10.1016/j.econmod.2025.107366" data-style="small_rectangle"></span>
-                                    <div class="altmetric-embed" data-badge-type="2" data-doi="10.1016/j.econmod.2025.107366" data-hide-no-mentions="true"></div>
-                                </div>
-                            </div>
-                            <div class="publication-tags">
-                                <span class="publication-tag">Policy Evaluation</span>
-                                <span class="publication-tag">Strategy</span>
-                                <span class="publication-tag">Open Data</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2024 -->
-                    <div class="year-group" data-year="2024">
-                        <h2 class="year-title">2024</h2>
-
-                        <div class="publication" data-tags="policy-evaluation innovation">
-                            <p class="publication-title">
-                                <a href="https://academic.oup.com/spp/article/51/2/218/7329737" target="_blank" rel="noopener">
-                                    Multilevel Innovation Policy Mix: Impact of Regional, National and European R&D grants
-                                </a>
-                            </p>
-                            <p class="publication-authors">
-                                with J.-A. Miguel-Davila
-                            </p>
-                            <p class="publication-venue">Science and Public Policy, 51(2), 218-235</p>
-                            <div class="publication-meta-row">
-                                <div class="publication-links">
-                                    <a href="documents/publications/10.1093-scipol-scad057.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                                    <a href="https://doi.org/10.1093/scipol/scad057" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI</a>
-                                    <a href="documents/citations/10.1093-scipol-scad057.ris" target="_blank" download><i class="fas fa-file-alt"></i> RIS</a>
-                                </div>
-                                <div class="publication-badges">
-                                    <span class="__dimensions_badge_embed__" data-doi="10.1093/scipol/scad057" data-style="small_rectangle"></span>
-                                    <div class="altmetric-embed" data-badge-type="2" data-doi="10.1093/scipol/scad057" data-hide-no-mentions="true"></div>
-                                </div>
-                            </div>
-                            <div class="publication-tags">
-                                <span class="publication-tag">Policy Evaluation</span>
-                                <span class="publication-tag">Innovation</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2022 -->
-                    <div class="year-group" data-year="2022">
-                        <h2 class="year-title">2022</h2>
-
-                        <div class="publication" data-tags="policy-evaluation innovation">
-                            <p class="publication-title">
-                                <a href="https://doi.org/10.1108/EJIM-07-2020-0286" target="_blank" rel="noopener">
-                                    Do financial constraints moderate the relationship between innovation subsidies and firms' R&D investment?
-                                </a>
-                            </p>
-                            <p class="publication-authors">
-                                with J.-A. Miguel-Davila
-                                & M. Nieto
-                            </p>
-                            <p class="publication-venue">European Journal of Innovation Management, 25(2), 347-364</p>
-                            <div class="publication-meta-row">
-                                <div class="publication-links">
-                                    <a href="documents/publications/10.1108-EJIM-07-2020-0286.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                                    <a href="https://doi.org/10.1108/EJIM-07-2020-0286" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI</a>
-                                    <a href="documents/citations/10.1108-EJIM-07-2020-0286.ris" target="_blank" download><i class="fas fa-file-alt"></i> RIS</a>
-                                </div>
-                                <div class="publication-badges">
-                                    <span class="__dimensions_badge_embed__" data-doi="10.1108/EJIM-07-2020-0286" data-style="small_rectangle"></span>
-                                    <div class="altmetric-embed" data-badge-type="2" data-doi="10.1108/EJIM-07-2020-0286" data-hide-no-mentions="true"></div>
-                                </div>
-                            </div>
-                            <div class="publication-tags">
-                                <span class="publication-tag">Policy Evaluation</span>
-                                <span class="publication-tag">Innovation</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2021 -->
-                    <div class="year-group" data-year="2021">
-                        <h2 class="year-title">2021</h2>
-
-                        <div class="publication" data-tags="innovation strategy">
-                            <p class="publication-title">
-                                <a href="https://doi.org/10.1002/bse.2770" target="_blank" rel="noopener">
-                                    External stakeholder engagement: Complementary and substitutive effects on firms' eco-innovation
-                                </a>
-                            </p>
-                            <p class="publication-authors">
-                                with J.-A. Miguel-Davila
-                                & M. Nieto
-                            </p>
-                            <p class="publication-venue">Business Strategy and the Environment, 30(5), 2671-2687</p>
-                            <div class="publication-meta-row">
-                                <div class="publication-links">
-                                    <a href="documents/publications/10.1002-bse.2770.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                                    <a href="https://doi.org/10.1002/bse.2770" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI</a>
-                                    <a href="documents/citations/10.1002-bse.2770.ris" target="_blank" download><i class="fas fa-file-alt"></i> RIS</a>
-                                </div>
-                                <div class="publication-badges">
-                                    <span class="__dimensions_badge_embed__" data-doi="10.1002/bse.2770" data-style="small_rectangle"></span>
-                                    <div class="altmetric-embed" data-badge-type="2" data-doi="10.1002/bse.2770" data-hide-no-mentions="true"></div>
-                                </div>
-                            </div>
-                            <div class="publication-tags">
-                                <span class="publication-tag">Innovation</span>
-                                <span class="publication-tag">Strategy</span>
-                            </div>
-                        </div>
-
-                        <div class="publication" data-tags="innovation strategy">
-                            <p class="publication-title">
-                                <a href="https://academic.oup.com/spp/article/48/2/276/6215148" target="_blank" rel="noopener">
-                                    The Impact of University-Industry Relationships on Firms' Performance: A Meta-Regression Analysis
-                                </a>
-                            </p>
-                            <p class="publication-authors">
-                                with J.-A. Miguel-Davila
-                                & M. Nieto
-                            </p>
-                            <p class="publication-venue">Science and Public Policy, 48(2), 276-293</p>
-                            <div class="publication-meta-row">
-                                <div class="publication-links">
-                                    <a href="documents/publications/10.1093-scipol-scab025.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-                                    <a href="https://doi.org/10.1093/scipol/scab025" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI</a>
-                                    <a href="documents/citations/10.1093-scipol-scab025.ris" target="_blank" download><i class="fas fa-file-alt"></i> RIS</a>
-                                </div>
-                                <div class="publication-badges">
-                                    <span class="__dimensions_badge_embed__" data-doi="10.1093/scipol/scab025" data-style="small_rectangle"></span>
-                                    <div class="altmetric-embed" data-badge-type="2" data-doi="10.1093/scipol/scab025" data-hide-no-mentions="true"></div>
-                                </div>
-                            </div>
-                            <div class="publication-tags">
-                                <span class="publication-tag">Innovation</span>
-                                <span class="publication-tag">Strategy</span>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Topic filter -->
+                <div class="tags-filter">
+                    <button class="tag-btn active" data-tag="all" data-en="all topics" data-es="todos los temas">all topics</button>
+                    <button class="tag-btn" data-tag="policy-evaluation" data-en="policy evaluation" data-es="evaluación de políticas">policy evaluation</button>
+                    <button class="tag-btn" data-tag="innovation" data-en="innovation" data-es="innovación">innovation</button>
+                    <button class="tag-btn" data-tag="entrepreneurship" data-en="entrepreneurship" data-es="emprendimiento">entrepreneurship</button>
+                    <button class="tag-btn" data-tag="strategy" data-en="strategy" data-es="estrategia">strategy</button>
+                    <button class="tag-btn" data-tag="data" data-en="open data" data-es="datos abiertos">open data</button>
                 </div>
 
-                <!-- Books Tab -->
-                <div class="tab-content" id="books">
-                    <div class="empty-state">
-                        <i class="fas fa-book"></i>
-                        <p data-en="Coming soon" data-es="Próximamente">Coming soon</p>
-                    </div>
+                <p class="rs-results" aria-live="polite"><span id="rs-shown">13</span> <span data-en="of" data-es="de">of</span> <span id="rs-total">13</span> <span data-en="items" data-es="resultados">items</span></p>
+
+                <!-- Publication list -->
+                <div class="rs-list" id="rs-list">
+<article class="rs-pub" data-type="article" data-year="2026" data-order="0" data-tags="innovation strategy" data-doi="10.1002/bse.71801" data-cites="0" data-gs-id="qxL8FJ1GzNcC">
+    <div class="rs-pub-row">
+      <div class="rs-pub-head"><span class="rs-type rs-type-article" data-en="Journal Article" data-es="Artículo">Journal Article</span><span class="rs-status" data-en="In press" data-es="En prensa">In press</span><h3 class="rs-pub-title"><a href="https://doi.org/10.1002/bse.71801" target="_blank" rel="noopener">A Meta-Analysis of the Twin Transition: The Impact of Digitalization on Firms&#x27; Eco-Innovation</a></h3></div>
+      <div class="rs-pub-actions"><a class="rs-btn" href="documents/publications/10.1002-bse.71801.pdf" target="_blank"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</a><a class="rs-btn" href="https://doi.org/10.1002/bse.71801" target="_blank" rel="noopener"><svg class="rs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg> <span data-en="Publisher" data-es="Editorial">Publisher</span></a><a class="rs-cites" href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=7_JEALYAAAAJ&amp;pagesize=100&amp;citation_for_view=7_JEALYAAAAJ:qxL8FJ1GzNcC" target="_blank" rel="noopener" title="Google Scholar citations" hidden><span class="rs-cites-n">0</span> <span data-en="citations" data-es="citas">citations</span></a><button type="button" class="rs-toggle" aria-expanded="false" aria-controls="more-10-1002-bse-71801" aria-label="Abstract, citation and metrics" title="Abstract, citation and metrics"><i class="fas fa-chevron-down" aria-hidden="true"></i></button></div>
+    </div>
+    <p class="rs-pub-meta"><span class="rs-authors">R. A. Iturralde Solorzano, E. Acebo, J.-Á. Miguel-Dávila</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-venue"><em>Business Strategy and the Environment</em>, 2026</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-pub-tags"><span class="publication-tag" data-en="innovation" data-es="innovación">innovation</span><span class="publication-tag" data-en="strategy" data-es="estrategia">strategy</span></span></p>
+    <div class="rs-more" id="more-10-1002-bse-71801" hidden>
+      <div class="rs-abstract"><h4><span data-en="Abstract" data-es="Resumen">Abstract</span></h4><p>In the twin transition, firms pursue digitalization and environmental sustainability simultaneously, an effort that draws growing academic interest. However, empirical insights into the relationship between digital technologies and eco‐innovation remain lacking. With a quantitative synthesis and meta‐regression of 38 empirical studies published in high‐impact journals, encompassing 587 effect sizes, the current research clarifies the heterogeneous nature of this relationship across technology types and environmental outcomes. Digitalization is positively and statistically significantly associated with eco‐innovation. Across technology types, artificial intelligence, digital innovation, and smart product platforms show the strongest positive associations, while robotics and Industry 4.0 technologies yield weaker evidence. Across environmental outcomes, the results indicate robust positive associations with green innovation but negative or null associations on average for decarbonization. In revealing that digitalization alone might not be sufficient to achieve emissions reductions without complementary environmental strategies, this study contributes to twin transition literature and clarifies the heterogeneous nature of the digitalization‐eco‐innovation relationships. For managers seeking to balance digital investments with environmental objectives, it also offers practical recommendations.</p></div><div class="rs-bib"><div class="rs-bib-head"><h4>BibTeX</h4><div class="rs-bib-actions"><button type="button" class="rs-btn rs-copy"><i class="far fa-copy" aria-hidden="true"></i> <span data-en="Copy" data-es="Copiar">Copy</span></button></div></div><pre class="rs-bib-code">@article{acebo2026twin,
+  title   = {A Meta-Analysis of the Twin Transition: The Impact of Digitalization on Firms&#x27; Eco-Innovation},
+  author  = {Iturralde Solorzano, Rafael Alberto and Acebo, Enrique and Miguel-Dávila, José-Ángel},
+  journal = {Business Strategy and the Environment},
+  year    = {2026},
+  doi     = {10.1002/bse.71801}
+}</pre></div><div class="rs-metrics"><h4><span data-en="Metrics" data-es="Métricas">Metrics</span></h4><div class="rs-badges"><a class="gs-badge" href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=7_JEALYAAAAJ&amp;pagesize=100&amp;citation_for_view=7_JEALYAAAAJ:qxL8FJ1GzNcC" target="_blank" rel="noopener" title="Google Scholar citations"><span class="gs-badge-label"><i class="fas fa-graduation-cap" aria-hidden="true"></i> GS</span><span class="gs-badge-count">0</span></a><span class="__dimensions_badge_embed__" data-doi="10.1002/bse.71801" data-style="small_rectangle"></span><div class="altmetric-embed" data-badge-type="2" data-doi="10.1002/bse.71801"></div></div></div>
+    </div>
+</article>
+<article class="rs-pub" data-type="article" data-year="2026" data-order="1" data-tags="innovation strategy" data-doi="10.1080/13662716.2026.2714309" data-cites="0" data-gs-id="4TOpqqG69KYC">
+    <div class="rs-pub-row">
+      <div class="rs-pub-head"><span class="rs-type rs-type-article" data-en="Journal Article" data-es="Artículo">Journal Article</span><span class="rs-status" data-en="In press" data-es="En prensa">In press</span><h3 class="rs-pub-title"><a href="https://doi.org/10.1080/13662716.2026.2714309" target="_blank" rel="noopener">Extreme weather events and firms&#x27; eco-innovation: the role of psychological distance</a></h3></div>
+      <div class="rs-pub-actions"><a class="rs-btn" href="documents/publications/10.1080-13662716.2026.2714309.pdf" target="_blank"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</a><a class="rs-btn" href="https://doi.org/10.1080/13662716.2026.2714309" target="_blank" rel="noopener"><svg class="rs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg> <span data-en="Publisher" data-es="Editorial">Publisher</span></a><a class="rs-cites" href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=7_JEALYAAAAJ&amp;pagesize=100&amp;citation_for_view=7_JEALYAAAAJ:4TOpqqG69KYC" target="_blank" rel="noopener" title="Google Scholar citations" hidden><span class="rs-cites-n">0</span> <span data-en="citations" data-es="citas">citations</span></a><button type="button" class="rs-toggle" aria-expanded="false" aria-controls="more-10-1080-13662716-2026-2714309" aria-label="Abstract, citation and metrics" title="Abstract, citation and metrics"><i class="fas fa-chevron-down" aria-hidden="true"></i></button></div>
+    </div>
+    <p class="rs-pub-meta"><span class="rs-authors">E. Acebo, J.-Á. Miguel-Dávila, L. Gutiérrez-Rodríguez</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-venue"><em>Industry and Innovation</em>, 2026</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-pub-tags"><span class="publication-tag" data-en="innovation" data-es="innovación">innovation</span><span class="publication-tag" data-en="strategy" data-es="estrategia">strategy</span></span></p>
+    <div class="rs-more" id="more-10-1080-13662716-2026-2714309" hidden>
+      <div class="rs-abstract"><h4><span data-en="Abstract" data-es="Resumen">Abstract</span></h4><p>How does exposure to extreme weather events influence firms’ eco-innovation? Drawing on Construal Level Theory, we argue that extreme weather events collapse psychological distance, transforming abstract climate change into concrete operational reality through two pathways (direct managerial cognition and indirect shifts in regional environmental concern). Using causal mediation analysis with 8,366 Spanish firms (2008–2016), we decompose the association of extreme weather episodes with eco-innovation into direct and indirect pathways, finding that the direct pathway predominates over the indirect. This relationship is strongest among small, lower-rigidity firms. Their reaction to heat waves and dry spells is nearly twice the aggregate estimate, whereas medium and large firms show null responses. Sectoral heterogeneity reinforces this pattern; services respond through the indirect pathway, while agriculture and manufacturing respond through direct operational necessity. These findings indicate that low organisational rigidity, not mere physical exposure, shapes whether extreme weather events are associated with eco-innovation.</p></div><div class="rs-bib"><div class="rs-bib-head"><h4>BibTeX</h4><div class="rs-bib-actions"><button type="button" class="rs-btn rs-copy"><i class="far fa-copy" aria-hidden="true"></i> <span data-en="Copy" data-es="Copiar">Copy</span></button></div></div><pre class="rs-bib-code">@article{acebo2026extreme,
+  title   = {Extreme weather events and firms&#x27; eco-innovation: the role of psychological distance},
+  author  = {Acebo, Enrique and Miguel-Dávila, José-Ángel and Gutiérrez-Rodríguez, Lizbeth},
+  journal = {Industry and Innovation},
+  pages   = {1--22},
+  year    = {2026},
+  doi     = {10.1080/13662716.2026.2714309}
+}</pre></div><div class="rs-metrics"><h4><span data-en="Metrics" data-es="Métricas">Metrics</span></h4><div class="rs-badges"><a class="gs-badge" href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=7_JEALYAAAAJ&amp;pagesize=100&amp;citation_for_view=7_JEALYAAAAJ:4TOpqqG69KYC" target="_blank" rel="noopener" title="Google Scholar citations"><span class="gs-badge-label"><i class="fas fa-graduation-cap" aria-hidden="true"></i> GS</span><span class="gs-badge-count">0</span></a><span class="__dimensions_badge_embed__" data-doi="10.1080/13662716.2026.2714309" data-style="small_rectangle"></span><div class="altmetric-embed" data-badge-type="2" data-doi="10.1080/13662716.2026.2714309"></div></div></div>
+    </div>
+</article>
+<article class="rs-pub" data-type="article" data-year="2026" data-order="2" data-tags="policy-evaluation entrepreneurship strategy" data-doi="10.1016/j.jengtecman.2026.101990" data-cites="0" data-gs-id="YOwf2qJgpHMC">
+    <div class="rs-pub-row">
+      <div class="rs-pub-head"><span class="rs-type rs-type-article" data-en="Journal Article" data-es="Artículo">Journal Article</span><h3 class="rs-pub-title"><a href="https://doi.org/10.1016/j.jengtecman.2026.101990" target="_blank" rel="noopener">Entrepreneurial support organizations in the new space economy: Location, peers, and experience effects on startup performance</a></h3></div>
+      <div class="rs-pub-actions"><a class="rs-btn" href="documents/publications/10.1016-j.jengtecman.2026.101990.pdf" target="_blank"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</a><a class="rs-btn" href="https://doi.org/10.1016/j.jengtecman.2026.101990" target="_blank" rel="noopener"><svg class="rs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg> <span data-en="Publisher" data-es="Editorial">Publisher</span></a><a class="rs-cites" href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=7_JEALYAAAAJ&amp;pagesize=100&amp;citation_for_view=7_JEALYAAAAJ:YOwf2qJgpHMC" target="_blank" rel="noopener" title="Google Scholar citations" hidden><span class="rs-cites-n">0</span> <span data-en="citations" data-es="citas">citations</span></a><button type="button" class="rs-toggle" aria-expanded="false" aria-controls="more-10-1016-j-jengtecman-2026-101990" aria-label="Abstract, citation and metrics" title="Abstract, citation and metrics"><i class="fas fa-chevron-down" aria-hidden="true"></i></button></div>
+    </div>
+    <p class="rs-pub-meta"><span class="rs-authors">D. Hernando-Tomé, E. Acebo, J. Abad-González, J.-Á. Miguel-Dávila</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-venue"><em>Journal of Engineering and Technology Management</em>, 81, 101990, 2026</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-pub-tags"><span class="publication-tag" data-en="policy evaluation" data-es="evaluación de políticas">policy evaluation</span><span class="publication-tag" data-en="entrepreneurship" data-es="emprendimiento">entrepreneurship</span><span class="publication-tag" data-en="strategy" data-es="estrategia">strategy</span></span></p>
+    <div class="rs-more" id="more-10-1016-j-jengtecman-2026-101990" hidden>
+      <div class="rs-abstract"><h4><span data-en="Abstract" data-es="Resumen">Abstract</span></h4><p>Entrepreneurial support organizations (ESOs), such as incubators and accelerators, have rapidly become integral to modern entrepreneurial ecosystems. This study investigates how organizational and contextual factors affect the performance of technology startups accelerated under the European Space Agency’s BIC program from 2005 to 2025. Utilizing negative binomial regression models on a dataset of 1326 European New Space startups, we examine the roles of ESO geographical location, cohort density, and institutional experience in shaping startup outcomes. Our findings indicate that: ESO geographical location significantly shapes startup employment size; accumulated ESO institutional experience is a robust predictor of startup employment growth; and cohort characteristics show secondary effects. Grounded in the Resource-Based View, these insights enhance our understanding of the value and effectiveness of ESOs in technology-intensive sectors, particularly the New Space industry.</p></div><div class="rs-bib"><div class="rs-bib-head"><h4>BibTeX</h4><div class="rs-bib-actions"><button type="button" class="rs-btn rs-copy"><i class="far fa-copy" aria-hidden="true"></i> <span data-en="Copy" data-es="Copiar">Copy</span></button></div></div><pre class="rs-bib-code">@article{hernando2026entrepreneurial,
+  title   = {Entrepreneurial support organizations in the new space economy: Location, peers, and experience effects on startup performance},
+  author  = {Hernando-Tomé, David and Acebo, Enrique and Abad-González, Julio and Miguel-Dávila, José-Ángel},
+  journal = {Journal of Engineering and Technology Management},
+  volume  = {81},
+  pages   = {101990},
+  year    = {2026},
+  doi     = {10.1016/j.jengtecman.2026.101990}
+}</pre></div><div class="rs-metrics"><h4><span data-en="Metrics" data-es="Métricas">Metrics</span></h4><div class="rs-badges"><a class="gs-badge" href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=7_JEALYAAAAJ&amp;pagesize=100&amp;citation_for_view=7_JEALYAAAAJ:YOwf2qJgpHMC" target="_blank" rel="noopener" title="Google Scholar citations"><span class="gs-badge-label"><i class="fas fa-graduation-cap" aria-hidden="true"></i> GS</span><span class="gs-badge-count">0</span></a><span class="__dimensions_badge_embed__" data-doi="10.1016/j.jengtecman.2026.101990" data-style="small_rectangle"></span><div class="altmetric-embed" data-badge-type="2" data-doi="10.1016/j.jengtecman.2026.101990"></div></div></div>
+    </div>
+</article>
+<article class="rs-pub" data-type="article" data-year="2026" data-order="3" data-tags="policy-evaluation entrepreneurship data" data-doi="10.1108/mrjiam-10-2025-1832" data-cites="0" data-gs-id="Zph67rFs4hoC">
+    <div class="rs-pub-row">
+      <div class="rs-pub-head"><span class="rs-type rs-type-article" data-en="Journal Article" data-es="Artículo">Journal Article</span><span class="rs-status" data-en="In press" data-es="En prensa">In press</span><h3 class="rs-pub-title"><a href="https://doi.org/10.1108/MRJIAM-10-2025-1832" target="_blank" rel="noopener">Effectiveness of government entrepreneurial support on start-ups: a supply chain economy perspective</a></h3></div>
+      <div class="rs-pub-actions"><a class="rs-btn" href="documents/publications/10.1108-MRJIAM-10-2025-1832.pdf" target="_blank"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</a><a class="rs-btn" href="https://doi.org/10.1108/MRJIAM-10-2025-1832" target="_blank" rel="noopener"><svg class="rs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg> <span data-en="Publisher" data-es="Editorial">Publisher</span></a><a class="rs-btn" href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/YZMLCO" target="_blank" rel="noopener"><i class="fas fa-database" aria-hidden="true"></i> <span data-en="Data" data-es="Datos">Data</span></a><a class="rs-cites" href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=7_JEALYAAAAJ&amp;pagesize=100&amp;citation_for_view=7_JEALYAAAAJ:Zph67rFs4hoC" target="_blank" rel="noopener" title="Google Scholar citations" hidden><span class="rs-cites-n">0</span> <span data-en="citations" data-es="citas">citations</span></a><button type="button" class="rs-toggle" aria-expanded="false" aria-controls="more-10-1108-mrjiam-10-2025-1832" aria-label="Abstract, citation and metrics" title="Abstract, citation and metrics"><i class="fas fa-chevron-down" aria-hidden="true"></i></button></div>
+    </div>
+    <p class="rs-pub-meta"><span class="rs-authors">E. Acebo, J.-Á. Miguel-Dávila, L. Gutiérrez-Rodríguez, L. Baratas González</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-venue"><em>Management Research</em>, 2026</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-pub-tags"><span class="publication-tag" data-en="policy evaluation" data-es="evaluación de políticas">policy evaluation</span><span class="publication-tag" data-en="entrepreneurship" data-es="emprendimiento">entrepreneurship</span><span class="publication-tag" data-en="open data" data-es="datos abiertos">open data</span></span></p>
+    <div class="rs-more" id="more-10-1108-mrjiam-10-2025-1832" hidden>
+      <div class="rs-abstract"><h4><span data-en="Abstract" data-es="Resumen">Abstract</span></h4><p>Purpose: This study aims to analyse the heterogeneous effectiveness of government entrepreneurial support on start-ups by differentiating between two industry types, the supply chain (SC) economy, which supplies goods and services to other businesses, and the business-to-consumer economy (B2C), which serves final consumers.</p><p>Design/methodology/approach: The authors examine 1,956 start-ups that received participative loans from the Spanish governmental agency ENISA between 2014 and 2019. Using a difference-in-differences approach with the Callaway and Sant’Anna estimator, the authors estimate the heterogeneous effects on turnover and employment growth across SC and B2C categories and their subcategories (SC Local, SC Traded, B2C Local, B2C Traded).</p><p>Findings: SC start-ups experience a significant 29.2% increase in turnover alongside a significant 25.2% decline in employment; B2C start-ups show no significant effects on either outcome. Within subcategories, SC Traded industries drive the positive turnover result (31.9% increase). Event-study analysis confirms that effects emerge at loan receipt and remain positive one year after treatment, with no pre-treatment differences, and survival analysis shows no differential firm exit across sectors.</p><p>Practical implications: Public support programmes for start-ups should account for sectoral heterogeneity. Policymakers can use the SC/B2C framework as a tractable criterion to target resources towards the SC economy, where participative loans yield the largest marginal effect. Managers of B2B start-ups can interpret participative loans as an instrument that relaxes binding financial constraints and enables productivity-enhancing investments.</p><p>Originality/value: This study moves beyond traditional high-tech vs non-high-tech classifications, offering a novel framework for evaluating public entrepreneurial finance. The findings indicate that start-ups in the SC economy, particularly those serving traded markets, are more responsive to public financial support, offering new evidence for policymakers designing industry-sensitive support programmes.</p></div><div class="rs-bib"><div class="rs-bib-head"><h4>BibTeX</h4><div class="rs-bib-actions"><button type="button" class="rs-btn rs-copy"><i class="far fa-copy" aria-hidden="true"></i> <span data-en="Copy" data-es="Copiar">Copy</span></button></div></div><pre class="rs-bib-code">@article{acebo2026effectiveness,
+  title   = {Effectiveness of government entrepreneurial support on start-ups: a supply chain economy perspective},
+  author  = {Acebo, Enrique and Miguel-Dávila, José-Ángel and Gutiérrez-Rodríguez, Lizbeth and Baratas González, Luis},
+  journal = {Management Research: Journal of the Iberoamerican Academy of Management},
+  pages   = {1--18},
+  year    = {2026},
+  doi     = {10.1108/MRJIAM-10-2025-1832}
+}</pre></div><div class="rs-metrics"><h4><span data-en="Metrics" data-es="Métricas">Metrics</span></h4><div class="rs-badges"><a class="gs-badge" href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=7_JEALYAAAAJ&amp;pagesize=100&amp;citation_for_view=7_JEALYAAAAJ:Zph67rFs4hoC" target="_blank" rel="noopener" title="Google Scholar citations"><span class="gs-badge-label"><i class="fas fa-graduation-cap" aria-hidden="true"></i> GS</span><span class="gs-badge-count">0</span></a><span class="__dimensions_badge_embed__" data-doi="10.1108/MRJIAM-10-2025-1832" data-style="small_rectangle"></span><div class="altmetric-embed" data-badge-type="2" data-doi="10.1108/MRJIAM-10-2025-1832"></div></div></div>
+    </div>
+</article>
+<article class="rs-pub" data-type="article" data-year="2026" data-order="4" data-tags="policy-evaluation strategy data" data-doi="10.1016/j.econmod.2025.107366" data-cites="4" data-gs-id="MXK_kJrjxJIC">
+    <div class="rs-pub-row">
+      <div class="rs-pub-head"><span class="rs-type rs-type-article" data-en="Journal Article" data-es="Artículo">Journal Article</span><h3 class="rs-pub-title"><a href="https://doi.org/10.1016/j.econmod.2025.107366" target="_blank" rel="noopener">Lazarus, come forth! Public loan guarantees and the recovery of zombie firms</a></h3></div>
+      <div class="rs-pub-actions"><a class="rs-btn" href="documents/publications/10.1016-j.econmod.2025.107366.pdf" target="_blank"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</a><a class="rs-btn" href="https://doi.org/10.1016/j.econmod.2025.107366" target="_blank" rel="noopener"><svg class="rs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg> <span data-en="Publisher" data-es="Editorial">Publisher</span></a><a class="rs-btn" href="https://data.mendeley.com/datasets/kv78gfs9ny/2" target="_blank" rel="noopener"><i class="fas fa-database" aria-hidden="true"></i> <span data-en="Data" data-es="Datos">Data</span></a><a class="rs-cites" href="https://scholar.google.com/scholar?oi=bibs&amp;hl=en&amp;cites=14223493489687915757" target="_blank" rel="noopener" title="Google Scholar citations"><span class="rs-cites-n">4</span> <span data-en="citations" data-es="citas">citations</span></a><button type="button" class="rs-toggle" aria-expanded="false" aria-controls="more-10-1016-j-econmod-2025-107366" aria-label="Abstract, citation and metrics" title="Abstract, citation and metrics"><i class="fas fa-chevron-down" aria-hidden="true"></i></button></div>
+    </div>
+    <p class="rs-pub-meta"><span class="rs-authors">E. Acebo, C. Gutiérrez-López, J. Abad-González, J.-Á. Miguel-Dávila</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-venue"><em>Economic Modelling</em>, 154, 107366, 2026</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-pub-tags"><span class="publication-tag" data-en="policy evaluation" data-es="evaluación de políticas">policy evaluation</span><span class="publication-tag" data-en="strategy" data-es="estrategia">strategy</span><span class="publication-tag" data-en="open data" data-es="datos abiertos">open data</span></span></p>
+    <div class="rs-more" id="more-10-1016-j-econmod-2025-107366" hidden>
+      <div class="rs-abstract"><h4><span data-en="Abstract" data-es="Resumen">Abstract</span></h4><p>Can government support really contribute to the recovery of failing businesses? We studied whether financially struggling &quot;zombie&quot; firms benefited more from emergency loans during covid-19 than healthy companies. Analysing 181,526 Spanish micro, small and medium enterprises that received government-backed loans versus 220,179 that did not, we tracked their performance over five years employing a difference-in-differences methodology. Contrary to fears about public resources misallocation, we find that emergency support (through Public Loan Guarantees) effectively revived distressed companies, especially small ones, which recovered notably better than healthy counterparts, achieving 80% higher revenue growth and 30% greater employment increases. Most remarkably, 53% of small zombie firms fully recovered within two years. These findings suggest that targeted government intervention during crises can successfully rehabilitate struggling businesses, providing a roadmap for designing more effective economic rescue policies in future emergencies.</p></div><div class="rs-bib"><div class="rs-bib-head"><h4>BibTeX</h4><div class="rs-bib-actions"><button type="button" class="rs-btn rs-copy"><i class="far fa-copy" aria-hidden="true"></i> <span data-en="Copy" data-es="Copiar">Copy</span></button></div></div><pre class="rs-bib-code">@article{acebo2026lazarus,
+  title   = {Lazarus, come forth! Public loan guarantees and the recovery of zombie firms},
+  author  = {Acebo, Enrique and Gutiérrez-López, Cristina and Abad-González, Julio and Miguel-Dávila, José-Ángel},
+  journal = {Economic Modelling},
+  volume  = {154},
+  pages   = {107366},
+  year    = {2026},
+  doi     = {10.1016/j.econmod.2025.107366}
+}</pre></div><div class="rs-metrics"><h4><span data-en="Metrics" data-es="Métricas">Metrics</span></h4><div class="rs-badges"><a class="gs-badge" href="https://scholar.google.com/scholar?oi=bibs&amp;hl=en&amp;cites=14223493489687915757" target="_blank" rel="noopener" title="Google Scholar citations"><span class="gs-badge-label"><i class="fas fa-graduation-cap" aria-hidden="true"></i> GS</span><span class="gs-badge-count">4</span></a><span class="__dimensions_badge_embed__" data-doi="10.1016/j.econmod.2025.107366" data-style="small_rectangle"></span><div class="altmetric-embed" data-badge-type="2" data-doi="10.1016/j.econmod.2025.107366"></div><span class="rs-plumx"><a class="gs-badge px-badge" data-plumx-doi="10.17632/kv78gfs9ny" href="https://plu.mx/plum/a/?doi=10.17632%2Fkv78gfs9ny" target="_blank" rel="noopener" title="PlumX usage: 219 views, 94 downloads"><span class="gs-badge-label"><svg class="px-icon" viewBox="20 18 70 64" aria-hidden="true" focusable="false"><path d="M 42.03,36.08 C 52.31,47.24 48.09,53.05 34.29,46.72 L 34.29,53.28 C 48.09,46.95 52.31,52.76 42.03,63.92 L 48.26,65.95 C 46.51,50.87 53.34,48.65 60.78,61.88 L 64.63,56.58 C 49.75,53.59 49.58,44.06 74.32,45.79 L 61.52,28.17 C 55.52,52.23 46.51,49.13 48.26,34.05 Z" fill="#6e1a62" stroke="#6e1a62" stroke-width="0.5"/><circle cx="44.44" cy="32.88" r="4" fill="#6e1a62"/><circle cx="32" cy="50" r="4" fill="#6e1a62"/><circle cx="44.44" cy="67.12" r="4" fill="#6e1a62"/><circle cx="64.56" cy="60.58" r="4" fill="#6e1a62"/><circle cx="74.09" cy="32.5" r="13.29" fill="#6dd54d" stroke="#6e1a62" stroke-width="0.5"/></svg> PlumX</span><span class="gs-badge-count">313</span></a></span></div></div>
+    </div>
+</article>
+<article class="rs-pub" data-type="working" data-year="2026" data-order="5" data-tags="strategy">
+    <div class="rs-pub-row">
+      <div class="rs-pub-head"><span class="rs-type rs-type-working" data-en="Working Paper" data-es="Documento de Trabajo">Working Paper</span><h3 class="rs-pub-title">Does Political Misalignment Cost CEOs Their Jobs? Evidence from S&amp;P 1500 Firms, 1996–2022</h3></div>
+      <div class="rs-pub-actions"></div>
+    </div>
+    <p class="rs-pub-meta"><span class="rs-authors">P. Doucet, E. Acebo</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-year">2026</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-pub-tags"><span class="publication-tag" data-en="strategy" data-es="estrategia">strategy</span></span></p>
+</article>
+<article class="rs-pub" data-type="chapter" data-year="2025" data-order="6" data-tags="innovation" data-doi="10.1007/978-981-96-8101-3_6" data-cites="0" data-gs-id="3fE2CSJIrl8C">
+    <div class="rs-pub-row">
+      <div class="rs-pub-head"><span class="rs-type rs-type-chapter" data-en="Book Chapter" data-es="Capítulo de Libro">Book Chapter</span><h3 class="rs-pub-title"><a href="https://doi.org/10.1007/978-981-96-8101-3_6" target="_blank" rel="noopener">An Agile Inflatable-Structure Airship for Air Freight: The iRPAS Project</a></h3></div>
+      <div class="rs-pub-actions"><a class="rs-btn" href="https://doi.org/10.1007/978-981-96-8101-3_6" target="_blank" rel="noopener"><svg class="rs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg> <span data-en="Publisher" data-es="Editorial">Publisher</span></a><a class="rs-cites" href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=7_JEALYAAAAJ&amp;pagesize=100&amp;citation_for_view=7_JEALYAAAAJ:3fE2CSJIrl8C" target="_blank" rel="noopener" title="Google Scholar citations" hidden><span class="rs-cites-n">0</span> <span data-en="citations" data-es="citas">citations</span></a><button type="button" class="rs-toggle" aria-expanded="false" aria-controls="more-10-1007-978-981-96-8101-3-6" aria-label="Citation and metrics" title="Citation and metrics"><i class="fas fa-chevron-down" aria-hidden="true"></i></button></div>
+    </div>
+    <p class="rs-pub-meta"><span class="rs-authors">J. Gonzalo de Grado, D. Domínguez, D. López, A. García-Gutiérrez, I. Ubero, E. Acebo, B. Straeter</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-venue"><em>Lighter Than Air Systems</em>, 2025</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-pub-tags"><span class="publication-tag" data-en="innovation" data-es="innovación">innovation</span></span></p>
+    <div class="rs-more" id="more-10-1007-978-981-96-8101-3-6" hidden>
+      <div class="rs-bib"><div class="rs-bib-head"><h4>BibTeX</h4><div class="rs-bib-actions"><button type="button" class="rs-btn rs-copy"><i class="far fa-copy" aria-hidden="true"></i> <span data-en="Copy" data-es="Copiar">Copy</span></button></div></div><pre class="rs-bib-code">@incollection{gonzalo2025agile,
+  title     = {An Agile Inflatable-Structure Airship for Air Freight: The iRPAS Project},
+  author    = {Gonzalo, Jesús and Domínguez, Diego and López, Deibi and García-Gutiérrez, Adrián and Ubero, Iván and Acebo, Enrique and Straeter, Bernd},
+  booktitle = {Lighter Than Air Systems},
+  publisher = {Springer Nature Singapore},
+  pages     = {73--87},
+  year      = {2025},
+  doi       = {10.1007/978-981-96-8101-3_6}
+}</pre></div><div class="rs-metrics"><h4><span data-en="Metrics" data-es="Métricas">Metrics</span></h4><div class="rs-badges"><a class="gs-badge" href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=7_JEALYAAAAJ&amp;pagesize=100&amp;citation_for_view=7_JEALYAAAAJ:3fE2CSJIrl8C" target="_blank" rel="noopener" title="Google Scholar citations"><span class="gs-badge-label"><i class="fas fa-graduation-cap" aria-hidden="true"></i> GS</span><span class="gs-badge-count">0</span></a><span class="__dimensions_badge_embed__" data-doi="10.1007/978-981-96-8101-3_6" data-style="small_rectangle"></span><div class="altmetric-embed" data-badge-type="2" data-doi="10.1007/978-981-96-8101-3_6"></div></div></div>
+    </div>
+</article>
+<article class="rs-pub" data-type="article" data-year="2024" data-order="7" data-tags="policy-evaluation innovation" data-doi="10.1093/scipol/scad057" data-cites="22" data-gs-id="ufrVoPGSRksC">
+    <div class="rs-pub-row">
+      <div class="rs-pub-head"><span class="rs-type rs-type-article" data-en="Journal Article" data-es="Artículo">Journal Article</span><h3 class="rs-pub-title"><a href="https://doi.org/10.1093/scipol/scad057" target="_blank" rel="noopener">Multilevel Innovation Policy Mix: Impact of Regional, National and European R&amp;D grants</a></h3></div>
+      <div class="rs-pub-actions"><a class="rs-btn" href="documents/publications/10.1093-scipol-scad057.pdf" target="_blank"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</a><a class="rs-btn" href="https://doi.org/10.1093/scipol/scad057" target="_blank" rel="noopener"><svg class="rs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg> <span data-en="Publisher" data-es="Editorial">Publisher</span></a><a class="rs-cites" href="https://scholar.google.com/scholar?oi=bibs&amp;hl=en&amp;cites=13461325311035780845" target="_blank" rel="noopener" title="Google Scholar citations"><span class="rs-cites-n">22</span> <span data-en="citations" data-es="citas">citations</span></a><button type="button" class="rs-toggle" aria-expanded="false" aria-controls="more-10-1093-scipol-scad057" aria-label="Abstract, citation and metrics" title="Abstract, citation and metrics"><i class="fas fa-chevron-down" aria-hidden="true"></i></button></div>
+    </div>
+    <p class="rs-pub-meta"><span class="rs-authors">E. Acebo, J.-Á. Miguel-Dávila</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-venue"><em>Science and Public Policy</em>, 51(2), 218–235, 2024</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-pub-tags"><span class="publication-tag" data-en="policy evaluation" data-es="evaluación de políticas">policy evaluation</span><span class="publication-tag" data-en="innovation" data-es="innovación">innovation</span></span></p>
+    <div class="rs-more" id="more-10-1093-scipol-scad057" hidden>
+      <div class="rs-abstract"><h4><span data-en="Abstract" data-es="Resumen">Abstract</span></h4><p>Research and Development (R&amp;D) grants are one of the most commonly employed programmes by regional, national, and European governments to promote innovation at the firm level. This study contributes to the existing literature on innovation policy mix by investigating whether combinations of the three funding sources can yield positive effects on various measurements of innovation outcomes. Using a panel of 10,045 Spanish firms from 2004 to 2016 and a flexible conditional difference-in-differences approach, our findings reveal that R&amp;D grants funded by European sources exert the most substantial positive impact on firms’ product and process innovations. Conversely, national funding demonstrates this impact on new-to-market innovations and patent applications. Notably, the positive effect on innovation outcomes is evident only when considering the combination of all three distinct funding schemes and the amalgamation of regional and national R&amp;D grants. These results reject the possibility of substitutive effects among different funding schemes, particularly between regional and national institutions.</p></div><div class="rs-bib"><div class="rs-bib-head"><h4>BibTeX</h4><div class="rs-bib-actions"><button type="button" class="rs-btn rs-copy"><i class="far fa-copy" aria-hidden="true"></i> <span data-en="Copy" data-es="Copiar">Copy</span></button></div></div><pre class="rs-bib-code">@article{acebo2024multilevel,
+  title   = {Multilevel Innovation Policy Mix: Impact of Regional, National and European R&amp;D grants},
+  author  = {Acebo, Enrique and Miguel-Dávila, José-Ángel},
+  journal = {Science and Public Policy},
+  volume  = {51},
+  number  = {2},
+  pages   = {218--235},
+  year    = {2024},
+  doi     = {10.1093/scipol/scad057}
+}</pre></div><div class="rs-metrics"><h4><span data-en="Metrics" data-es="Métricas">Metrics</span></h4><div class="rs-badges"><a class="gs-badge" href="https://scholar.google.com/scholar?oi=bibs&amp;hl=en&amp;cites=13461325311035780845" target="_blank" rel="noopener" title="Google Scholar citations"><span class="gs-badge-label"><i class="fas fa-graduation-cap" aria-hidden="true"></i> GS</span><span class="gs-badge-count">22</span></a><span class="__dimensions_badge_embed__" data-doi="10.1093/scipol/scad057" data-style="small_rectangle"></span><div class="altmetric-embed" data-badge-type="2" data-doi="10.1093/scipol/scad057"></div></div></div>
+    </div>
+</article>
+<article class="rs-pub" data-type="article" data-year="2024" data-order="8" data-tags="innovation strategy" data-doi="10.1080/13662716.2024.2420776" data-cites="0" data-gs-id="_FxGoFyzp5QC">
+    <div class="rs-pub-row">
+      <div class="rs-pub-head"><span class="rs-type rs-type-article" data-en="Journal Article" data-es="Artículo">Journal Article</span><h3 class="rs-pub-title"><a href="https://doi.org/10.1080/13662716.2024.2420776" target="_blank" rel="noopener">Exploring the foundations of &#x27;The architecture of innovation: how firms configure different types of complementarities in emerging ecosystems&#x27;</a></h3></div>
+      <div class="rs-pub-actions"><a class="rs-btn" href="https://doi.org/10.1080/13662716.2024.2420776" target="_blank" rel="noopener"><svg class="rs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg> <span data-en="Publisher" data-es="Editorial">Publisher</span></a><a class="rs-cites" href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=7_JEALYAAAAJ&amp;pagesize=100&amp;citation_for_view=7_JEALYAAAAJ:_FxGoFyzp5QC" target="_blank" rel="noopener" title="Google Scholar citations" hidden><span class="rs-cites-n">0</span> <span data-en="citations" data-es="citas">citations</span></a><button type="button" class="rs-toggle" aria-expanded="false" aria-controls="more-10-1080-13662716-2024-2420776" aria-label="Abstract, citation and metrics" title="Abstract, citation and metrics"><i class="fas fa-chevron-down" aria-hidden="true"></i></button></div>
+    </div>
+    <p class="rs-pub-meta"><span class="rs-authors">E. Acebo</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-venue"><em>Industry and Innovation</em>, 31(10), 1235–1239, 2024</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-pub-tags"><span class="publication-tag" data-en="innovation" data-es="innovación">innovation</span><span class="publication-tag" data-en="strategy" data-es="estrategia">strategy</span></span></p>
+    <div class="rs-more" id="more-10-1080-13662716-2024-2420776" hidden>
+      <div class="rs-abstract"><h4><span data-en="Abstract" data-es="Resumen">Abstract</span></h4><p>In this interview article, we explore the research journey of Bernhard Lingens, Veronika Seeholzer, and Oliver Gassmann, whose work on ‘The architecture of innovation: how firms configure different types of complementarities in emerging ecosystems’ earned them the 2024 Industry and Innovation Best Paper Award. This study stands out for its significant contribution to understanding the complexities of ecosystem management, offering valuable insights into how firms strategically navigate complementarities to foster innovation. The interview delves into the motivations behind their research, revealing the driving questions that led them to explore this under-researched area. The authors discuss their findings, particularly how the initial configuration of complementarities can dictate the developmental trajectory of an ecosystem, making these early decisions crucial for long-term success. They also share the practical implications of their work, emphasising its relevance for today’s fast-paced business environment, where firms must adapt quickly to remain competitive. The authors candidly discuss the challenges they encountered during the research and writing process, including the difficulties of translating practitioner-focused insights into academic discourse. They reflect on the importance of generating actionable knowledge that can be directly applied to management practice, highlighting the path-dependent nature of ecosystem development and the vital role of initial strategic decisions. This interview not only underscores the distinctive aspects of their award-winning paper but also offers valuable guidance for young researchers aspiring to make a meaningful impact in the fields of management and innovation studies, ensuring their work remains relevant and practically applicable.</p></div><div class="rs-bib"><div class="rs-bib-head"><h4>BibTeX</h4><div class="rs-bib-actions"><button type="button" class="rs-btn rs-copy"><i class="far fa-copy" aria-hidden="true"></i> <span data-en="Copy" data-es="Copiar">Copy</span></button></div></div><pre class="rs-bib-code">@article{acebo2024exploring,
+  title   = {Exploring the foundations of &#x27;The architecture of innovation: how firms configure different types of complementarities in emerging ecosystems&#x27;},
+  author  = {Acebo, Enrique},
+  journal = {Industry and Innovation},
+  volume  = {31},
+  number  = {10},
+  pages   = {1235--1239},
+  year    = {2024},
+  doi     = {10.1080/13662716.2024.2420776}
+}</pre></div><div class="rs-metrics"><h4><span data-en="Metrics" data-es="Métricas">Metrics</span></h4><div class="rs-badges"><a class="gs-badge" href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=7_JEALYAAAAJ&amp;pagesize=100&amp;citation_for_view=7_JEALYAAAAJ:_FxGoFyzp5QC" target="_blank" rel="noopener" title="Google Scholar citations"><span class="gs-badge-label"><i class="fas fa-graduation-cap" aria-hidden="true"></i> GS</span><span class="gs-badge-count">0</span></a><span class="__dimensions_badge_embed__" data-doi="10.1080/13662716.2024.2420776" data-style="small_rectangle"></span><div class="altmetric-embed" data-badge-type="2" data-doi="10.1080/13662716.2024.2420776"></div></div></div>
+    </div>
+</article>
+<article class="rs-pub" data-type="article" data-year="2022" data-order="9" data-tags="policy-evaluation innovation" data-doi="10.1108/ejim-07-2020-0286" data-cites="37" data-gs-id="UeHWp8X0CEIC">
+    <div class="rs-pub-row">
+      <div class="rs-pub-head"><span class="rs-type rs-type-article" data-en="Journal Article" data-es="Artículo">Journal Article</span><h3 class="rs-pub-title"><a href="https://doi.org/10.1108/EJIM-07-2020-0286" target="_blank" rel="noopener">Do financial constraints moderate the relationship between innovation subsidies and firms&#x27; R&amp;D investment?</a></h3></div>
+      <div class="rs-pub-actions"><a class="rs-btn" href="documents/publications/10.1108-EJIM-07-2020-0286.pdf" target="_blank"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</a><a class="rs-btn" href="https://doi.org/10.1108/EJIM-07-2020-0286" target="_blank" rel="noopener"><svg class="rs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg> <span data-en="Publisher" data-es="Editorial">Publisher</span></a><a class="rs-cites" href="https://scholar.google.com/scholar?oi=bibs&amp;hl=en&amp;cites=5134168052000158707" target="_blank" rel="noopener" title="Google Scholar citations"><span class="rs-cites-n">37</span> <span data-en="citations" data-es="citas">citations</span></a><button type="button" class="rs-toggle" aria-expanded="false" aria-controls="more-10-1108-ejim-07-2020-0286" aria-label="Abstract, citation and metrics" title="Abstract, citation and metrics"><i class="fas fa-chevron-down" aria-hidden="true"></i></button></div>
+    </div>
+    <p class="rs-pub-meta"><span class="rs-authors">E. Acebo, J.-Á. Miguel-Dávila, M. Nieto</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-venue"><em>European Journal of Innovation Management</em>, 25(2), 347–364, 2022</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-pub-tags"><span class="publication-tag" data-en="policy evaluation" data-es="evaluación de políticas">policy evaluation</span><span class="publication-tag" data-en="innovation" data-es="innovación">innovation</span></span></p>
+    <div class="rs-more" id="more-10-1108-ejim-07-2020-0286" hidden>
+      <div class="rs-abstract"><h4><span data-en="Abstract" data-es="Resumen">Abstract</span></h4><p>Purpose: The purpose of this paper is to analyse whether the effect of innovation subsidies on firms&#x27; R&amp;D investment varies depending on whether the firm is suffering from financial constraints.</p><p>Design/methodology/approach: To address this analysis, the authors provide a theoretical model and test their hypothesis using an econometric analysis of an unbalanced panel of 3,865 innovative Spanish firms during 2010–2017. They employ the SABI database to obtain firms&#x27; financial and economic data and incorporate firms&#x27; MORE financial rating. Specifically, the authors use the GMM-SYS technique to regress and measure the marginal effects of innovation subsidies size on firms&#x27; R&amp;D investment and the influence of firms&#x27; financial constraints.</p><p>Findings: The results of this work indicate that financial constraints negatively moderate the effect of subsidies on R&amp;D investment; that is, those firms that receive a subsidy and suffer financial constraints invest less in R&amp;D projects than those which also receive the subsidy and do not suffer financial constraints. Besides, this work found that innovation subsidies alone do not significantly increase firms&#x27; R&amp;D investment.</p><p>Originality/value: From a neoclassical point of view, the existence of financial constraints is the justification of public innovation policies. However, due to the difficulty of measuring financial constraints, innovation literature has abandoned the analysis of this crucial variable. This work reintroduces this vital variable and analyses how it interacts with innovation subsidies on firms&#x27; R&amp;D investment.</p></div><div class="rs-bib"><div class="rs-bib-head"><h4>BibTeX</h4><div class="rs-bib-actions"><button type="button" class="rs-btn rs-copy"><i class="far fa-copy" aria-hidden="true"></i> <span data-en="Copy" data-es="Copiar">Copy</span></button></div></div><pre class="rs-bib-code">@article{acebo2022financial,
+  title   = {Do financial constraints moderate the relationship between innovation subsidies and firms&#x27; R&amp;D investment?},
+  author  = {Acebo, Enrique and Miguel-Dávila, José-Ángel and Nieto, Mariano},
+  journal = {European Journal of Innovation Management},
+  volume  = {25},
+  number  = {2},
+  pages   = {347--364},
+  year    = {2022},
+  doi     = {10.1108/EJIM-07-2020-0286}
+}</pre></div><div class="rs-metrics"><h4><span data-en="Metrics" data-es="Métricas">Metrics</span></h4><div class="rs-badges"><a class="gs-badge" href="https://scholar.google.com/scholar?oi=bibs&amp;hl=en&amp;cites=5134168052000158707" target="_blank" rel="noopener" title="Google Scholar citations"><span class="gs-badge-label"><i class="fas fa-graduation-cap" aria-hidden="true"></i> GS</span><span class="gs-badge-count">37</span></a><span class="__dimensions_badge_embed__" data-doi="10.1108/EJIM-07-2020-0286" data-style="small_rectangle"></span><div class="altmetric-embed" data-badge-type="2" data-doi="10.1108/EJIM-07-2020-0286"></div></div></div>
+    </div>
+</article>
+<article class="rs-pub" data-type="article" data-year="2021" data-order="10" data-tags="innovation strategy" data-doi="10.1002/bse.2770" data-cites="130" data-gs-id="IjCSPb-OGe4C">
+    <div class="rs-pub-row">
+      <div class="rs-pub-head"><span class="rs-type rs-type-article" data-en="Journal Article" data-es="Artículo">Journal Article</span><h3 class="rs-pub-title"><a href="https://doi.org/10.1002/bse.2770" target="_blank" rel="noopener">External stakeholder engagement: Complementary and substitutive effects on firms&#x27; eco-innovation</a></h3></div>
+      <div class="rs-pub-actions"><a class="rs-btn" href="documents/publications/10.1002-bse.2770.pdf" target="_blank"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</a><a class="rs-btn" href="https://doi.org/10.1002/bse.2770" target="_blank" rel="noopener"><svg class="rs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg> <span data-en="Publisher" data-es="Editorial">Publisher</span></a><a class="rs-cites" href="https://scholar.google.com/scholar?oi=bibs&amp;hl=en&amp;cites=12149959660936486320" target="_blank" rel="noopener" title="Google Scholar citations"><span class="rs-cites-n">130</span> <span data-en="citations" data-es="citas">citations</span></a><button type="button" class="rs-toggle" aria-expanded="false" aria-controls="more-10-1002-bse-2770" aria-label="Abstract, citation and metrics" title="Abstract, citation and metrics"><i class="fas fa-chevron-down" aria-hidden="true"></i></button></div>
+    </div>
+    <p class="rs-pub-meta"><span class="rs-authors">E. Acebo, J.-Á. Miguel-Dávila, M. Nieto</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-venue"><em>Business Strategy and the Environment</em>, 30(5), 2671–2687, 2021</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-pub-tags"><span class="publication-tag" data-en="innovation" data-es="innovación">innovation</span><span class="publication-tag" data-en="strategy" data-es="estrategia">strategy</span></span></p>
+    <div class="rs-more" id="more-10-1002-bse-2770" hidden>
+      <div class="rs-abstract"><h4><span data-en="Abstract" data-es="Resumen">Abstract</span></h4><p>In this paper, we investigate whether firms&#x27; engagements in collaboration agreements with different types of external stakeholders produce complementary effects on the likelihood of eco‐innovation. Although collaboration network and open eco‐innovation theories affirm that the combination of external partners such as scientific partners, suppliers and customers produces complementary effects on the firm&#x27;s likelihood of eco‐innovation, several empirical studies found the existence of substitutive effects between them. To bridge this gap in the literature, we shape the nature of the interaction between different external partners, analysing an unbalanced panel sample of 10,918 innovative Spanish firms, covering the period 2008–2016. Consequently, we can show how firms benefit the most from collaboration with external partners. Our results show that firms that simultaneously collaborate with scientific partners, suppliers and customers generate partial complementary effects, which increase the firm&#x27;s likelihood to eco‐innovate the most, and that the combination of customer‐collaboration with scientific partners, or supplier‐collaboration, produces partial substitutive effects. Taking this in account, our results also confirm that engaging with scientific partners, suppliers or customers, independent of one another, increases firms&#x27; likelihood of eco‐innovation more than noncollaboration. These results have important implications for managers, researchers and policy designers. For managers, this study provides a correct understanding of the benefits that they can expect to obtain from multi‐partner external collaboration. For researchers, it introduces the marginal analysis to estimate interaction on nonlinear models. Finally, for policy designers, it shows the need for sponsored R&amp;D collaboration to encourage coordinated ecosystems in which sustainability goals are pursued together.</p></div><div class="rs-bib"><div class="rs-bib-head"><h4>BibTeX</h4><div class="rs-bib-actions"><button type="button" class="rs-btn rs-copy"><i class="far fa-copy" aria-hidden="true"></i> <span data-en="Copy" data-es="Copiar">Copy</span></button></div></div><pre class="rs-bib-code">@article{acebo2021external,
+  title   = {External stakeholder engagement: Complementary and substitutive effects on firms&#x27; eco-innovation},
+  author  = {Acebo, Enrique and Miguel-Dávila, José-Ángel and Nieto, Mariano},
+  journal = {Business Strategy and the Environment},
+  volume  = {30},
+  number  = {5},
+  pages   = {2671--2687},
+  year    = {2021},
+  doi     = {10.1002/bse.2770}
+}</pre></div><div class="rs-metrics"><h4><span data-en="Metrics" data-es="Métricas">Metrics</span></h4><div class="rs-badges"><a class="gs-badge" href="https://scholar.google.com/scholar?oi=bibs&amp;hl=en&amp;cites=12149959660936486320" target="_blank" rel="noopener" title="Google Scholar citations"><span class="gs-badge-label"><i class="fas fa-graduation-cap" aria-hidden="true"></i> GS</span><span class="gs-badge-count">130</span></a><span class="__dimensions_badge_embed__" data-doi="10.1002/bse.2770" data-style="small_rectangle"></span><div class="altmetric-embed" data-badge-type="2" data-doi="10.1002/bse.2770"></div></div></div>
+    </div>
+</article>
+<article class="rs-pub" data-type="article" data-year="2021" data-order="11" data-tags="innovation strategy" data-doi="10.1093/scipol/scab025" data-cites="21" data-gs-id="Tyk-4Ss8FVUC">
+    <div class="rs-pub-row">
+      <div class="rs-pub-head"><span class="rs-type rs-type-article" data-en="Journal Article" data-es="Artículo">Journal Article</span><h3 class="rs-pub-title"><a href="https://doi.org/10.1093/scipol/scab025" target="_blank" rel="noopener">The Impact of University-Industry Relationships on Firms&#x27; Performance: A Meta-Regression Analysis</a></h3></div>
+      <div class="rs-pub-actions"><a class="rs-btn" href="documents/publications/10.1093-scipol-scab025.pdf" target="_blank"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</a><a class="rs-btn" href="https://doi.org/10.1093/scipol/scab025" target="_blank" rel="noopener"><svg class="rs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg> <span data-en="Publisher" data-es="Editorial">Publisher</span></a><a class="rs-cites" href="https://scholar.google.com/scholar?oi=bibs&amp;hl=en&amp;cites=1177326663558645963" target="_blank" rel="noopener" title="Google Scholar citations"><span class="rs-cites-n">21</span> <span data-en="citations" data-es="citas">citations</span></a><button type="button" class="rs-toggle" aria-expanded="false" aria-controls="more-10-1093-scipol-scab025" aria-label="Abstract, citation and metrics" title="Abstract, citation and metrics"><i class="fas fa-chevron-down" aria-hidden="true"></i></button></div>
+    </div>
+    <p class="rs-pub-meta"><span class="rs-authors">E. Acebo, J.-Á. Miguel-Dávila, M. Nieto</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-venue"><em>Science and Public Policy</em>, 48(2), 276–293, 2021</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-pub-tags"><span class="publication-tag" data-en="innovation" data-es="innovación">innovation</span><span class="publication-tag" data-en="strategy" data-es="estrategia">strategy</span></span></p>
+    <div class="rs-more" id="more-10-1093-scipol-scab025" hidden>
+      <div class="rs-abstract"><h4><span data-en="Abstract" data-es="Resumen">Abstract</span></h4><p>The University–Industry (U–I) relationship is a fundamental part of innovation systems. A wide spread of public resources has been given to promote this relationship and a large number of studies has evaluated the results. However, while innovation theory identifies this relationship as a positive instrument to increase firms’ performance, evaluation literature reports a wide range of findings. The lack of conclusiveness results in theory and evaluation literature motivates this meta-regression analysis (MRA), built on fifty-one micro-level studies published since 1995. After controlling for publication selection bias, sample, and study heterogeneities, our results show a small effect on firms’ performance. Specifically, the size of the effect is more significant for technical outcomes than economic ones. These findings have a lot of relevance for universities, firms, and policymakers for determining open-innovation strategies and public policies.</p></div><div class="rs-bib"><div class="rs-bib-head"><h4>BibTeX</h4><div class="rs-bib-actions"><button type="button" class="rs-btn rs-copy"><i class="far fa-copy" aria-hidden="true"></i> <span data-en="Copy" data-es="Copiar">Copy</span></button></div></div><pre class="rs-bib-code">@article{acebo2021impact,
+  title   = {The Impact of University-Industry Relationships on Firms&#x27; Performance: A Meta-Regression Analysis},
+  author  = {Acebo, Enrique and Miguel-Dávila, José-Ángel and Nieto, Mariano},
+  journal = {Science and Public Policy},
+  volume  = {48},
+  number  = {2},
+  pages   = {276--293},
+  year    = {2021},
+  doi     = {10.1093/scipol/scab025}
+}</pre></div><div class="rs-metrics"><h4><span data-en="Metrics" data-es="Métricas">Metrics</span></h4><div class="rs-badges"><a class="gs-badge" href="https://scholar.google.com/scholar?oi=bibs&amp;hl=en&amp;cites=1177326663558645963" target="_blank" rel="noopener" title="Google Scholar citations"><span class="gs-badge-label"><i class="fas fa-graduation-cap" aria-hidden="true"></i> GS</span><span class="gs-badge-count">21</span></a><span class="__dimensions_badge_embed__" data-doi="10.1093/scipol/scab025" data-style="small_rectangle"></span><div class="altmetric-embed" data-badge-type="2" data-doi="10.1093/scipol/scab025"></div></div></div>
+    </div>
+</article>
+<article class="rs-pub" data-type="chapter" data-year="2021" data-order="12" data-tags="innovation" data-doi="10.1007/978-3-030-67708-4_19" data-cites="9" data-gs-id="Y0pCki6q_DkC">
+    <div class="rs-pub-row">
+      <div class="rs-pub-head"><span class="rs-type rs-type-chapter" data-en="Book Chapter" data-es="Capítulo de Libro">Book Chapter</span><h3 class="rs-pub-title"><a href="https://doi.org/10.1007/978-3-030-67708-4_19" target="_blank" rel="noopener">Design Thinking in Engineering Education: A Systematic Literature Review</a></h3></div>
+      <div class="rs-pub-actions"><a class="rs-btn" href="https://doi.org/10.1007/978-3-030-67708-4_19" target="_blank" rel="noopener"><svg class="rs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg> <span data-en="Publisher" data-es="Editorial">Publisher</span></a><a class="rs-cites" href="https://scholar.google.com/scholar?oi=bibs&amp;hl=en&amp;cites=5849241774406580524" target="_blank" rel="noopener" title="Google Scholar citations"><span class="rs-cites-n">9</span> <span data-en="citations" data-es="citas">citations</span></a><button type="button" class="rs-toggle" aria-expanded="false" aria-controls="more-10-1007-978-3-030-67708-4-19" aria-label="Citation and metrics" title="Citation and metrics"><i class="fas fa-chevron-down" aria-hidden="true"></i></button></div>
+    </div>
+    <p class="rs-pub-meta"><span class="rs-authors">E. Acebo, J.-Á. Miguel-Dávila, L. Herrera</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-venue"><em>Organizational Engineering in Industry 4.0</em>, 2021</span><span class="rs-sep" aria-hidden="true">·</span><span class="rs-pub-tags"><span class="publication-tag" data-en="innovation" data-es="innovación">innovation</span></span></p>
+    <div class="rs-more" id="more-10-1007-978-3-030-67708-4-19" hidden>
+      <div class="rs-bib"><div class="rs-bib-head"><h4>BibTeX</h4><div class="rs-bib-actions"><button type="button" class="rs-btn rs-copy"><i class="far fa-copy" aria-hidden="true"></i> <span data-en="Copy" data-es="Copiar">Copy</span></button></div></div><pre class="rs-bib-code">@incollection{acebo2021design,
+  title     = {Design Thinking in Engineering Education: A Systematic Literature Review},
+  author    = {Acebo, E. and Miguel-Dávila, J. A. and Herrera, L.},
+  booktitle = {Organizational Engineering in Industry 4.0},
+  publisher = {Springer International Publishing},
+  pages     = {185--191},
+  year      = {2021},
+  doi       = {10.1007/978-3-030-67708-4_19}
+}</pre></div><div class="rs-metrics"><h4><span data-en="Metrics" data-es="Métricas">Metrics</span></h4><div class="rs-badges"><a class="gs-badge" href="https://scholar.google.com/scholar?oi=bibs&amp;hl=en&amp;cites=5849241774406580524" target="_blank" rel="noopener" title="Google Scholar citations"><span class="gs-badge-label"><i class="fas fa-graduation-cap" aria-hidden="true"></i> GS</span><span class="gs-badge-count">9</span></a><span class="__dimensions_badge_embed__" data-doi="10.1007/978-3-030-67708-4_19" data-style="small_rectangle"></span><div class="altmetric-embed" data-badge-type="2" data-doi="10.1007/978-3-030-67708-4_19"></div></div></div>
+    </div>
+</article>
                 </div>
 
-                <!-- Data Tab -->
-                <div class="tab-content" id="data">
-                    <div class="year-group" data-year="2025">
-                        <h2 class="year-title">2025</h2>
-                        <div class="publication" data-tags="data policy-evaluation strategy">
-                            <p class="publication-title">
-                                <a href="https://data.mendeley.com/datasets/kv78gfs9ny/2" target="_blank" rel="noopener">
-                                    ICO COVID-19: Public Loan Guarantees in Spain (2020-2021)
-                                </a>
-                            </p>
-                            <p class="publication-authors">
-                                Acebo, Enrique; Gutiérrez López, Cristina; Abad González, Julio; Miguel-Dávila, José-Ángel
-                            </p>
-                            <p class="publication-venue">Mendeley Data, V2 (2025)</p>
-                            <div class="publication-meta-row">
-                                <div class="publication-links">
-                                    <a href="https://data.mendeley.com/datasets/kv78gfs9ny/2" target="_blank" rel="noopener"><i class="fas fa-database"></i> Data</a>
-                                    <a href="https://doi.org/10.17632/kv78gfs9ny.2" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI</a>
-                                    <a href="documents/citations/10.17632-kv78gfs9ny.2.ris" target="_blank" download><i class="fas fa-file-alt"></i> RIS</a>
-                                </div>
-                                <div class="publication-badges">
-                                    <a href="https://plu.mx/plum/a/?doi=10.17632%2Fkv78gfs9ny" data-popup="right" data-badge="true" class="plumx-plum-print-popup plum-bigben-theme" data-site="plum" data-hide-when-empty="true">ICO COVID-19: Public Loan Guarantees in Spain (2020-2021)</a>
-                                </div>
-                            </div>
-                            <div class="publication-tags">
-                                <span class="publication-tag">Open Data</span>
-                                <span class="publication-tag">Policy Evaluation</span>
-                                <span class="publication-tag">Strategy</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="year-group" data-year="2024">
-                        <h2 class="year-title">2024</h2>
-                        <div class="publication" data-tags="data policy-evaluation entrepreneurship">
-                            <p class="publication-title">
-                                <a href="https://doi.org/10.7910/DVN/YZMLCO" target="_blank" rel="noopener">
-                                    ENISA: Companies Supported by Spanish Participative Loans Program
-                                </a>
-                            </p>
-                            <p class="publication-authors">
-                                Acebo, Enrique; Baratas González, Luis; Miguel-Dávila, José Ángel
-                            </p>
-                            <p class="publication-venue">Harvard Dataverse (2024)</p>
-                            <div class="publication-meta-row">
-                                <div class="publication-links">
-                                    <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/YZMLCO" target="_blank" rel="noopener"><i class="fas fa-database"></i> Data</a>
-                                    <a href="https://doi.org/10.7910/DVN/YZMLCO" target="_blank" rel="noopener"><i class="fas fa-link"></i> DOI</a>
-                                    <a href="documents/citations/10.7910-DVN-YZMLCO.ris" target="_blank" download><i class="fas fa-file-alt"></i> RIS</a>
-                                </div>
-                                <div class="publication-badges">
-                                    <a href="https://plu.mx/plum/a/?doi=10.7910%2FDVN%2FYZMLCO" data-popup="right" data-badge="true" class="plumx-plum-print-popup plum-bigben-theme" data-site="plum" data-hide-when-empty="true">ENISA: Companies Supported by Spanish Participative Loans Program</a>
-                                </div>
-                            </div>
-                            <div class="publication-tags">
-                                <span class="publication-tag">Open Data</span>
-                                <span class="publication-tag">Policy Evaluation</span>
-                                <span class="publication-tag">Entrepreneurship</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                <p class="no-results" id="no-results" data-en="No publications found matching your filters." data-es="No hay publicaciones que coincidan con los filtros.">No publications found matching your filters.</p>
             </section>
         </div>
     </main>
@@ -497,6 +394,9 @@
     <footer>
         <div class="footer-content">
             <p class="copyright">&copy; 2025 Enrique Acebo</p>
+            <div class="lang-switch">
+                <button id="lang-toggle" aria-label="Cambiar a español" title="Cambiar a español"><svg viewBox="0 0 24 16" aria-hidden="true" focusable="false"><rect width="24" height="16" fill="#c60b1e"/><rect y="4" width="24" height="8" fill="#ffc400"/></svg></button>
+            </div>
         </div>
     </footer>
 
@@ -549,95 +449,261 @@
         backToTop.addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-
-        // Tabs
-        const tabButtons = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabButtons.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const tabId = this.dataset.tab;
-
-                // Update buttons
-                tabButtons.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-
-                // Update content
-                tabContents.forEach(content => {
-                    content.classList.remove('active');
-                    if (content.id === tabId) {
-                        content.classList.add('active');
-                    }
-                });
-
-                // Reset search and filters when switching tabs
-                searchInput.value = '';
-                tagButtons.forEach(b => b.classList.remove('active'));
-                document.querySelector('.tag-btn[data-tag="all"]').classList.add('active');
-                filterPublications();
-            });
-        });
-
-        // Publications Search
+    </script>
+    <script>
+    // Research page: filters, sorting, abstracts, BibTeX copy, metrics and charts
+    (function () {
+        const list = document.getElementById('rs-list');
+        const pubs = Array.from(list.querySelectorAll('.rs-pub'));
         const searchInput = document.getElementById('search-input');
+        const yearSelect = document.getElementById('rs-year');
+        const sortSelect = document.getElementById('rs-sort');
+        const tabButtons = document.querySelectorAll('.rs-tabs .tab-btn');
+        const tagButtons = document.querySelectorAll('.tags-filter .tag-btn');
         const noResults = document.getElementById('no-results');
+        const PUBLISHED = ['article', 'book', 'chapter'];
+        const state = { type: 'all', tag: 'all', year: 'all', sort: 'date-desc', q: '' };
 
-        function filterPublications() {
-            const activeTab = document.querySelector('.tab-content.active');
-            const publications = activeTab.querySelectorAll('.publication');
-            const yearGroups = activeTab.querySelectorAll('.year-group');
-            const searchTerm = searchInput.value.toLowerCase();
-            const activeTag = document.querySelector('.tag-btn.active').dataset.tag;
-            let visibleCount = 0;
+        const lang = () => localStorage.getItem('lang') || 'en';
+        const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+        const fmt = n => n.toLocaleString(lang() === 'es' ? 'es-ES' : 'en-US');
+        pubs.forEach(p => { p._text = norm(p.textContent); });
 
-            publications.forEach(pub => {
-                const text = pub.textContent.toLowerCase();
-                const tags = pub.dataset.tags || '';
+        // Tab counts and year options
+        tabButtons.forEach(btn => {
+            const types = btn.dataset.type.split(' ');
+            const n = btn.dataset.type === 'all' ? pubs.length : pubs.filter(p => types.includes(p.dataset.type)).length;
+            btn.querySelector('.rs-count').textContent = n;
+        });
+        [...new Set(pubs.map(p => p.dataset.year))].sort((a, b) => b - a).forEach(y => {
+            const o = document.createElement('option');
+            o.value = y; o.textContent = y;
+            yearSelect.appendChild(o);
+        });
+        document.getElementById('rs-total').textContent = pubs.length;
 
-                const matchesSearch = text.includes(searchTerm);
-                const matchesTag = activeTag === 'all' || tags.includes(activeTag);
-
-                if (matchesSearch && matchesTag) {
-                    pub.classList.remove('hidden');
-                    visibleCount++;
-                } else {
-                    pub.classList.add('hidden');
-                }
-            });
-
-            // Hide empty year groups
-            yearGroups.forEach(group => {
-                const visiblePubs = group.querySelectorAll('.publication:not(.hidden)');
-                if (visiblePubs.length === 0) {
-                    group.classList.add('hidden');
-                } else {
-                    group.classList.remove('hidden');
-                }
-            });
-
-            // Show/hide no results message
-            if (visibleCount === 0 && publications.length > 0) {
-                noResults.classList.add('visible');
-            } else {
-                noResults.classList.remove('visible');
-            }
+        function matches(p) {
+            const types = state.type.split(' ');
+            if (state.type !== 'all' && !types.includes(p.dataset.type)) return false;
+            if (state.tag !== 'all' && !p.dataset.tags.split(' ').includes(state.tag)) return false;
+            if (state.year !== 'all' && p.dataset.year !== state.year) return false;
+            if (state.q && !p._text.includes(state.q)) return false;
+            return true;
         }
 
-        searchInput.addEventListener('input', filterPublications);
+        function compare(a, b) {
+            const ya = +a.dataset.year, yb = +b.dataset.year, oa = +a.dataset.order, ob = +b.dataset.order;
+            if (state.sort === 'cites-desc') {
+                const d = (+b.dataset.cites || 0) - (+a.dataset.cites || 0);
+                return d || yb - ya || oa - ob;
+            }
+            if (state.sort === 'date-asc') return ya - yb || ob - oa;
+            return yb - ya || oa - ob;
+        }
 
-        // Tag Filter
-        const tagButtons = document.querySelectorAll('.tag-btn');
+        function render() {
+            pubs.slice().sort(compare).forEach(p => list.appendChild(p));
+            let shown = 0;
+            pubs.forEach(p => { const ok = matches(p); p.hidden = !ok; if (ok) shown++; });
+            document.getElementById('rs-shown').textContent = shown;
+            noResults.classList.toggle('visible', shown === 0);
+        }
 
-        tagButtons.forEach(btn => {
-            btn.addEventListener('click', function() {
-                tagButtons.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                filterPublications();
-            });
+        tabButtons.forEach(btn => btn.addEventListener('click', () => {
+            tabButtons.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+            btn.classList.add('active'); btn.setAttribute('aria-selected', 'true');
+            state.type = btn.dataset.type;
+            render();
+        }));
+        tagButtons.forEach(btn => btn.addEventListener('click', () => {
+            tagButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.tag = btn.dataset.tag;
+            render();
+        }));
+        searchInput.addEventListener('input', () => { state.q = norm(searchInput.value.trim()); render(); });
+        yearSelect.addEventListener('change', () => { state.year = yearSelect.value; render(); });
+        sortSelect.addEventListener('change', () => { state.sort = sortSelect.value; render(); });
+        document.getElementById('rs-clear').addEventListener('click', () => {
+            searchInput.value = ''; yearSelect.value = 'all'; sortSelect.value = 'date-desc';
+            Object.assign(state, { type: 'all', tag: 'all', year: 'all', sort: 'date-desc', q: '' });
+            tabButtons.forEach(b => { const on = b.dataset.type === 'all'; b.classList.toggle('active', on); b.setAttribute('aria-selected', on); });
+            tagButtons.forEach(b => b.classList.toggle('active', b.dataset.tag === 'all'));
+            render();
         });
+
+        // Abstract / citation panels
+        list.addEventListener('click', e => {
+            const toggle = e.target.closest('.rs-toggle');
+            if (toggle) {
+                const panel = document.getElementById(toggle.getAttribute('aria-controls'));
+                const open = toggle.getAttribute('aria-expanded') !== 'true';
+                toggle.setAttribute('aria-expanded', open);
+                panel.hidden = !open;
+                return;
+            }
+            const copy = e.target.closest('.rs-copy');
+            if (copy) {
+                const code = copy.closest('.rs-bib').querySelector('.rs-bib-code').textContent;
+                const label = copy.querySelector('[data-en]');
+                navigator.clipboard.writeText(code).then(() => {
+                    copy.classList.add('is-done');
+                    label.textContent = lang() === 'es' ? 'Copiado' : 'Copied';
+                    setTimeout(() => {
+                        copy.classList.remove('is-done');
+                        label.textContent = label.getAttribute(lang() === 'es' ? 'data-es' : 'data-en');
+                    }, 2000);
+                });
+            }
+        });
+
+        // Metrics
+        // Google Scholar citations per year (profile graph), baked in the chart's data-series
+        let citesByYear = JSON.parse(document.getElementById('chart-cites').dataset.series);
+        let scholarTotals = null;  // filled from assets/data/scholar.json
+
+        function updateStats() {
+            const cites = pubs.filter(p => 'cites' in p.dataset).map(p => +p.dataset.cites || 0).sort((a, b) => b - a);
+            let h = 0;
+            cites.forEach((c, i) => { if (c >= i + 1) h = i + 1; });
+            const totals = scholarTotals || { cites: cites.reduce((a, b) => a + b, 0), h: h, i10: cites.filter(c => c >= 10).length };
+            document.getElementById('stat-cites').textContent = fmt(totals.cites);
+            document.getElementById('stat-h').textContent = totals.h;
+            document.getElementById('stat-i10').textContent = totals.i10;
+            document.getElementById('stat-pubs').textContent = pubs.filter(p => PUBLISHED.includes(p.dataset.type)).length;
+        }
+
+        function niceStep(x) {
+            const pow = Math.pow(10, Math.floor(Math.log10(Math.max(x, 1))));
+            const f = [1, 2, 3, 5, 10].find(c => c * pow >= x);
+            return f * pow;
+        }
+
+        function drawColumns(fig, series, unit) {
+            const plot = fig.querySelector('.rs-plot');
+            const W = Math.max(260, Math.round(plot.clientWidth || 480)), H = 150, L = 30, R = 6, T = 16, B = 22;
+            const pw = W - L - R, ph = H - T - B;
+            const step = niceStep(Math.max(...series.map(s => s.value), 1) / 2);
+            const top = step * 2;
+            const slot = pw / series.length, bw = Math.min(24, slot * 0.55);
+            const y = v => T + ph - (v / top) * ph;
+            const maxV = Math.max(...series.map(s => s.value));
+            const ns = 'http://www.w3.org/2000/svg';
+            let svg = `<svg viewBox="0 0 ${W} ${H}" aria-hidden="true" focusable="false" xmlns="${ns}">`;
+            [0, step, top].forEach(t => {
+                svg += `<g class="rs-grid"><line x1="${L}" x2="${W - R}" y1="${y(t)}" y2="${y(t)}"/></g>`;
+                svg += `<text class="rs-axis" x="${L - 8}" y="${y(t) + 4}" text-anchor="end">${t}</text>`;
+            });
+            series.forEach((s, i) => {
+                const cx = L + slot * i + slot / 2, x0 = cx - bw / 2, x1 = cx + bw / 2, base = y(0), yt = y(s.value);
+                const r = Math.min(4, base - yt);
+                svg += `<g class="rs-col" data-i="${i}">`;
+                svg += `<rect class="rs-hit" x="${L + slot * i}" y="${T}" width="${slot}" height="${ph}"/>`;
+                if (s.value > 0) {
+                    svg += `<path class="rs-bar" d="M${x0},${base} V${yt + r} Q${x0},${yt} ${x0 + r},${yt} H${x1 - r} Q${x1},${yt} ${x1},${yt + r} V${base} Z"/>`;
+                }
+                if (s.value === maxV || i === series.length - 1) {
+                    svg += `<text class="rs-val" x="${cx}" y="${yt - 5}" text-anchor="middle">${s.value}</text>`;
+                }
+                svg += `<text class="rs-axis" x="${cx}" y="${H - 5}" text-anchor="middle">${s.label}</text></g>`;
+            });
+            svg += '</svg>';
+            const rows = series.map(s => `<tr><th scope="row">${s.label}</th><td>${s.value}</td></tr>`).join('');
+            plot.innerHTML = svg + `<div class="rs-tip" role="status"></div><table class="sr-only"><caption>${fig.querySelector('figcaption').textContent}</caption><tbody>${rows}</tbody></table>`;
+
+            const tip = plot.querySelector('.rs-tip');
+            const svgEl = plot.querySelector('svg');
+            const show = g => {
+                const s = series[+g.dataset.i];
+                const units = unit[lang()][s.value === 1 ? 0 : 1];
+                const partial = s.partial ? (lang() === 'es' ? ' (hasta la fecha)' : ' (to date)') : '';
+                tip.textContent = `${s.label}${partial}: ${s.value} ${units}`;
+                const box = g.getBoundingClientRect(), host = plot.getBoundingClientRect();
+                const bar = g.querySelector('.rs-bar');
+                const top = bar ? bar.getBoundingClientRect().top : box.bottom - 20;
+                tip.style.left = (box.left - host.left + box.width / 2) + 'px';
+                tip.style.top = (top - host.top - 8) + 'px';
+                tip.classList.add('on');
+            };
+            svgEl.querySelectorAll('.rs-col').forEach(g => {
+                g.addEventListener('mouseenter', () => show(g));
+                g.addEventListener('mouseleave', () => tip.classList.remove('on'));
+            });
+        }
+
+        function drawCharts() {
+            const thisYear = new Date().getFullYear();
+            const pubYears = pubs.filter(p => PUBLISHED.includes(p.dataset.type)).map(p => +p.dataset.year);
+            const first = Math.min(...pubYears), last = Math.max(thisYear, ...pubYears);
+            const range = [];
+            for (let yv = first; yv <= last; yv++) range.push(yv);
+            drawColumns(document.getElementById('chart-cites'),
+                range.map(yv => ({ label: String(yv), value: citesByYear[yv] || 0, partial: yv === thisYear })),
+                { en: ['citation', 'citations'], es: ['cita', 'citas'] });
+            drawColumns(document.getElementById('chart-pubs'),
+                range.map(yv => ({ label: String(yv), value: pubYears.filter(p => p === yv).length })),
+                { en: ['publication', 'publications'], es: ['publicación', 'publicaciones'] });
+        }
+
+        updateStats();
+        drawCharts();
+        render();
+
+        // Google Scholar data, refreshed daily by .github/workflows/update-scholar.yml
+        function applyScholar(d) {
+            pubs.forEach(p => {
+                const rec = d.papers && d.papers[p.dataset.gsId];
+                if (!rec) return;
+                const href = rec.cites_url || rec.view_url;
+                p.dataset.cites = rec.cites;
+                const pill = p.querySelector('.rs-cites');
+                if (pill) {
+                    pill.querySelector('.rs-cites-n').textContent = fmt(rec.cites);
+                    pill.setAttribute('href', href);
+                    pill.hidden = rec.cites === 0;
+                }
+                const badge = p.querySelector('.gs-badge');
+                if (badge) {
+                    badge.querySelector('.gs-badge-count').textContent = rec.cites;
+                    badge.setAttribute('href', href);
+                }
+            });
+            if (d.by_year && Object.keys(d.by_year).length) citesByYear = d.by_year;
+            scholarTotals = { cites: d.citations, h: d.h_index, i10: d.i10_index };
+            updateStats();
+            drawCharts();
+            if (state.sort === 'cites-desc') render();
+        }
+        fetch('assets/data/scholar.json', { cache: 'no-cache' })
+            .then(r => r.ok ? r.json() : Promise.reject(r.status))
+            .then(applyScholar)
+            .catch(() => { /* keep the values baked into the page */ });
+
+        // PlumX usage for the linked dataset (numbers in the HTML are the fallback)
+        document.querySelectorAll('.px-badge[data-plumx-doi]').forEach(a => {
+            fetch('https://api.plu.mx/widget/other/artifact?type=doi&site=plum&id=' + encodeURIComponent(a.dataset.plumxDoi))
+                .then(r => r.ok ? r.json() : Promise.reject(r.status))
+                .then(d => {
+                    const total = Object.values(d.category_totals || {}).reduce((sum, c) => sum + (c.total || 0), 0);
+                    if (total) a.querySelector('.gs-badge-count').textContent = total;
+                    const usage = ((d.statistics || {}).Usage || []).map(u => u.count + ' ' + u.label.toLowerCase());
+                    if (usage.length) a.title = 'PlumX usage: ' + usage.join(', ');
+                    if (d.link) a.setAttribute('href', d.link);
+                })
+                .catch(() => {});
+        });
+
+        let resizeTimer;
+        let lastWidth = window.innerWidth;
+        window.addEventListener('resize', () => {
+            if (window.innerWidth === lastWidth) return;
+            lastWidth = window.innerWidth;
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(drawCharts, 150);
+        });
+
+    })();
     </script>
-    <!-- PlumX -->
-    <script type="text/javascript" src="//cdn.plu.mx/widget-popup.js"></script>
     <!-- Altmetric retired details.php (returns 404); rewrite badge links to the current /details/ID format -->
     <script>
     (function () {
