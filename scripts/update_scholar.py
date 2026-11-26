@@ -7,7 +7,9 @@ year and citations per paper, and writes assets/data/scholar.json.
 
 Runs daily from .github/workflows/update-scholar.yml. Standard library only.
 If Scholar does not return a parsable profile (CAPTCHA, layout change, network error),
-the JSON file is left untouched and the script exits with status 1.
+the JSON file is left untouched. Scholar often answers 403 to GitHub's runners, so a
+failed fetch only fails the run (exit 1) once the published data is more than
+MAX_STALE_DAYS old; until then it is logged as a warning and the run passes.
 """
 import datetime
 import html
@@ -22,6 +24,7 @@ PROFILE_URL = f"https://scholar.google.com/citations?user={USER_ID}&hl=en"
 OUT = Path(__file__).resolve().parent.parent / "assets" / "data" / "scholar.json"
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/131.0 Safari/537.36")
+MAX_STALE_DAYS = 7  # tolerate failed fetches until the published data is older than this
 
 
 def fetch(url):
@@ -73,11 +76,26 @@ def parse(page):
     }
 
 
+def stale_days():
+    """Days since the last successful refresh, or None if there is no usable file."""
+    try:
+        updated = json.loads(OUT.read_text(encoding="utf-8"))["updated"]
+        return (datetime.date.today() - datetime.date.fromisoformat(updated)).days
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+
+
 def main():
     try:
         data = parse(fetch(PROFILE_URL))
     except Exception as exc:  # leave the current file untouched
-        print(f"::warning::Google Scholar not updated: {exc}")
+        age = stale_days()
+        if age is not None and age <= MAX_STALE_DAYS:
+            print(f"::warning::Google Scholar not updated ({exc}); "
+                  f"keeping the data from {age} day(s) ago")
+            return 0
+        state = "missing" if age is None else f"{age} days old"
+        print(f"::error::Google Scholar not updated ({exc}) and the published data is {state}")
         return 1
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
