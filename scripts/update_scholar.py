@@ -5,11 +5,12 @@ Reads the public Google Scholar profile page (allowed by scholar.google.com/robo
 "Allow: /citations?user="), extracts total citations, h-index, i10-index, citations per
 year and citations per paper, and writes assets/data/scholar.json.
 
-Runs daily from .github/workflows/update-scholar.yml. Standard library only.
+Runs daily on Enrique's Mac from a Hermes cron job (~/.hermes/scripts/scholar_web_update.sh),
+which commits and pushes the refreshed file. It does not run on GitHub Actions because
+Scholar answers 403 to GitHub's runners. Standard library only.
 If Scholar does not return a parsable profile (CAPTCHA, layout change, network error),
-the JSON file is left untouched. Scholar often answers 403 to GitHub's runners, so a
-failed fetch only fails the run (exit 1) once the published data is more than
-MAX_STALE_DAYS old; until then it is logged as a warning and the run passes.
+the JSON file is left untouched. A failed fetch only fails the run (exit 1) once the
+published data is more than MAX_STALE_DAYS old; until then it prints a warning and passes.
 """
 import datetime
 import html
@@ -91,11 +92,11 @@ def main():
     except Exception as exc:  # leave the current file untouched
         age = stale_days()
         if age is not None and age <= MAX_STALE_DAYS:
-            print(f"::warning::Google Scholar not updated ({exc}); "
+            print(f"Warning: Google Scholar not updated ({exc}); "
                   f"keeping the data from {age} day(s) ago")
             return 0
         state = "missing" if age is None else f"{age} days old"
-        print(f"::error::Google Scholar not updated ({exc}) and the published data is {state}")
+        print(f"Google Scholar not updated ({exc}) and the published data is {state}")
         return 1
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

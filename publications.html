@@ -647,7 +647,7 @@
         drawCharts();
         render();
 
-        // Google Scholar data, refreshed daily by .github/workflows/update-scholar.yml
+        // Google Scholar data, refreshed daily by scripts/update_scholar.py
         function applyScholar(d) {
             pubs.forEach(p => {
                 const rec = d.papers && d.papers[p.dataset.gsId];
