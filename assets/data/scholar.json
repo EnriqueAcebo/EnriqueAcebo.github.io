@@ -1,7 +1,7 @@
 {
-  "updated": "2026-11-26",
+  "updated": "2026-11-28",
   "profile": "https://scholar.google.com/citations?user=7_JEALYAAAAJ&hl=en",
-  "citations": 224,
+  "citations": 225,
   "h_index": 5,
   "i10_index": 4,
   "by_year": {
@@ -10,12 +10,12 @@
     "2023": 34,
     "2024": 28,
     "2025": 51,
-    "2026": 74
+    "2026": 75
   },
   "papers": {
     "IjCSPb-OGe4C": {
       "title": "External stakeholder engagement: Complementary and substitutive effects on firms' eco‐innovation",
-      "cites": 131,
+      "cites": 132,
       "cites_url": "https://scholar.google.com/scholar?oi=bibs&hl=en&cites=12149959660936486320",
       "view_url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=7_JEALYAAAAJ&citation_for_view=7_JEALYAAAAJ:IjCSPb-OGe4C"
     },
